@@ -33,5 +33,4 @@ class VideoComposer
         $videos = $this->video->findFirstLimit(3);
         $view->with('videos', $videos);
     }
-    eiuvdhfvkjdsnv jk
 }
