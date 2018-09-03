@@ -1,0 +1,223 @@
+.container.videos{
+	padding: 0 0;
+	margin-top: 127px;
+	border-bottom: 1px solid #231f20;
+	padding-bottom: 50px;
+} 
+/* @media only screen and (max-width: 991px){
+	.container.select ul.dropdown-menu{
+		width: 100%!important;
+	}
+}
+@media only screen and (max-width: 767px){
+	
+	.videos .video-main>div iframe{
+		width: 100%;
+	    height: -webkit-fill-available!important;
+	}
+	.container.videos >.row{
+		margin-right: 0!important;
+		margin-left: 0!important;
+	}
+	.container.videos .group-video.row {
+	    margin-bottom: 25px;
+	    margin-right: 0!important;
+	    margin-left: 0!important;
+	}
+} */
+
+.container.videos .trapezoid {
+    position: relative;
+    border-bottom: 1px solid #3bd3aa;
+    width: 100%;
+    /* margin-bottom: 18px; */
+    color: #ffffff;
+    padding-bottom: 2px;
+    margin-top: -31px;
+    margin-bottom: 15px;
+}
+.container.videos .row.download {
+	margin: 0;
+	
+}
+.container.videos .row.download button{
+    width: 100%;
+    background: #3bd3aa;
+    text-transform: uppercase;
+    font-size: 15px;
+}
+.container.videos .row.download button a{
+	color: #ffffff;
+}
+.container.select li.dropdown-item{
+	position: relative;
+	border-bottom: 1px solid #cccccc;
+	padding: .25rem 0;
+}
+.container.select li.dropdown-item a{
+	padding: 0.45rem 0;
+    border-bottom: 1px solid #3bd3aa;
+}
+.container.select li.dropdown-item a.active{
+	color: #b50000;
+}
+.container.select ul.dropdown-menu.active{
+	display:list-item!important;
+}
+
+.container.select ul.dropdown-menu{
+	width: 780px;
+	border: 0;
+	position: absolute;
+    top: 10px!important;
+    left: 20px!important;
+
+}
+.container.select ul.dropdown-menu li.dropdown-item .row{
+	position: absolute;
+    top: 5px;
+    right: 16px;
+}
+.container.select ul.dropdown-menu li.dropdown-item .row button{
+	width: 18px;
+	height: 20px;
+	border: 1px solid #cccccc;
+	background: none;
+	position: relative;
+}
+.container.select ul.dropdown-menu li.dropdown-item .row button i{
+	position: absolute;
+	top: 0;
+	right: 5px;
+	color: #3bd3aa;
+}
+.container.videos .group-video.row{
+	margin-bottom: 25px;
+}
+.container.videos .group-video.row .wrapper{
+    height: max-content;
+    width: 100%;
+}
+.container.videos .group-video.row .wrapper iframe{
+	width: 100%;
+}
+.container.videos .group-video>div>p:nth-child(1){
+	font-size: 18px;
+}
+.container.videos .group-video>div>p:last-child{
+	font-size: 10px;
+	text-transform: uppercase;
+}
+.container.videos .video-main .first span{
+	font-size: 11px;
+	text-transform: uppercase;
+}
+.container.videos .video-main p:last-child{
+	font-size: 13px;
+}
+.videos .video-main:hover button {
+    position: absolute;
+    top: 15%;
+    left: 42%;
+    background: rgba(51, 51, 51, 0.8);
+    color: #fff;
+    border: none;
+    padding: 0 14px;
+    display: block;
+}
+.videos .group-video>div:nth-child(1):hover button, .videos .group-video>div:nth-child(2):hover button {
+    position: absolute;
+    top: 42%;
+    left: 10%;
+    background: rgba(51, 51, 51, 0.8);
+    color: #fff;
+    border: none;
+    padding: 0px 10px;
+    font-size: 10px;
+    display: block;
+}
+.videos .video-main>div{
+	height: max-content;
+	width: 100%;
+}
+.videos .video-main>div iframe{
+	width: 100%;
+    height: 386px;
+}
+.videos .video-main button{
+    display: none;
+}
+.videos .group-video button {
+    display: none;
+}
+/* .btn-group-vertical {
+	margin: 0 auto;
+	display: table;
+	height: auto;
+	width: 980px;
+} */
+.container.select{
+	padding-right: 0;
+	padding-left: 0;
+	margin-top: 20px;
+	margin-bottom: 180px;
+}
+.btn-group-vertical>.dropright>button{
+	width: 177px;
+	border: none;
+	background: none;
+	border-bottom: 1px solid #3bd3aa;
+	font-size: 15px;
+	height: 37px;
+	text-transform: uppercase;
+	color: #3bd3aa;
+	text-align: left;
+	outline: none;
+}
+.btn-group-vertical>.dropright>button::after {
+	content: "";
+	/* style */
+	display: none;
+}
+.btn-group-vertical>button{
+	width: 177px;
+	border: none;
+	background: none;
+	border-bottom: 1px solid #000000;
+	font-size: 15px;
+	height: 37px;
+	text-align: left;
+	outline: none;
+}
+.box-detail a {
+    font-weight: bold;
+}
+
+.box-detail a:visited {
+    color: #e74c3c;
+}
+
+.box-detail ul {
+    margin-top: -5px;
+}
+
+.box-detail ul li {
+    color: #999;
+    font-size: 11px;
+    font-weight: normal;
+}
+
+.box-detail ul li a {
+    color: #999;
+    font-size: 11px;
+    font-weight: normal;
+}
+
+.expandVideo button{
+	cursor: pointer;
+	color: #ffffff;
+}
+.hiddenVideo button{
+	cursor: pointer;
+	color: #ffffff;
+}

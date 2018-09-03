@@ -1,0 +1,83 @@
+.pageheader h2{
+
+    margin-left: 10px;
+}
+
+.bg-btn-green{
+    background: #3C8DBC;
+    color: #fff;
+}
+
+.bg-grey{
+    background: #eee !important;
+}
+
+.form-control-oil-brand{
+    display: inline;
+    width: 96%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.form-control-oil-field{
+    display: inline;
+    width: 19%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.controls-oil{
+    line-height : 3.5;
+}
+.btn_color{
+    background: #80b0fc;
+}
+.table>tbody>tr:nth-last-child(1) td .dropdown-menu{
+    bottom: 100%;
+    top: unset;
+
+}
+.table>tbody>tr:nth-last-child(2) td .dropdown-menu{
+    bottom: 100%;
+    top: unset;
+    left: -76%;
+}
+.table>tbody>tr:first-child td .dropdown-menu{
+    top: 100%;
+    bottom: unset;
+}
+.text-row{
+    padding-bottom: 15px;
+}
+.custom-footer-css{
+    margin: 0 !important;
+    text-align: center;
+}
+.select-css{
+    padding: 4px;
+    border: 1px solid #ccc;
+}

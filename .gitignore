@@ -1,0 +1,14 @@
+/vendor
+/node_modules
+Homestead.yaml
+Homestead.json
+.env
+
+.idea
+composer.lock
+/nbproject/private/
+nbproject/project.xml
+public/uploads/news/
+resources/views/backend/news_real_estale/.LCKcreate.blade.php~
+resources/views/backend/user/.LCKcreate.blade.php~
+storage/framework/views/

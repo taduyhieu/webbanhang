@@ -1,0 +1,136 @@
+.thi-truong .page-link{
+    border: none;
+}
+.thi-truong .focal .row:nth-child(2)>nav{
+    margin: auto;
+
+}
+.bread{
+    border-bottom: 1px solid #bfbfbf;
+    margin-bottom: 30px;
+}
+.bread>.container{
+    width: 980px;
+}
+.bread .dropdown-toggle{
+    color: #2cb994;
+    background: none;
+    border: none;
+    border-bottom: 2px solid #2cb994;
+    outline: none;
+}
+@media only screen and (max-width: 991px){
+    .container{
+        width: 100%!important;
+    }
+}
+@media only screen and (min-width: 992px) and (max-width: 1032px){
+    /* .reportage .video-main:hover button{
+        position: absolute;
+        top: 12%!important;
+        left: 38%!important;
+    } */
+}
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    .reportage .video-main:hover button{
+        position: absolute;
+        top: 12%!important;
+        left: 38%!important;
+    }
+}
+
+@media only screen and (max-width: 767px){
+    .thi-truong .content>div:nth-child(1)>.row{
+        margin-right: 0!important;
+    }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px){
+    .reportage .video-main:hover button{
+        position: absolute;
+        top: 28%!important;
+        left: 42%!important;
+    }
+}
+@media only screen and (min-width: 460px)and (max-width: 576px){
+    .reportage .video-main:hover button{
+        position: absolute;
+        top: 27%!important;
+        left: 43%!important;
+    }
+}
+@media only screen and (min-width: 320px) and (max-width: 459px){
+    .reportage .video-main:hover button{
+        position: absolute;
+        top: 20%!important;
+        left: 37%!important;
+    }
+}
+
+.thi-truong .content>div:nth-child(1){
+    border-bottom: 2px solid #bfbfbf;
+    padding-bottom: 30px;
+}
+.thi-truong .content>div:nth-child(1)>div>div:nth-child(2)>p:first-child{
+    border-bottom: 2px solid #bfbfbf;
+    padding-bottom: 7rem;
+    margin-bottom: 0.5rem;
+}
+.reportage .video-main button{
+    display: none;
+}
+.reportage .video-main a{
+    color: #ffffff;
+}
+.reportage .reportage-sublist-title a{
+    color: #ffffff;
+}
+.reportage .video-main:hover button{
+    position: absolute;
+    top: 18%;
+    left: 38%;
+    background: rgba(51, 51, 51, 0.8);
+    color: #fff;
+    border: none;
+    padding: 0 14px;
+    display: block;
+}
+#video-r1,#video-r2,#video-r3{
+    position: relative;
+}
+.reportage .group-video button{
+
+    display: none;
+}
+.reportage .group-video>div:nth-child(1):hover button,.reportage .group-video>div:nth-child(2):hover button{
+    position: absolute;
+    top: 48%;
+    left: 10%;
+    background: rgba(51, 51, 51, 0.8);
+    color: #fff;
+    border: none;
+    padding: 0px 10px;
+    font-size: 10px;
+    display: block;
+
+}
+.reportage .group-video p{
+    font-size: 0.6875rem;
+}
+.reportage .group-video>div:nth-child(1){
+    padding-right: 5px;
+}
+.reportage .group-video>div:nth-child(2){
+    padding-left: 5px;
+}
+.reportage{
+    background: #414141;
+    color: #ffffff;
+}
+.reportage>div{
+    padding: 16px 20px;
+
+}
+.reportage>div>div>div>h4{
+    text-transform: uppercase;
+    font-size: 1.25rem;
+}

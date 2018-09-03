@@ -1,0 +1,78 @@
+.magazine{
+    max-width: 800px;
+}
+@font-face{
+    font-family: NotoSerif;
+    src: url('../font/NotoSerif-Regular.ttf');
+}
+.magazine p{
+    font-family: 'Noto Serif', serif !important;
+    line-height: 32px !important;
+    letter-spacing: -1px;
+}
+.magazine .content p img{
+    flex-basis: 0;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+}
+.magazine .magazine-footer {
+    width: 800px;
+    margin: 0px auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px solid #135ca5;
+    border-bottom: 1px solid #135ca5;
+    margin-bottom: 15px;
+}
+.magazine .image_center_wp {
+    text-align: center;
+    margin-bottom: 12px !important;
+}
+.img-top img{
+    width: 100%;
+}
+.top-menu .align-content-xl-end span{
+    color: #f36523 ;
+}
+.top-menu .align-content-xl-end{
+    font-size: 32px;
+    font-weight: lighter;
+    font-family: "Roboto";
+    letter-spacing: -1px;
+    color: white;
+}
+.container-fluid.top-menu{
+    background-color: #337ab7;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    z-index: 99999; 
+    height: 47px;
+    position: fixed;
+    top: 0;
+}
+.container-fluid.top-menu .row{
+    text-align: right;
+}
+.button-top button{
+    border-radius: 3px;
+    font-size: 11px;
+    height: 20px;
+    padding: 0 5px 0 5px;
+
+    background: #4267b2;
+    border: 1px solid #4267b2;
+    color: #fff;
+    cursor: pointer;
+    font-family: arial;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    -webkit-user-select: none;
+    white-space: nowrap;
+    font-size: 11px;
+    margin-top: 7px;
+}
+.wrapper-magazine{
+    margin-top: 50px;
+}    
