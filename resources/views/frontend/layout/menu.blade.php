@@ -1,239 +1,342 @@
-<meta charset="utf-8">
-<header id="header" class="home">
-    <div class="container-fluid">
-        <div class="container top">
-            <div class="row" >
-                <div class="top-header col-xs-12">
-                    <div class="top-left col-md-4 col-xs-4">
-                        <div class="support row">
-                            <div class="col-md-12">
-                                <div class="row">                        
-                                    <div>
-                                        <i class="fa fa-phone" aria-hidden="true"></i>
-                                    </div>
-                                    <div>
-                                        <p>
-                                            <a href="#" title="">Hỗ trợ trực tuyến:1900 0000</a>
-                                            <a href="#" title="">HOTLINE</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="top-center col-md-4 col-xs-4">
-                        <p>{!! $dayOfWeek !!}, ngày {!! $dateNow->day!!}, tháng {!! $dateNow->month!!}, năm {!! $dateNow->year!!}, {!! $dateNow->hour!!}:{!! $dateNow->minute!!}:{!! $dateNow->second!!}</p>
-                    </div>
-                    <div class="top-right col-md-4 col-xs-4">
-                        <div class="row">
-                            <p><img src="{!! url('frontend/images/dang-tin.png') !!}" alt=""><span>Đăng tin</span></p>
-                            <p><a href="{!! url('admin/login') !!}" title="">Đăng nhập</a> | <a href="" data-toggle="modal" data-target="#modal-user-register">Đăng ký</a></p>
-                            <!-- Modal -->
-                            <div id="modal-user-register" class="modal fade modal-user-register" role="dialog" data-backdrop="static" data-keyboard="false">
-                                <div class="modal-dialog user-register-form">
-                                    <form id="user-register-form" method="post" action="vi/user/register/store">
-                                        {!! csrf_field() !!}
-                                        <!-- Modal content-->
-                                        <div class="modal-content register-content">
-                                            <div class="modal-body register-body">
-                                                <h4 class="modal-title register-title mb-5">Đăng ký tài khoản</h4>
-                                                <div class="col-md-12">
-                                                    <div class="row mb-2">
-                                                        <div class="col-md-5">
-                                                            <label class="control-label register-label" for="user_name">Tên truy cập (*)</label>
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            <input class="register-input form-control" type="text" maxlength="50" id="user_name" name="user_name">
-                                                        </div>
-                                                        <div class="register-hint hint-user-name">
-                                                            <ul>
-                                                                <li><span>Tên truy cập là chữ hoặc số viết liền không dấu, không bao gồm ký tự đặc biệt.</span></li>
-                                                                <li><span>Hoặc nhập số điện thoại làm tên đăng nhập để không bị trùng với tài khoản khác.</span></li>
-                                                                <li><span>Tên truy cập từ 3 đến 45 ký tự.</span></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mb-2">
-                                                        <div class="col-md-5">
-                                                            <label class="control-label register-label" for="password">Mật khẩu (*)</label>
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            <input class="register-input form-control" type="password" maxlength="30" id="password" name="password">
-                                                        </div>
-                                                        <div class="register-hint hint-password">
-                                                            <ul>
-                                                                <li><span>Mật khẩu từ 6 đến 30 ký tự.</span></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mb-2">
-                                                        <div class="col-md-5">
-                                                            <label class="control-label register-label" for="confirm-password">Xác nhận mật khẩu (*)</label>
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            <input class="register-input form-control" type="password" maxlength="30" id="confirm-password" name="confirm-password">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mb-2">
-                                                        <div class="col-md-5">
-                                                            <label class="control-label register-label" for="full_name">Họ tên (*)</label>
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            <input class="register-input form-control" type="text" maxlength="50" id="full_name" name="full_name">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mb-2">
-                                                        <div class="col-md-5">
-                                                            <label class="control-label register-label" for="mobile">Số điện thoại (*)</label>
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            <input class="register-input form-control" type="text" maxlength="12" id="mobile" name="mobile">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mb-2">
-                                                        <div class="col-md-5">
-                                                            <label class="control-label register-label" for="email-register">Email (*)</label>
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            <input class="register-input form-control" type="text" maxlength="50" id="email-register" name="email-register">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mt-3 button-control">
-                                                        <button id="user-register-submit-btn" type="button" class="btn btn-success">Đăng ký</button>
-                                                        <button type="button" class="btn btn-success ml-2 close-button" data-dismiss="modal">Thoát</button>
-                                                    </div>
-                                                    <input type="hidden" value="{!! $roles->id !!}" name="user-r">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<!-- Header -->
+<header class="header1">
+    <!-- Header desktop -->
+    <div class="container-menu-header">
+        <div class="topbar">
+            <div class="topbar-social">
+                <a href="#" class="topbar-social-item fa fa-facebook"></a>
+                <a href="#" class="topbar-social-item fa fa-instagram"></a>
+                <a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
+                <a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
+                <a href="#" class="topbar-social-item fa fa-youtube-play"></a>
+            </div>
+
+            <span class="topbar-child1">
+                Free shipping for standard order over $100
+            </span>
+
+            <div class="topbar-child2">
+                <span class="topbar-email">
+                    fashe@example.com
+                </span>
+
+                <div class="topbar-language rs1-select2">
+                    <select class="selection-1" name="time">
+                        <option>USD</option>
+                        <option>EUR</option>
+                    </select>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container logo">
-        <div class="row">
-            <div class="text-center title-top">
-                <a href="{!! url() !!}"><h2>Diễn đàn bất động sản</h2></a>
-                <p>Báo Diễn đàn Doanh nghiệp</p>
-            </div>
 
-        </div>
-    </div>
-    <div class="container menu">
-        <div class="row">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="wrap_header">
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <img src="images/icons/logo.png" alt="IMG-LOGO">
+            </a>
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        @foreach($items as $item_menu)
-                        <a class="nav-link {{ setActiveMenu($item_menu->url) }}" href="{{ url().'/'.getLang().'/'.$item_menu->url}}">{{ $item_menu->title }}</a>
-                        @endforeach
-                    </div>
-                    <div class="navbar-nav d-flex justify-content-end">
-                        <a href="#" class="search" title="" data-toggle="modal" data-target="#myModal">
-                            <img src="{!! url('frontend/images/search-blue.png')!!}" alt="#">
-                        </a>
-                        <a href="#" title="" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <img src="{!! url('frontend/images/icon-bar.png') !!}" class="img-responsive" alt="">
-                        </a>
-                        <div class="collapse icon-bar-coll" id="navbarToggleExternalContent">
-                            <ul class="nav vertical-menu">
-                                @if(isset($newsToday) && $newsToday->count() > 0)
-                                @foreach($newsToday as $nt)
-                                <img src="{!! url('frontend/images/icon-new.gif') !!}" alt="" class="news-new">
-                                <li class="nav-link"><a href="{!! URL::route('dashboard.news.show', array('slug'=>$nt->slug)) !!}">{!! $nt->news_title !!}</a></li>
-                                @endforeach
-                                @else
-                                <li class="nav-link"><p>Không có tin mới</p></li>
-                                @endif
+            <!-- Menu -->
+            <div class="wrap_menu">
+                <nav class="menu">
+                    <ul class="main_menu">
+                        <li>
+                            <a href="index.html">Home</a>
+                            <ul class="sub_menu">
+                                <li><a href="index.html">Homepage V1</a></li>
+                                <li><a href="home-02.html">Homepage V2</a></li>
+                                <li><a href="home-03.html">Homepage V3</a></li>
                             </ul>
+                        </li>
+
+                        <li>
+                            <a href="product.html">Shop</a>
+                        </li>
+
+                        <li class="sale-noti">
+                            <a href="product.html">Sale</a>
+                        </li>
+
+                        <li>
+                            <a href="cart.html">Features</a>
+                        </li>
+
+                        <li>
+                            <a href="blog.html">Blog</a>
+                        </li>
+
+                        <li>
+                            <a href="about.html">About</a>
+                        </li>
+
+                        <li>
+                            <a href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Header Icon -->
+            <div class="header-icons">
+                <a href="#" class="header-wrapicon1 dis-block">
+                    <img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+                </a>
+
+                <span class="linedivide1"></span>
+
+                <div class="header-wrapicon2">
+                    <img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+                    <span class="header-icons-noti">0</span>
+
+                    <!-- Header cart noti -->
+                    <div class="header-cart header-dropdown">
+                        <ul class="header-cart-wrapitem">
+                            <li class="header-cart-item">
+                                <div class="header-cart-item-img">
+                                    <img src="images/item-cart-01.jpg" alt="IMG">
+                                </div>
+
+                                <div class="header-cart-item-txt">
+                                    <a href="#" class="header-cart-item-name">
+                                        White Shirt With Pleat Detail Back
+                                    </a>
+
+                                    <span class="header-cart-item-info">
+                                        1 x $19.00
+                                    </span>
+                                </div>
+                            </li>
+
+                            <li class="header-cart-item">
+                                <div class="header-cart-item-img">
+                                    <img src="images/item-cart-02.jpg" alt="IMG">
+                                </div>
+
+                                <div class="header-cart-item-txt">
+                                    <a href="#" class="header-cart-item-name">
+                                        Converse All Star Hi Black Canvas
+                                    </a>
+
+                                    <span class="header-cart-item-info">
+                                        1 x $39.00
+                                    </span>
+                                </div>
+                            </li>
+
+                            <li class="header-cart-item">
+                                <div class="header-cart-item-img">
+                                    <img src="images/item-cart-03.jpg" alt="IMG">
+                                </div>
+
+                                <div class="header-cart-item-txt">
+                                    <a href="#" class="header-cart-item-name">
+                                        Nixon Porter Leather Watch In Tan
+                                    </a>
+
+                                    <span class="header-cart-item-info">
+                                        1 x $17.00
+                                    </span>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="header-cart-total">
+                            Total: $75.00
+                        </div>
+
+                        <div class="header-cart-buttons">
+                            <div class="header-cart-wrapbtn">
+                                <!-- Button -->
+                                <a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                    View Cart
+                                </a>
+                            </div>
+
+                            <div class="header-cart-wrapbtn">
+                                <!-- Button -->
+                                <a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                    Check Out
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </nav>
-            <!-- chuyển đổi pc and mobile -->
-            <?php $sessionLayout = Session::has('display-layout') ? Session::get('display-layout') : null ?>
-            <nav class="navbar pc-mobile">
-                @if(!$sessionLayout || $sessionLayout == 'pc')
-                <a href="" title="" id="mobile_link"><img src="{!! url('assets/images/if_mobile.png') !!}" alt="" class="mobile_img"></a>
-                @else
-                <a href="" title="" id="pc_link" data-theme=""><img src="{!! url('assets/images/if_pc.png') !!}" alt="" class="pc_img"></a>
-                @endif
-            </nav>
-            <!-- end chuyển đổi pc and mobile -->
-        </div>
-        <div class="row">
-            <div class="poster">
-                @if($banners->first)
-                <a href="{!! url($banners->first->url) !!}" target="_blank"><img src="{!! url($banners->first->path) !!}" alt=""></a>
-                @else
-                <a href=""><img src="{!! url('assets/images/default.jpg') !!}" alt=""></a>
-                @endif
             </div>
         </div>
     </div>
-</header><!-- /header -->
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <form id="news-search-form" method="post" action="{{ route('dashboard.search')}}">
-            {!! csrf_field() !!}
-            <div class="modal-content">
-                <div class="modal-header">
-                    <p>Nhập tìm kiếm </p>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <input type="text" class="search col-12 col-sm-12" id="search" name="search">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" id="search-title" data-dismiss="modal">Gửi</button>
+
+    <!-- Header Mobile -->
+    <div class="wrap_header_mobile">
+        <!-- Logo moblie -->
+        <a href="index.html" class="logo-mobile">
+            <img src="images/icons/logo.png" alt="IMG-LOGO">
+        </a>
+
+        <!-- Button show menu -->
+        <div class="btn-show-menu">
+            <!-- Header Icon mobile -->
+            <div class="header-icons-mobile">
+                <a href="#" class="header-wrapicon1 dis-block">
+                    <img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+                </a>
+
+                <span class="linedivide2"></span>
+
+                <div class="header-wrapicon2">
+                    <img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+                    <span class="header-icons-noti">0</span>
+
+                    <!-- Header cart noti -->
+                    <div class="header-cart header-dropdown">
+                        <ul class="header-cart-wrapitem">
+                            <li class="header-cart-item">
+                                <div class="header-cart-item-img">
+                                    <img src="images/item-cart-01.jpg" alt="IMG">
+                                </div>
+
+                                <div class="header-cart-item-txt">
+                                    <a href="#" class="header-cart-item-name">
+                                        White Shirt With Pleat Detail Back
+                                    </a>
+
+                                    <span class="header-cart-item-info">
+                                        1 x $19.00
+                                    </span>
+                                </div>
+                            </li>
+
+                            <li class="header-cart-item">
+                                <div class="header-cart-item-img">
+                                    <img src="images/item-cart-02.jpg" alt="IMG">
+                                </div>
+
+                                <div class="header-cart-item-txt">
+                                    <a href="#" class="header-cart-item-name">
+                                        Converse All Star Hi Black Canvas
+                                    </a>
+
+                                    <span class="header-cart-item-info">
+                                        1 x $39.00
+                                    </span>
+                                </div>
+                            </li>
+
+                            <li class="header-cart-item">
+                                <div class="header-cart-item-img">
+                                    <img src="images/item-cart-03.jpg" alt="IMG">
+                                </div>
+
+                                <div class="header-cart-item-txt">
+                                    <a href="#" class="header-cart-item-name">
+                                        Nixon Porter Leather Watch In Tan
+                                    </a>
+
+                                    <span class="header-cart-item-info">
+                                        1 x $17.00
+                                    </span>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="header-cart-total">
+                            Total: $75.00
+                        </div>
+
+                        <div class="header-cart-buttons">
+                            <div class="header-cart-wrapbtn">
+                                <!-- Button -->
+                                <a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                    View Cart
+                                </a>
+                            </div>
+
+                            <div class="header-cart-wrapbtn">
+                                <!-- Button -->
+                                <a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                    Check Out
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </form>
+
+            <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </div>
+        </div>
     </div>
-</div>
-{!! HTML::script("frontend/js/user-register.js") !!}
-<script type="text/javascript">
-    $("#mobile_link").delegate(".mobile_img", "click", function () {
-        setSessionDisplay('mobile');
-        return false;
-    });
-    $("#pc_link").delegate(".pc_img", "click", function () {
-        setSessionDisplay('pc');
-        return false;
 
-    });
-    function setSessionDisplay(value) {
-        $.ajax({
-            type: "POST",
-            url: "{!! url(getLang() . '/session/setvalue/display') !!}",
-            data: {value: value},
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function (resp) {
-                if (resp == 'success') {
-                    location.reload();
-                }
-            },
-            error: function () {
-                return;
-            }
-        });
-    }
-    $(function () {
-        $('#search-title').click(function () {
-            $('#news-search-form').submit();
-        });
-    });
+    <!-- Menu Mobile -->
+    <div class="wrap-side-menu" >
+        <nav class="side-menu">
+            <ul class="main-menu">
+                <li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+                    <span class="topbar-child1">
+                        Free shipping for standard order over $100
+                    </span>
+                </li>
 
-</script>
+                <li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+                    <div class="topbar-child2-mobile">
+                        <span class="topbar-email">
+                            fashe@example.com
+                        </span>
+
+                        <div class="topbar-language rs1-select2">
+                            <select class="selection-1" name="time">
+                                <option>USD</option>
+                                <option>EUR</option>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="item-topbar-mobile p-l-10">
+                    <div class="topbar-social-mobile">
+                        <a href="#" class="topbar-social-item fa fa-facebook"></a>
+                        <a href="#" class="topbar-social-item fa fa-instagram"></a>
+                        <a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
+                        <a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
+                        <a href="#" class="topbar-social-item fa fa-youtube-play"></a>
+                    </div>
+                </li>
+
+                <li class="item-menu-mobile">
+                    <a href="index.html">Home</a>
+                    <ul class="sub-menu">
+                        <li><a href="index.html">Homepage V1</a></li>
+                        <li><a href="home-02.html">Homepage V2</a></li>
+                        <li><a href="home-03.html">Homepage V3</a></li>
+                    </ul>
+                    <i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
+                </li>
+
+                <li class="item-menu-mobile">
+                    <a href="product.html">Shop</a>
+                </li>
+
+                <li class="item-menu-mobile">
+                    <a href="product.html">Sale</a>
+                </li>
+
+                <li class="item-menu-mobile">
+                    <a href="cart.html">Features</a>
+                </li>
+
+                <li class="item-menu-mobile">
+                    <a href="blog.html">Blog</a>
+                </li>
+
+                <li class="item-menu-mobile">
+                    <a href="about.html">About</a>
+                </li>
+
+                <li class="item-menu-mobile">
+                    <a href="contact.html">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>

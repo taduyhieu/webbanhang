@@ -1,361 +1,787 @@
 @extends('frontend/layout/layout')
 @section('content')
 
-<content>
-    <div class="container">
-        <div class="row">
-            <div class="content col-md-9">
-                <div class="content-top">
-                    @if(isset($newsHome))
-                    <div class="title">
-                        <a href="{!! URL::route('dashboard.news.show', array('slug'=>$newsHome->slug)) !!}">
-                            <h4>{!! $newsHome->news_title !!}</h4>
-                        </a>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-5 news-main">
-                            <p>{!! $newsHome->news_sapo !!}</p>
-                            <br>
-                            <hr>
-                            @if(isset($newsHome->hotNews))
-                            <p>
-                                <img src="{!! url('frontend/images/icon-hot.gif') !!}" alt="" class="hot-new">
-                                <a href="{!! URL::route('dashboard.news.show', array('slug'=>$newsHome->hotNews->slug)) !!}"><span>{!! $newsHome->hotNews->news_title !!}</span></a>
-                            </p>
-                            @endif
-                        </div>
-                        <div class="col-md-7 img-content-1">
-                            <a href="{!! URL::route('dashboard.news.show', array('slug'=>$newsHome->slug)) !!}"><img src="{!! url($newsHome->news_image) !!}" alt=""></a>
-                        </div>
-                    </div>
-                    @if(isset($newsHome->subList) && $newsHome->subList->count() > 0)
-                    <div class="content-top-img col-12">
-                        <div class="row">
-                            @foreach($newsHome->subList as $key => $newschild)
-                            <div class="col-md-4 col-sm-12">
-                                <a class="col-md-12 col-sm-6 col-4" href="{!! URL::route('dashboard.news.show', array('slug'=>$newschild->slug)) !!}">
-                                    <img  src="{!! url($newschild->news_image) !!}" alt="" class="">
-                                </a>
-                                <a class="news-title-related col-md-12 col-sm-6 col-8" href="{!! URL::route('dashboard.news.show', array('slug'=>$newschild->slug)) !!}">
-                                    <p>{!! $newschild->news_title !!}</p>
-                                </a>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>  
-                    @endif
-                    @endif
+<!-- Slide1 -->
+    <section class="slide1">
+        <div class="wrap-slick1">
+            <div class="slick1">
+                <div class="item-slick1 item1-slick1" style="background-image: url(images/master-slide-02.jpg);">
+                    <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
+                        <span class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="fadeInDown">
+                            Women Collection 2018
+                        </span>
 
-                    <!--Banner position 4-->
-                    @include('frontend/side_bars/banner-postion-4')
-                    <!--End banner position 4-->
+                        <h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="fadeInUp">
+                            New arrivals
+                        </h2>
 
-                    <div class="container group-project">
-                        <h4 class="text-center">Dự án nổi bật</h4>
-                        <div class="row owl-carousel" id="project-slide">
-                            @if(isset($newsProject) && $newsProject->count() > 0)
-                            @foreach($newsProject as $np)
-                            <div>
-                                <div class="group-img col-md-12">
-                                    <div>
-                                        <a href="{!! URL::route('dashboard.news.show', array('slug'=>$np->slug)) !!}"><img src="{!! $np->news_image !!}" alt=""></a>
-                                        <h4>{!! $np->news_title !!}</h4>
-<!--                                        <p>
-                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            <span>47 Nguyễn Tuân - Thanh Xuân - Hà Nội</span>
-                                        </p>   -->
-                                    </div>
-                                </div>
-                                <div class="col-md-12 open-date">
-                                    <div class="row">
-                                        <button type="button" class="btn">&nbsp;</button>
-                                        <a href="{!! URL::route('dashboard.news.show', array('slug'=>$np->slug)) !!}" class="btn"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                            @endif
-                        </div>  
-                    </div>
-                </div>
-                <div class="focal">
-                    <h4 class="trapezoid"><span>Tiêu điểm</span></h4>
-                    <div class="container">
-                        @if(isset($listNewsHL))
-                        <div class="row">
-                            @foreach($listNewsHL as $newsHL)
-                            <div class="group-img col-md-12">
-                                <div class="row">
-                                    <div class="col-md-6 col-4">
-                                        <div class="">
-                                            <a href="{!! URL::route('dashboard.news.show', array('slug'=>$newsHL->slug)) !!}"><img src="{!! url($newsHL->news_image) !!}" alt=""></a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-8">
-                                        <div class="focal-title">
-                                            <a href="{!! URL::route('dashboard.news.show', array('slug'=>$newsHL->slug)) !!}" title="{!! $newsHL->news_title !!}"><p>{!! mb_substr(strip_tags(str_limit($newsHL->news_title,60,'...')),0,70) !!}</p></a>
-                                            <p></p>
-                                            <p>{!! mb_substr(strip_tags(str_limit($newsHL->news_content,150,'...')),0,160) !!}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                        @endif
-                    </div>
-                </div>
-                <div class="container option">
-                    <div class="row">
-                        <div class="col-md-12">
-                            @if(isset($firstCats))
-                            <div class="row">
-                                @foreach($firstCats as $firstCat)
-                                <div class="col-md-6">
-                                    <div class="thi-truong">
-                                        @if($firstCat->id == 1006)
-                                        <div class="row">
-                                            <a class="category-title" href="{!! URL::route('dashboard.category', array('slug'=>$firstCat->slug)) !!}"><h4 class="trapezoid"><span>Quy hoạch</span></h4></a>
-                                        </div>
-                                        @else
-                                        <div class="row">
-                                            <a class="category-title" href="{!! URL::route('dashboard.category', array('slug'=>$firstCat->slug)) !!}"><h4 class="trapezoid"><span>{!! $firstCat->name !!}</span></h4></a>
-                                        </div>
-                                        @endif
-                                        @foreach($firstCat->lastNews as $key => $lastNews)
-                                        @if($key == 0)
-                                        <div class="row">
-                                            <!-- <div class="mart-main"> -->
-                                            <div class="col-md-6">
-                                                <div class="row">
-                                                    <div>
-                                                        <a href="{!! URL::route('dashboard.news.show', array('slug'=>$lastNews->slug)) !!}">
-                                                            @if($lastNews->news_image)
-                                                            <img src="{!! url($lastNews->news_image) !!}" alt="">
-                                                            @else
-                                                            <img src="{!! url('assets/images/news_thumb.png') !!}" alt="">
-                                                            @endif
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <a class="news-title" href="{!! URL::route('dashboard.news.show', array('slug'=>$lastNews->slug)) !!}"><p>{!! mb_substr(strip_tags($lastNews->news_title),0,67)!!}</p></a>
-                                                <p>
-
-                                                </p>
-                                            </div>
-                                            <p>{!! mb_substr(strip_tags($lastNews->news_content),0,160) !!}...</p>
-                                        </div>
-                                        @else
-                                        <div class="row">
-                                            <div class="col-md-4 col-sm-4 col-3">
-                                                <div class="row">
-                                                    <div>
-                                                        <a href="{!! URL::route('dashboard.news.show', array('slug'=>$lastNews->slug)) !!}">
-                                                            @if($lastNews->news_image)
-                                                            <img src="{!! url($lastNews->news_image) !!}" alt="">
-                                                            @else
-                                                            <img src="{!! url('assets/images/news_thumb.png') !!}" alt="">
-                                                            @endif
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8 col-sm-8 col-8">
-                                                <a class="news-title" href="{!! URL::route('dashboard.news.show', array('slug'=>$lastNews->slug)) !!}"><p>{!! mb_substr(strip_tags($lastNews->news_title),0,65) !!}</p></a>
-                                            </div>
-                                        </div>
-                                        @endif
-                                        @endforeach
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-                            @endif
+                        <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
+                            <!-- Button -->
+                            <a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+                                Shop Now
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="tin-rao container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="row">
-                                <h4 class="trapezoid"><span>Tin rao bán</span></h4>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            @if(isset($listNewsRE))
-                            @foreach($listNewsRE as $newsRE)
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="row">
-                                        <div>
-                                            <a target="_blank" href="{!! URL::route('dashboard.realestale.show', array('slug'=>$newsRE->slug)) !!}">
-                                                <img src="{!! $newsRE->news_image !!}" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php
-                                $priceLength = strlen((string) $newsRE->price_all);
-                                $price = ((string) $newsRE->price_all);
-                                $str1 = substr($price, 0, 1);
-                                $str2 = substr($price, 1);
-                                ?>
-                                <div class="news-real-estale-title col-md-9">
-                                    <a target="_blank" href="{!! URL::route('dashboard.realestale.show', array('slug'=>$newsRE->slug)) !!}">
-                                        <p>{!! $newsRE->news_title !!}</p>
-                                    </a>
-                                    <p>Giá : 
-                                        @if($priceLength > 0 && $priceLength < 4)
-                                        <span>{!! $price !!} triệu</span>
-                                        @elseif($priceLength > 3)
-                                        <span>{!! $str1 !!} tỷ {!! $str2 !!} triệu</span>
-                                        @endif
-                                    </p>
-                                    <p>Diện tích : <span>{!! $newsRE->total_area !!} m²</span> </p>
-                                    <p>Quận/huyện : <span>{!! $newsRE->district !!}, {!! $newsRE->city !!}</span></p>
-                                    <p>Đăng ngày - <span>{!! date('d/m/Y', strtotime($newsRE->news_publish_date)) !!}</span></p>
-                                    <!--Đăng bởi admin -->
-                                </div>
-                            </div>
-                            @endforeach
-                            @endif
+
+                <div class="item-slick1 item2-slick1" style="background-image: url(images/master-slide-03.jpg);">
+                    <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
+                        <span class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="rollIn">
+                            Women Collection 2018
+                        </span>
+
+                        <h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="lightSpeedIn">
+                            New arrivals
+                        </h2>
+
+                        <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="slideInUp">
+                            <!-- Button -->
+                            <a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+                                Shop Now
+                            </a>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="side-bar col-md-3">
-                <div class="row">
-                    <div class="img-right">
-                        <!--Banner position 2-->
-                        @include('frontend/side_bars/banner-postion-2')
-                        <!--Banner position 3-->
-                        @include('frontend/side_bars/banner-postion-3')
-                    </div>
-                </div>
-                <!--News read much-->
-                @include('frontend/side_bars/reads')
-                <!--End news read much-->
 
-                <!--Video-->
-                @include('frontend/side_bars/video')
-                <!--End video-->
+                <div class="item-slick1 item3-slick1" style="background-image: url(images/master-slide-04.jpg);">
+                    <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
+                        <span class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="rotateInDownLeft">
+                            Women Collection 2018
+                        </span>
 
-                <!--Conversation-->
-                @include('frontend/side_bars/conversation')
-                <!--End conversation-->
+                        <h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="rotateInUpRight">
+                            New arrivals
+                        </h2>
 
-                <!--Follow news-->
-                @include('frontend/side_bars/follow-news')
-                <!--End follow news-->
-
-                <div class="dang-tin row" >
-                    <div class="col-md-12">
-                        <div class="row">                        
-                            <div>
-                                <img src="{!! url('frontend/images/dangtin.png') !!}" class="img-responsive" alt="" width="100%">
-                            </div>
-                            <div><p><a href="#" title="">Đăng tin</a></p></div>
+                        <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="rotateIn">
+                            <!-- Button -->
+                            <a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+                                Shop Now
+                            </a>
                         </div>
                     </div>
                 </div>
-                <!--Search bar-->
-                @include('frontend/side_bars/search-bar')
-                <!--End search bar-->
-                <div class="support row">
-                    <div class="col-md-12">
-                        <div class="row">                        
-                            <div >
-                                <i class="fa fa-phone" aria-hidden="true"></i>
-                            </div>
-                            <div>
-                                <p>
-                                    <a href="#" title="">Hỗ trợ trực tuyến:1900 0000</a>
-                                    <a href="#" title="">HOTLINE</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="email-support row">
-                    <div class="col-md-12">
-                        <div class="row">                        
-                            <div>
-                                <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                            </div>
 
-                            <div>
-                                <p>
-                                    <a href="#" title="">Email hỗ trợ: company@gmail.com</a>
-                                    <a href="#" title="">email</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--Survey-->
-                @include('frontend/side_bars/survey')
-                <!--End survey-->
             </div>
         </div>
-    </div>
-    <div class="container-fluid">
+    </section>
 
-    </div>  
-</content>
-<!-- end content -->
-<div class="bat-dong-san container-fluid">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h4 class="text-center">ỐNG KÍNH BẤT ĐỘNG SẢN</h4>
-            </div>
+    <!-- Banner -->
+    <section class="banner bgwhite p-t-40 p-b-40">
+        <div class="container">
             <div class="row">
-                @if(isset($newsLensRE) && $newsLensRE->count() > 0)
-                <div class="col-md-8">
-                    <div class="">
-                        <div>
-                            <a href="{!! URL::route('dashboard.news.show', array('slug'=>$newsLensRE->slug)) !!}"><img src="{!! url($newsLensRE->news_image) !!}" alt=""></a>
-                            <a href="{!! URL::route('dashboard.news.show', array('slug'=>$newsLensRE->slug)) !!}"><p>{!! $newsLensRE->news_title !!}</p></a>
+                <div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
+                    <!-- block1 -->
+                    <div class="block1 hov-img-zoom pos-relative m-b-30">
+                        <img src="images/banner-02.jpg" alt="IMG-BENNER">
+
+                        <div class="block1-wrapbtn w-size2">
+                            <!-- Button -->
+                            <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                                Dresses
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- block1 -->
+                    <div class="block1 hov-img-zoom pos-relative m-b-30">
+                        <img src="images/banner-05.jpg" alt="IMG-BENNER">
+
+                        <div class="block1-wrapbtn w-size2">
+                            <!-- Button -->
+                            <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                                Sunglasses
+                            </a>
                         </div>
                     </div>
                 </div>
-                @endif
-                <div class="col-md-4">
-                    @if(isset($newsLensRE->subList) && $newsLensRE->subList->count() > 0)
-                    @foreach($newsLensRE->subList as $subList)
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div>
-                                <a href="{!! URL::route('dashboard.news.show', array('slug'=>$subList->slug)) !!}"><img src="{!! url($subList->news_image) !!}" alt=""></a>
-                                <a href="{!! URL::route('dashboard.news.show', array('slug'=>$subList->slug)) !!}"><p>{!! $subList->news_title !!}</p></a>
+
+                <div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
+                    <!-- block1 -->
+                    <div class="block1 hov-img-zoom pos-relative m-b-30">
+                        <img src="images/banner-03.jpg" alt="IMG-BENNER">
+
+                        <div class="block1-wrapbtn w-size2">
+                            <!-- Button -->
+                            <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                                Watches
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- block1 -->
+                    <div class="block1 hov-img-zoom pos-relative m-b-30">
+                        <img src="images/banner-07.jpg" alt="IMG-BENNER">
+
+                        <div class="block1-wrapbtn w-size2">
+                            <!-- Button -->
+                            <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                                Footerwear
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
+                    <!-- block1 -->
+                    <div class="block1 hov-img-zoom pos-relative m-b-30">
+                        <img src="images/banner-04.jpg" alt="IMG-BENNER">
+
+                        <div class="block1-wrapbtn w-size2">
+                            <!-- Button -->
+                            <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                                Bags
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- block2 -->
+                    <div class="block2 wrap-pic-w pos-relative m-b-30">
+                        <img src="images/icons/bg-01.jpg" alt="IMG">
+
+                        <div class="block2-content sizefull ab-t-l flex-col-c-m">
+                            <h4 class="m-text4 t-center w-size3 p-b-8">
+                                Sign up & get 20% off
+                            </h4>
+
+                            <p class="t-center w-size4">
+                                Be the frist to know about the latest fashion news and get exclu-sive offers
+                            </p>
+
+                            <div class="w-size2 p-t-25">
+                                <!-- Button -->
+                                <a href="#" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
+                                    Sign Up
+                                </a>
                             </div>
                         </div>
                     </div>
-                    @endforeach
-                    @endif
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<section class="partner">
-    <div class="container">
-        <div class="row"> 
-            <div class="col-md-12 partner-title">
-                <div class="row">
-                    <h4 class="trapezoid"><span>đối tác</span></h4>
+    </section>
+
+    <!-- New Product -->
+    <section class="newproduct bgwhite p-t-45 p-b-105">
+        <div class="container">
+            <div class="sec-title p-b-60">
+                <h3 class="m-text5 t-center">
+                    Featured Products
+                </h3>
+            </div>
+
+            <!-- Slide2 -->
+            <div class="wrap-slick2">
+                <div class="slick2">
+
+                    <div class="item-slick2 p-l-15 p-r-15">
+                        <!-- Block2 -->
+                        <div class="block2">
+                            <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
+                                <img src="images/item-02.jpg" alt="IMG-PRODUCT">
+
+                                <div class="block2-overlay trans-0-4">
+                                    <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
+                                        <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
+                                        <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
+                                    </a>
+
+                                    <div class="block2-btn-addcart w-size1 trans-0-4">
+                                        <!-- Button -->
+                                        <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                            Add to Cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="block2-txt p-t-20">
+                                <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
+                                    Herschel supply co 25l
+                                </a>
+
+                                <span class="block2-price m-text6 p-r-5">
+                                    $75.00
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item-slick2 p-l-15 p-r-15">
+                        <!-- Block2 -->
+                        <div class="block2">
+                            <div class="block2-img wrap-pic-w of-hidden pos-relative">
+                                <img src="images/item-03.jpg" alt="IMG-PRODUCT">
+
+                                <div class="block2-overlay trans-0-4">
+                                    <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
+                                        <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
+                                        <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
+                                    </a>
+
+                                    <div class="block2-btn-addcart w-size1 trans-0-4">
+                                        <!-- Button -->
+                                        <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                            Add to Cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="block2-txt p-t-20">
+                                <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
+                                    Denim jacket blue
+                                </a>
+
+                                <span class="block2-price m-text6 p-r-5">
+                                    $92.50
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item-slick2 p-l-15 p-r-15">
+                        <!-- Block2 -->
+                        <div class="block2">
+                            <div class="block2-img wrap-pic-w of-hidden pos-relative">
+                                <img src="images/item-05.jpg" alt="IMG-PRODUCT">
+
+                                <div class="block2-overlay trans-0-4">
+                                    <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
+                                        <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
+                                        <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
+                                    </a>
+
+                                    <div class="block2-btn-addcart w-size1 trans-0-4">
+                                        <!-- Button -->
+                                        <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                            Add to Cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="block2-txt p-t-20">
+                                <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
+                                    Coach slim easton black
+                                </a>
+
+                                <span class="block2-price m-text6 p-r-5">
+                                    $165.90
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item-slick2 p-l-15 p-r-15">
+                        <!-- Block2 -->
+                        <div class="block2">
+                            <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelsale">
+                                <img src="images/item-07.jpg" alt="IMG-PRODUCT">
+
+                                <div class="block2-overlay trans-0-4">
+                                    <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
+                                        <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
+                                        <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
+                                    </a>
+
+                                    <div class="block2-btn-addcart w-size1 trans-0-4">
+                                        <!-- Button -->
+                                        <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                            Add to Cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="block2-txt p-t-20">
+                                <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
+                                    Frayed denim shorts
+                                </a>
+
+                                <span class="block2-oldprice m-text7 p-r-5">
+                                    $29.50
+                                </span>
+
+                                <span class="block2-newprice m-text8 p-r-5">
+                                    $15.90
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item-slick2 p-l-15 p-r-15">
+                        <!-- Block2 -->
+                        <div class="block2">
+                            <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
+                                <img src="images/item-02.jpg" alt="IMG-PRODUCT">
+
+                                <div class="block2-overlay trans-0-4">
+                                    <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
+                                        <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
+                                        <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
+                                    </a>
+
+                                    <div class="block2-btn-addcart w-size1 trans-0-4">
+                                        <!-- Button -->
+                                        <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                            Add to Cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="block2-txt p-t-20">
+                                <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
+                                    Herschel supply co 25l
+                                </a>
+
+                                <span class="block2-price m-text6 p-r-5">
+                                    $75.00
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item-slick2 p-l-15 p-r-15">
+                        <!-- Block2 -->
+                        <div class="block2">
+                            <div class="block2-img wrap-pic-w of-hidden pos-relative">
+                                <img src="images/item-03.jpg" alt="IMG-PRODUCT">
+
+                                <div class="block2-overlay trans-0-4">
+                                    <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
+                                        <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
+                                        <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
+                                    </a>
+
+                                    <div class="block2-btn-addcart w-size1 trans-0-4">
+                                        <!-- Button -->
+                                        <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                            Add to Cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="block2-txt p-t-20">
+                                <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
+                                    Denim jacket blue
+                                </a>
+
+                                <span class="block2-price m-text6 p-r-5">
+                                    $92.50
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item-slick2 p-l-15 p-r-15">
+                        <!-- Block2 -->
+                        <div class="block2">
+                            <div class="block2-img wrap-pic-w of-hidden pos-relative">
+                                <img src="images/item-05.jpg" alt="IMG-PRODUCT">
+
+                                <div class="block2-overlay trans-0-4">
+                                    <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
+                                        <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
+                                        <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
+                                    </a>
+
+                                    <div class="block2-btn-addcart w-size1 trans-0-4">
+                                        <!-- Button -->
+                                        <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                            Add to Cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="block2-txt p-t-20">
+                                <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
+                                    Coach slim easton black
+                                </a>
+
+                                <span class="block2-price m-text6 p-r-5">
+                                    $165.90
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item-slick2 p-l-15 p-r-15">
+                        <!-- Block2 -->
+                        <div class="block2">
+                            <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelsale">
+                                <img src="images/item-07.jpg" alt="IMG-PRODUCT">
+
+                                <div class="block2-overlay trans-0-4">
+                                    <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
+                                        <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
+                                        <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
+                                    </a>
+
+                                    <div class="block2-btn-addcart w-size1 trans-0-4">
+                                        <!-- Button -->
+                                        <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                            Add to Cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="block2-txt p-t-20">
+                                <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
+                                    Frayed denim shorts
+                                </a>
+
+                                <span class="block2-oldprice m-text7 p-r-5">
+                                    $29.50
+                                </span>
+
+                                <span class="block2-newprice m-text8 p-r-5">
+                                    $15.90
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="owl-carousel" id="img-partner">
-                @foreach ($sliders as $slider)
-                <div><img src="{!! url($slider->path) !!}" alt="a"></div>
-                @endforeach
+        </div>
+    </section>
+
+    <!-- Banner2 -->
+    <section class="banner2 bg5 p-t-55 p-b-55">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10 col-md-8 col-lg-6 m-l-r-auto p-t-15 p-b-15">
+                    <div class="hov-img-zoom pos-relative">
+                        <img src="images/banner-08.jpg" alt="IMG-BANNER">
+
+                        <div class="ab-t-l sizefull flex-col-c-m p-l-15 p-r-15">
+                            <span class="m-text9 p-t-45 fs-20-sm">
+                                The Beauty
+                            </span>
+
+                            <h3 class="l-text1 fs-35-sm">
+                                Lookbook
+                            </h3>
+
+                            <a href="#" class="s-text4 hov2 p-t-20 ">
+                                View Collection
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-10 col-md-8 col-lg-6 m-l-r-auto p-t-15 p-b-15">
+                    <div class="bgwhite hov-img-zoom pos-relative p-b-20per-ssm">
+                        <img src="images/shop-item-09.jpg" alt="IMG-BANNER">
+
+                        <div class="ab-t-l sizefull flex-col-c-b p-l-15 p-r-15 p-b-20">
+                            <div class="t-center">
+                                <a href="product-detail.html" class="dis-block s-text3 p-b-5">
+                                    Gafas sol Hawkers one
+                                </a>
+
+                                <span class="block2-oldprice m-text7 p-r-5">
+                                    $29.50
+                                </span>
+
+                                <span class="block2-newprice m-text8">
+                                    $15.90
+                                </span>
+                            </div>
+
+                            <div class="flex-c-m p-t-44 p-t-30-xl">
+                                <div class="flex-col-c-m size3 bo1 m-l-5 m-r-5">
+                                    <span class="m-text10 p-b-1 days">
+                                        69
+                                    </span>
+
+                                    <span class="s-text5">
+                                        days
+                                    </span>
+                                </div>
+
+                                <div class="flex-col-c-m size3 bo1 m-l-5 m-r-5">
+                                    <span class="m-text10 p-b-1 hours">
+                                        04
+                                    </span>
+
+                                    <span class="s-text5">
+                                        hrs
+                                    </span>
+                                </div>
+
+                                <div class="flex-col-c-m size3 bo1 m-l-5 m-r-5">
+                                    <span class="m-text10 p-b-1 minutes">
+                                        32
+                                    </span>
+
+                                    <span class="s-text5">
+                                        mins
+                                    </span>
+                                </div>
+
+                                <div class="flex-col-c-m size3 bo1 m-l-5 m-r-5">
+                                    <span class="m-text10 p-b-1 seconds">
+                                        05
+                                    </span>
+
+                                    <span class="s-text5">
+                                        secs
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+
+    <!-- Blog -->
+    <section class="blog bgwhite p-t-94 p-b-65">
+        <div class="container">
+            <div class="sec-title p-b-52">
+                <h3 class="m-text5 t-center">
+                    Our Blog
+                </h3>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-10 col-md-4 p-b-30 m-l-r-auto">
+                    <!-- Block3 -->
+                    <div class="block3">
+                        <a href="blog-detail.html" class="block3-img dis-block hov-img-zoom">
+                            <img src="images/blog-01.jpg" alt="IMG-BLOG">
+                        </a>
+
+                        <div class="block3-txt p-t-14">
+                            <h4 class="p-b-7">
+                                <a href="blog-detail.html" class="m-text11">
+                                    Black Friday Guide: Best Sales & Discount Codes
+                                </a>
+                            </h4>
+
+                            <span class="s-text6">By</span> <span class="s-text7">Nancy Ward</span>
+                            <span class="s-text6">on</span> <span class="s-text7">July 22, 2017</span>
+
+                            <p class="s-text8 p-t-16">
+                                Duis ut velit gravida nibh bibendum commodo. Sus-pendisse pellentesque mattis augue id euismod. Inter-dum et malesuada fames
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-10 col-md-4 p-b-30 m-l-r-auto">
+                    <!-- Block3 -->
+                    <div class="block3">
+                        <a href="blog-detail.html" class="block3-img dis-block hov-img-zoom">
+                            <img src="images/blog-02.jpg" alt="IMG-BLOG">
+                        </a>
+
+                        <div class="block3-txt p-t-14">
+                            <h4 class="p-b-7">
+                                <a href="blog-detail.html" class="m-text11">
+                                    The White Sneakers Nearly Every Fashion Girls Own
+                                </a>
+                            </h4>
+
+                            <span class="s-text6">By</span> <span class="s-text7">Nancy Ward</span>
+                            <span class="s-text6">on</span> <span class="s-text7">July 18, 2017</span>
+
+                            <p class="s-text8 p-t-16">
+                                Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit ame
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-10 col-md-4 p-b-30 m-l-r-auto">
+                    <!-- Block3 -->
+                    <div class="block3">
+                        <a href="blog-detail.html" class="block3-img dis-block hov-img-zoom">
+                            <img src="images/blog-03.jpg" alt="IMG-BLOG">
+                        </a>
+
+                        <div class="block3-txt p-t-14">
+                            <h4 class="p-b-7">
+                                <a href="blog-detail.html" class="m-text11">
+                                    New York SS 2018 Street Style: Annina Mislin
+                                </a>
+                            </h4>
+
+                            <span class="s-text6">By</span> <span class="s-text7">Nancy Ward</span>
+                            <span class="s-text6">on</span> <span class="s-text7">July 2, 2017</span>
+
+                            <p class="s-text8 p-t-16">
+                                Proin nec vehicula lorem, a efficitur ex. Nam vehicula nulla vel erat tincidunt, sed hendrerit ligula porttitor. Fusce sit amet maximus nunc
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram -->
+    <section class="instagram p-t-20">
+        <div class="sec-title p-b-52 p-l-15 p-r-15">
+            <h3 class="m-text5 t-center">
+                @ follow us on Instagram
+            </h3>
+        </div>
+
+        <div class="flex-w">
+            <!-- Block4 -->
+            <div class="block4 wrap-pic-w">
+                <img src="images/gallery-03.jpg" alt="IMG-INSTAGRAM">
+
+                <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
+                    <span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
+                        <i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
+                        <span class="p-t-2">39</span>
+                    </span>
+
+                    <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
+                        <p class="s-text10 m-b-15 h-size1 of-hidden">
+                            Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit amet enim orci. Nam eget metus elit.
+                        </p>
+
+                        <span class="s-text9">
+                            Photo by @nancyward
+                        </span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Block4 -->
+            <div class="block4 wrap-pic-w">
+                <img src="images/gallery-07.jpg" alt="IMG-INSTAGRAM">
+
+                <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
+                    <span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
+                        <i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
+                        <span class="p-t-2">39</span>
+                    </span>
+
+                    <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
+                        <p class="s-text10 m-b-15 h-size1 of-hidden">
+                            Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit amet enim orci. Nam eget metus elit.
+                        </p>
+
+                        <span class="s-text9">
+                            Photo by @nancyward
+                        </span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Block4 -->
+            <div class="block4 wrap-pic-w">
+                <img src="images/gallery-09.jpg" alt="IMG-INSTAGRAM">
+
+                <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
+                    <span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
+                        <i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
+                        <span class="p-t-2">39</span>
+                    </span>
+
+                    <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
+                        <p class="s-text10 m-b-15 h-size1 of-hidden">
+                            Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit amet enim orci. Nam eget metus elit.
+                        </p>
+
+                        <span class="s-text9">
+                            Photo by @nancyward
+                        </span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Block4 -->
+            <div class="block4 wrap-pic-w">
+                <img src="images/gallery-13.jpg" alt="IMG-INSTAGRAM">
+
+                <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
+                    <span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
+                        <i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
+                        <span class="p-t-2">39</span>
+                    </span>
+
+                    <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
+                        <p class="s-text10 m-b-15 h-size1 of-hidden">
+                            Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit amet enim orci. Nam eget metus elit.
+                        </p>
+
+                        <span class="s-text9">
+                            Photo by @nancyward
+                        </span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Block4 -->
+            <div class="block4 wrap-pic-w">
+                <img src="images/gallery-15.jpg" alt="IMG-INSTAGRAM">
+
+                <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
+                    <span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
+                        <i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
+                        <span class="p-t-2">39</span>
+                    </span>
+
+                    <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
+                        <p class="s-text10 m-b-15 h-size1 of-hidden">
+                            Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit amet enim orci. Nam eget metus elit.
+                        </p>
+
+                        <span class="s-text9">
+                            Photo by @nancyward
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shipping -->
+    <section class="shipping bgwhite p-t-62 p-b-46">
+        <div class="flex-w p-l-15 p-r-15">
+            <div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 respon1">
+                <h4 class="m-text12 t-center">
+                    Free Delivery Worldwide
+                </h4>
+
+                <a href="#" class="s-text11 t-center">
+                    Click here for more info
+                </a>
+            </div>
+
+            <div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 bo2 respon2">
+                <h4 class="m-text12 t-center">
+                    30 Days Return
+                </h4>
+
+                <span class="s-text11 t-center">
+                    Simply return it within 30 days for an exchange.
+                </span>
+            </div>
+
+            <div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 respon1">
+                <h4 class="m-text12 t-center">
+                    Store Opening
+                </h4>
+
+                <span class="s-text11 t-center">
+                    Shop open from Monday to Sunday
+                </span>
+            </div>
+        </div>
+    </section>
 @stop
 
