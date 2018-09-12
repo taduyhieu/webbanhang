@@ -78,7 +78,6 @@ class BannerController extends Controller
             'start_date' => 'required',
             'end_date' => 'required|after:start_date',
             'url' => 'required',
-            'position' => 'required|integer',
             'avatar' => 'required',
         ],[
             'name.required' =>  'Bắt buộc nhập tiêu đề',
@@ -87,33 +86,13 @@ class BannerController extends Controller
             'end_date.required' =>  'Bắt buộc chọn ngày kết thúc chạy banner',
             'end_date.after' =>  'Ngày bắt đầu chạy banner phải trước ngày kết thúc',
             'url.required' =>  'Bắt thêm đường dẫn đến website',
-            'position.required' =>  'Bắt buộc thêm thứ tự',
-            'position.integer' =>  'Bắt buộc nhập số nguyên',
             'avatar.required' =>  'Bắt buộc thêm avatar',
         ]);
 
         try {
             $startDate = $request['start_date'];
             $endDate = $request['end_date'];
-            $position = $request['position'];
             $status = $request['status'];
-            $isExists = Banners::where('start_date', '>=', $startDate)->where('end_date', '<=', $endDate)->where('position', '=', $position)->where('status', '=', 1)->exists();
-            if($isExists) {
-                Flash::message(trans('fully.mes_banner_log_exist'));
-                return langRedirectRoute('admin.banner.create')->withInput();
-            }
-
-            $isExists = Banners::where('start_date', '<', $startDate)->where('end_date', '>', $startDate)->where('position', '=', $position)->where('status', '=', 1)->exists();
-            if($isExists) {
-                Flash::message(trans('fully.mes_banner_log_exist'));
-                return langRedirectRoute('admin.banner.create')->withInput();
-            }
-
-            $isExists = Banners::where('start_date', '<', $endDate)->where('end_date', '>', $endDate)->where('position', '=', $position)->where('status', '=', 1)->exists();
-            if($isExists) {
-                Flash::message(trans('fully.mes_banner_log_exist'));
-                return langRedirectRoute('admin.banner.create')->withInput();
-            }
 
             $this->banner->create(Input::all());
             Flash::message(trans('fully.mes_add_succes'));
@@ -167,7 +146,6 @@ class BannerController extends Controller
             'start_date' => 'required',
             'end_date' => 'required|after:start_date',
             'url' => 'required',
-            'position' => 'required|integer',
         ],[
             'name.required' =>  'Bắt buộc nhập tiêu đề',
             'name.min'      =>  'Tiêu đề phải hơn 3 kí tự',
@@ -175,8 +153,6 @@ class BannerController extends Controller
             'end_date.required' =>  'Bắt buộc chọn ngày kết thúc chạy banner',
             'end_date.after' =>  'Ngày bắt đầu chạy banner phải trước ngày kết thúc',
             'url.required' =>  'Bắt thêm đường dẫn đến website',
-            'position.required' =>  'Bắt buộc thêm thứ tự',
-            'position.integer' =>  'Bắt buộc nhập số nguyên',
         ]);
 
         try
@@ -186,25 +162,7 @@ class BannerController extends Controller
                 $endDate = $request['end_date'];
                 $position = $request['position'];
                 $status = $request['status'];
-                $isExists = Banners::where('start_date', '>=', $startDate)->where('end_date', '<=', $endDate)->where('position', '=', $position)->where('status', '=', 1)->where('id', '<>' ,$id)->exists();
-
-                if($isExists) {
-                    Flash::message(trans('fully.mes_banner_log_exist'));
-                    return Redirect::back();
-                }
-
-                $isExists = Banners::where('start_date', '<', $startDate)->where('end_date', '>', $startDate)->where('position', '=', $position)->where('status', '=', 1)->where('id', '<>' ,$id)->exists();
-
-                if($isExists) {
-                    Flash::message(trans('fully.mes_banner_log_exist'));
-                    return Redirect::back();
-                }
-
-                $isExists = Banners::where('start_date', '<', $endDate)->where('end_date', '>', $endDate)->where('position', '=', $position)->where('status', '=', 1)->where('id', '<>' ,$id)->exists();
-                if($isExists) {
-                    Flash::message(trans('fully.mes_banner_log_exist'));
-                    return Redirect::back();
-                }
+                
             }
             $this->banner->update($id, Input::all());
             Flash::message(trans('fully.mes_update_succes'));

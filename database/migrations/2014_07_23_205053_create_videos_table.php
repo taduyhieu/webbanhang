@@ -10,12 +10,12 @@ class CreateVideosTable extends Migration
     public function up()
     {
         Schema::create('videos', function ($table) {
-            $table->increments('id');
-            $table->string('title', 255);
-            $table->string('url', 255);
-            $table->string('slug')->nullable();
-            $table->string('lang', 20);
-            $table->timestamps();
+            // $table->increments('id');
+            // $table->string('title', 255);
+            // $table->string('url', 255);
+            // $table->string('slug')->nullable();
+            // $table->string('lang', 20);
+            // $table->timestamps();
         });
     }
 

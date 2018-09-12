@@ -34,7 +34,7 @@
             </li>
 
             <!--News-->
-            <li class="treeview {{ setActive('admin/news*') }}"><a href="#"> <i class="fa fa-newspaper-o"></i> <span>{{ trans('fully.menu_new') }}</span>
+            <!-- <li class="treeview {{ setActive('admin/news*') }}"><a href="#"> <i class="fa fa-newspaper-o"></i> <span>{{ trans('fully.menu_new') }}</span>
                     <i class="fa fa-angle-left pull-right"></i> </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url(getLang() . '/admin/news') }}"><i class="fa fa-calendar"></i>{{ trans('fully.menu_new_list') }}</a>
@@ -54,10 +54,10 @@
                     <li><a href="{{ url(getLang() . '/admin/news-tag') }}"><i class="glyphicon glyphicon-th-list"></i>{{ trans('fully.menu_tag_list') }}</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
 
             <!-- Category Realestale-->
-            <li class="treeview {{ setActive('admin/realestale*') }}"><a href="#"> <i class="fa fa-newspaper-o"></i> <span>{{ trans('fully.menu_category_realestale') }}</span>
+            <!-- <li class="treeview {{ setActive('admin/realestale*') }}"><a href="#"> <i class="fa fa-newspaper-o"></i> <span>{{ trans('fully.menu_category_realestale') }}</span>
                     <i class="fa fa-angle-left pull-right"></i> </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url(getLang() . '/admin/realestale-category') }}"><i class="fa fa-calendar"></i>{{ trans('fully.menu_category_realestale_list') }}</a>
@@ -67,7 +67,7 @@
                     <li><a href="{{ url(getLang() . '/admin/realestale-tag') }}"><i class="glyphicon glyphicon-th-list"></i>Danh sách tag</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
 
             <!--Banner-->
 <!--            <li class="treeview {{ setActive('admin/slider*') }}"><a href="#"> <i class="fa fa-image"></i> <span>{{ trans('fully.menu_banner') }}</span>
@@ -79,31 +79,31 @@
             </li>-->
 
             <!--Categories-->
-            <li class="treeview {{ setActive('admin/category*') }}"><a href="#"> <i class="fa fa-list-alt"></i> <span>{{ trans('fully.menu_cat') }}</span>
+            <!-- <li class="treeview {{ setActive('admin/category*') }}"><a href="#"> <i class="fa fa-list-alt"></i> <span>{{ trans('fully.menu_cat') }}</span>
                     <i class="fa fa-angle-left pull-right"></i> </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url(getLang() . '/admin/category') }}"><i class="fa fa-list"></i> {{ trans('fully.menu_cat_list') }}</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
 
             <!--Videos-->
-            <li class="treeview {{ setActive('admin/video*') }}"><a href="#"> <i class="glyphicon glyphicon-facetime-video"></i> <span>{{ trans('fully.menu_video') }}</span>
+            <!-- <li class="treeview {{ setActive('admin/video*') }}"><a href="#"> <i class="glyphicon glyphicon-facetime-video"></i> <span>{{ trans('fully.menu_video') }}</span>
                     <i class="fa fa-angle-left pull-right"></i> </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url(getLang() . '/admin/video') }}"><i class="fa fa-list"></i> {{ trans('fully.menu_video_list') }}</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
 
             <!--Slider-->
-            <li class="treeview {{ setActive('admin/slider*') }}"><a href="#"> <i class="glyphicon glyphicon-picture"></i> <span>{{ trans('fully.menu_slider') }}</span>
+            <!-- <li class="treeview {{ setActive('admin/slider*') }}"><a href="#"> <i class="glyphicon glyphicon-picture"></i> <span>{{ trans('fully.menu_slider') }}</span>
                     <i class="fa fa-angle-left pull-right"></i> </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url(getLang() . '/admin/slider') }}"><i class="fa fa-list"></i> {{ trans('fully.menu_slider_list') }}</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
 
             <!--Banner-->
             <li class="treeview {{ setActive('admin/banner*') }}"><a href="#"> <i class="glyphicon glyphicon-picture"></i> <span>{{ trans('fully.menu_banner') }}</span>
@@ -115,16 +115,16 @@
             </li>
 
             <!--Survey-->
-            <li class="treeview {{ setActive('admin/survey*') }}"><a href="#"> <i class="fa fa-file"></i> <span>Quản lý khảo sát</span>
+            <!-- <li class="treeview {{ setActive('admin/survey*') }}"><a href="#"> <i class="fa fa-file"></i> <span>Quản lý khảo sát</span>
                     <i class="fa fa-angle-left pull-right"></i> </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url(getLang() . '/admin/survey') }}"><i class="fa fa-list"></i> Danh sách khảo sát</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
 
             <!--User-->
-            <li class="treeview {{ setActive(['admin/user*', 'admin/group*']) }}"><a href="#"> <i class="fa fa-user"></i> <span>{{ trans('fully.menu_user') }}</span>
+            <!-- <li class="treeview {{ setActive(['admin/user*', 'admin/group*']) }}"><a href="#"> <i class="fa fa-user"></i> <span>{{ trans('fully.menu_user') }}</span>
                     <i class="fa fa-angle-left pull-right"></i> </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url(getLang() . '/admin/user') }}"><i class="fa fa-user"></i> {{ trans('fully.menu_user_list') }}</a>
@@ -136,20 +136,20 @@
                     <li><a href="{{ url(getLang() . '/admin/author') }}"><i class="fa fa-group"></i> Tạo tác giả</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
             @else
             <!-- Category Realestale-->
-            <li class="treeview {{ setActive('admin/realestale*') }}"><a href="#"> <i class="fa fa-newspaper-o"></i> <span>{{ trans('fully.menu_category_realestale') }}</span>
+            <!-- <li class="treeview {{ setActive('admin/realestale*') }}"><a href="#"> <i class="fa fa-newspaper-o"></i> <span>{{ trans('fully.menu_category_realestale') }}</span>
                     <i class="fa fa-angle-left pull-right"></i> </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url(getLang() . '/admin/realestale-news') }}"><i class="fa fa-home"></i>Quản lý bài viết BĐS</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
             @endif
-            <li class="{{ setActive('admin/logout*') }}">
+            <!-- <li class="{{ setActive('admin/logout*') }}">
                 <a href="{{ url('/admin/logout') }}"> <i class="fa fa-sign-out"></i> <span>{{ trans('fully.menu_logout') }}</span> </a>
-            </li>
+            </li> -->
         </ul>
     </section>
     <!-- /.sidebar -->

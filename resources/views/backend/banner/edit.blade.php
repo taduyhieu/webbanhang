@@ -100,7 +100,7 @@
     </div>
     
     <!-- Select position -->
-    <div class="control-group col-sm-11 {!! $errors->has('position') ? 'has-error' : '' !!}">
+    <!-- <div class="control-group col-sm-11 {!! $errors->has('position') ? 'has-error' : '' !!}">
         <label class="control-label" for="position">Vị trí</label>
         <div class="controls">
             <select class="form-control" name="position">
@@ -114,7 +114,7 @@
             @endif
         </div>
         <br>
-    </div>
+    </div> -->
 
     <!-- Image -->
     <div class="fileinput fileinput-new control-group col-sm-11 {!! $errors->has('avatar') ? 'has-error' : '' !!}" data-provides="fileinput">

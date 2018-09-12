@@ -50,7 +50,7 @@
             <td><strong>Đường dẫn đến website</strong></td>
             <td>{!! $banner->url !!}</td>
         </tr>
-        <tr>
+        <!-- <tr>
             <td><strong>Thứ tự</strong></td>
             @if ($banner->position == 1)
                 <td>Banner  dưới Menu chính</td>
@@ -68,11 +68,7 @@
                 <td>Banner dưới khối tin đầu trang chủ</td>
             @endif
 
-        </tr>
-        <tr>
-            <td><strong>Loại</strong></td>
-            <td>{!! $banner->adv_type !!}</td>
-        </tr>
+        </tr> -->
         <tr>
             <td><strong>Ngày bắt đầu chạy banner</strong></td>
             <td>{!! date('d/m/Y H:i:s', strtotime($banner->start_date)) !!}</td>

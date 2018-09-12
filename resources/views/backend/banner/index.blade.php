@@ -68,8 +68,8 @@
                         <th>Tiêu đề Banner</th>
                         <th>Ngày bắt đầu chạy Banner</th>
                         <th>Ngày kết thúc chạy Banner</th>
-                        <th>Vị trí</th>
-                        <th>Thao tác</th>
+<!--                         <th>Vị trí</th>
+ -->                    <th>Thao tác</th>
                         <th>Trạng thái</th>
                     </tr>
                 </thead>
@@ -81,7 +81,7 @@
                             'class' => 'btn btn-link btn-xs' )) !!}</td>
                         <td>{!! date('d/m/Y H:i:s', strtotime($banner->start_date)) !!}</td>
                         <td>{!! date('d/m/Y H:i:s', strtotime($banner->end_date)) !!}</td>
-                        <td>
+                        <!-- <td>
                             @if($banner->position == 1)
                             Banner dưới Menu chính
                             @endif
@@ -94,7 +94,7 @@
                             @if($banner->position == 4)
                             Banner dưới khối tin đầu trang chủ
                             @endif
-                        </td>
+                        </td> -->
                         <td>
                             <div class="btn-group">
                                 <a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#">
