@@ -12,7 +12,7 @@ use Fully\Services\Pagination;
 /**
  * Class SearchController.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class SearchController extends Controller
 {

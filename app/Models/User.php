@@ -10,7 +10,7 @@ use Cartalyst\Sentinel\Users\EloquentUser;
 /**
  * Class User.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class User extends EloquentUser {
 

@@ -4,6 +4,7 @@ namespace Fully\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Fully\Models\Category;
+use Fully\Models\Categories;
 use Fully\Models\News;
 use Fully\Models\NewsRealEstale;
 use Fully\Models\PhotoGallery;
@@ -22,6 +23,8 @@ use Fully\Models\Comment;
 use Fully\Models\Survey;
 use Fully\Repositories\Author\AuthorRepository;
 use Fully\Repositories\Author\CacheDecorator as AuthorCacheDecorator;
+use Fully\Repositories\Categories\CategoriesRepository;
+use Fully\Repositories\Categories\CacheDecorator as CategoriesCacheDecorator;
 use Fully\Repositories\Category\CategoryRepository;
 use Fully\Repositories\Category\CacheDecorator as CategoryCacheDecorator;
 use Fully\Repositories\CategoryRealestale\CategoryRealestaleRepository;
@@ -57,7 +60,7 @@ use Fully\Services\Cache\FullyCache;
 /**
  * Class RepositoryServiceProvider.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -96,6 +99,23 @@ class RepositoryServiceProvider extends ServiceProvider
 
             if ($app['config']->get('fully.cache') === true && $app['config']->get('is_admin', false) == false) {
                 $category = new CategoryCacheDecorator(
+                    $category,
+                    new FullyCache($app['cache'], 'categories')
+                );
+            }
+
+            return $category;
+        });
+
+        // categories
+        $app->bind('Fully\Repositories\Categories\CategoriesInterface', function ($app) {
+
+            $category = new CategoriesRepository(
+                new Categories()
+            );
+
+            if ($app['config']->get('fully.cache') === true && $app['config']->get('is_admin', false) == false) {
+                $category = new CategoriesCacheDecorator(
                     $category,
                     new FullyCache($app['cache'], 'categories')
                 );

@@ -249,7 +249,6 @@ return array(
     /* customer contact start */
     'car_info' => 'Mẫu xe thuộc phương tiện',
     'car_info_type' => 'Loại xe',
-    'car_info_name' => 'Tên xe',
     'car_info_model' => 'Model',
     'car_info_engine' => 'Động cơ',
     'car_info_model_machine' => 'Đời máy',
@@ -257,8 +256,10 @@ return array(
     'car_info_time' => 'Thời gian thay dầu (km)',
     'car_info_list' => 'Danh sách mẫu xe',
     'car_info' => 'Quản lí mẫu xe',
-    'car_info_name' => 'Tên danh mục',
-    'car_info_in' => 'Thuộc danh mục',
+    'cate_name' => 'Tên danh mục',
+    'cate_info_name' => 'Quản lí danh mục',
+    'cate_info_parent' => 'Thuộc danh mục',
+    'cate_info_url' => 'Đường dẫn website',
     'car_info_model' => 'Mẫu xe',
     'car_info_confirm' => 'Có phải bạn có muốn xóa mẫu xe',
     /* customer contact end */

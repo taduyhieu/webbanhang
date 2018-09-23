@@ -5,7 +5,7 @@ namespace Fully\Repositories\Contact;
 /**
  * Class AbstractContactDecorator.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 abstract class AbstractContactDecorator implements ContactInterface
 {

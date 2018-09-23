@@ -16,7 +16,7 @@ use Fully\Exceptions\Validation\ValidationException;
 /**
  * Class BannerRepository.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class BannerRepository extends RepositoryAbstract implements BannerInterface, CrudableInterface
 {

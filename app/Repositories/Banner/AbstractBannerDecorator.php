@@ -5,7 +5,7 @@ namespace Fully\Repositories\Banner;
 /**
  * Class AbstractBannerDecorator.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 abstract class AbstractBannerDecorator implements BannerInterface
 {

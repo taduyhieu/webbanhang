@@ -7,7 +7,7 @@ use Fully\Repositories\RepositoryInterface;
 /**
  * Interface TagRealEstaleInterface.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 interface TagRealEstaleInterface extends RepositoryInterface
 {

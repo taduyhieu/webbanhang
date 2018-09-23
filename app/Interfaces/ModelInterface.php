@@ -5,7 +5,7 @@ namespace Fully\Interfaces;
 /**
  * Class ModelInterface.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 interface ModelInterface
 {

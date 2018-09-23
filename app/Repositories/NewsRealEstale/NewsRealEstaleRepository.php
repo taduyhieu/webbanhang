@@ -22,7 +22,7 @@ use Fully\Repositories\CrudableInterface;
 /**
  * Class NewsRepository.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class NewsRealEstaleRepository extends RepositoryAbstract implements NewsRealEstaleInterface, CrudableInterface {
 

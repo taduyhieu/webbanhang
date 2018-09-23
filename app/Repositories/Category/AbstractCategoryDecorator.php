@@ -5,7 +5,7 @@ namespace Fully\Repositories\Category;
 /**
  * Class AbstractCategoryDecorator.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 abstract class AbstractCategoryDecorator implements CategoryInterface
 {

@@ -5,7 +5,7 @@ namespace Fully\Repositories;
 /**
  * Class RepositoryAbstract.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 abstract class RepositoryAbstract extends AbstractValidator
 {

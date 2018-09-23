@@ -11,7 +11,7 @@ use Redirect;
 /**
  * Class MaillistController.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class MaillistController extends Controller
 {

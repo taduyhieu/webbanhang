@@ -20,7 +20,7 @@ use Exception;
 /**
  * Class VideoController.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class VideoController extends Controller
 {

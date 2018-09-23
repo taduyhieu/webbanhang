@@ -5,7 +5,7 @@ namespace Fully\Repositories;
 /**
  * Interface CrudableInterface.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 interface CrudableInterface
 {

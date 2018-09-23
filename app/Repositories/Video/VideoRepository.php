@@ -13,7 +13,7 @@ use Fully\Exceptions\Validation\ValidationException;
 /**
  * Class VideoRepository.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class VideoRepository extends RepositoryAbstract implements VideoInterface, CrudableInterface {
 

@@ -8,7 +8,7 @@ use Fully\Repositories\RepositoryAbstract;
 /**
  * Class MenuRepository.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class MenuRepository extends RepositoryAbstract implements MenuInterface {
 

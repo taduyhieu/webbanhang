@@ -7,7 +7,7 @@ use Fully\Repositories\RepositoryInterface;
 /**
  * Interface PhotoGalleryInterface.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 interface PhotoGalleryInterface extends RepositoryInterface
 {

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Photo.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class Photo extends Model {
 

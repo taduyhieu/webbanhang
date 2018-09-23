@@ -5,7 +5,7 @@ namespace Fully\Repositories\Comment;
 /**
  * Class AbstractCommentDecorator.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 abstract class AbstractCommentDecorator implements CommentInterface
 {

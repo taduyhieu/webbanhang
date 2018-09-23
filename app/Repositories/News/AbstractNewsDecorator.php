@@ -5,7 +5,7 @@ namespace Fully\Repositories\News;
 /**
  * Class AbstractNewsDecorator.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 abstract class AbstractNewsDecorator implements NewsInterface
 {

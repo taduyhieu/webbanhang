@@ -5,7 +5,7 @@ namespace Fully\Repositories\Slider;
 /**
  * Interface SliderInterface.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 interface SliderInterface
 {

@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Auth;
 /**
  * Class UserController.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class UserRegisterController extends Controller {
 

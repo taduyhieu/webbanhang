@@ -13,7 +13,7 @@ use Fully\Exceptions\Validation\ValidationException;
 /**
  * Class CommentRepository.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class CommentRepository extends RepositoryAbstract implements CommentInterface, CrudableInterface {
 

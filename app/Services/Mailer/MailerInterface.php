@@ -5,7 +5,7 @@ namespace Fully\Services;
 /**
  * Class MailInterface.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 interface MailerInterface
 {

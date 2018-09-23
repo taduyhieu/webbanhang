@@ -10,7 +10,7 @@ use Fully\Interfaces\ModelInterface as ModelInterface;
 /**
  * Class Video.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class Video extends Model implements ModelInterface, SluggableInterface
 {

@@ -5,7 +5,7 @@ namespace Fully\Repositories\Menu;
 /**
  * Class AbstractMenuDecorator.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 abstract class AbstractMenuDecorator implements MenuInterface
 {

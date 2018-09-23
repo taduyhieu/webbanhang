@@ -13,7 +13,7 @@ use Response;
 /**
  * Class CategoryRepository.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class CategoryRepository extends RepositoryAbstract implements CategoryInterface, CrudableInterface {
 

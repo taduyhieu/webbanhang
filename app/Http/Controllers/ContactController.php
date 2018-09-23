@@ -7,7 +7,7 @@ use DB;
 /**
  * Class ContactController.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class ContactController extends Controller {
 

@@ -206,6 +206,13 @@ Route::group(array('prefix' => LaravelLocalization::getCurrentLocale()), functio
         Route::get('category/{search}/search', array('as' => 'admin.category.search',
                                             'uses' => 'CategoryController@search', ));
 
+        // categories
+        Route::resource('categories', 'CategoriesController', array('before' => 'hasAccess:categories'));
+        Route::get('categories/{id}/delete', array('as' => 'admin.categories.delete',
+                                                 'uses' => 'CategoriesController@confirmDestroy', ))->where('id', '[0-9]+');
+        Route::get('categories/{search}/search', array('as' => 'admin.categories.search',
+                                            'uses' => 'CategoriesController@search', ));
+
         // photo gallery
         Route::resource('photo-gallery', 'PhotoGalleryController');
         Route::get('photo-gallery/{id}/delete', array('as' => 'admin.photo-gallery.delete',
@@ -298,6 +305,10 @@ Route::group(array('prefix' => LaravelLocalization::getCurrentLocale()), functio
         // ajax - category
         Route::post('category/{id}/toggle-publish', array('as' => 'admin.category.toggle-publish',
                                                       'uses' => 'CategoryController@togglePublish', ))->where('id', '[0-9]+');
+        
+        // ajax - categories
+        Route::post('categories/{id}/toggle-publish', array('as' => 'admin.categories.toggle-publish',
+                                                      'uses' => 'CategoriesController@togglePublish', ))->where('id', '[0-9]+');
         
         // ajax - survey-active
         Route::post('survey/{id}/active', array('as' => 'admin.survey.active',

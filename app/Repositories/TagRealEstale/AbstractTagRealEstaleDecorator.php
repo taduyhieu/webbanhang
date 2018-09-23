@@ -5,7 +5,7 @@ namespace Fully\Repositories\TagRealEstale;
 /**
  * Class AbstractTagRealEstaleDecorator.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 abstract class AbstractTagRealEstaleDecorator implements TagRealEstaleInterface
 {

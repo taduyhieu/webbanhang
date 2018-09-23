@@ -17,7 +17,7 @@ use Exception;
 /**
  * Class TagRealEstaleController.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class TagRealEstaleController extends Controller {
 

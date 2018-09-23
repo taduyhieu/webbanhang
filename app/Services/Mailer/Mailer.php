@@ -7,7 +7,7 @@ use Mail;
 /**
  * Class Mailer
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class Mailer implements MailerInterface
 {

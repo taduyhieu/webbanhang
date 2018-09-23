@@ -27,7 +27,7 @@ use Fully\Exceptions\Validation\ValidationException;
 /**
  * Class NewsRepository.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class NewsRepository extends RepositoryAbstract implements NewsInterface, CrudableInterface {
 

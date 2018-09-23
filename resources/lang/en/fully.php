@@ -1,3 +1,4 @@
+
 <?php
 
 return array(
@@ -240,7 +241,7 @@ return array(
 
      /* customer contact start */
     'car_info'                  => 'Model car of vehicle',
-    'car_info_name'             => 'Name of car',
+    'cate_info_name'             => 'Name of agency',
     'car_info_model'            => 'Model',
     'car_info_engine'           => 'Engine',
     'car_info_model_machine'    => 'Model engine',
@@ -248,8 +249,10 @@ return array(
     'car_info_time'             => 'Time to change oil (km)',
     'car_info_list'             => 'List car',
     'car_info'                  => 'Manager car',
-    'car_info_name'             => 'Name of category',
-    'car_info_in'               => 'Belong to category',
+    'cate_name'                 => 'Name of category',
+    'cate_info_name'             => 'Name of category',
+    'cate_info_url'               => 'Link website',
+    'cate_info_parent'                 => 'Category belong'
     'car_info_model'            => 'Model car',
     'car_info_confirm'          => 'Are you sure to delete',
     /* customer contact end */

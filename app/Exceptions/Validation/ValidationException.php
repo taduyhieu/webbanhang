@@ -7,7 +7,7 @@ use Exception;
 /**
  * Class ValidationException.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class ValidationException extends Exception
 {

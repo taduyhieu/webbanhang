@@ -5,7 +5,7 @@ namespace Fully\Repositories\Survey;
 /**
  * Class AbstractSurveyDecorator.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 abstract class AbstractSurveyDecorator implements SurveyInterface
 {

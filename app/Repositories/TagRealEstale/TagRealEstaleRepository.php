@@ -12,7 +12,7 @@ use Fully\Repositories\TagRealEstale\TagRealEstaleInterface;
 /**
  * Class TagRealEstaleRepository.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class TagRealEstaleRepository extends RepositoryAbstract implements TagRealEstaleInterface, CrudableInterface {
 

@@ -18,7 +18,7 @@ use DB;
 /**
  * Class SliderController.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class SliderController extends Controller
 {

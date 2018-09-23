@@ -11,7 +11,7 @@ use Fully\Exceptions\Validation\ValidationException;
 /**
  * Class CategoryRealestaleRepository.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class CategoryRealestaleRepository extends RepositoryAbstract implements CategoryRealestaleInterface, CrudableInterface {
 

@@ -7,7 +7,7 @@ use Fully\Repositories\RepositoryInterface;
 /**
  * Interface BannerInterface.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 interface BannerInterface extends RepositoryInterface {
 

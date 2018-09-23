@@ -8,7 +8,7 @@ use Fully\Repositories\AbstractValidator as Validator;
 /**
  * Class SliderRepository.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class SliderRepository extends Validator implements SliderInterface
 {

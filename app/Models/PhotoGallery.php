@@ -9,7 +9,7 @@ use Fully\Interfaces\ModelInterface as ModelInterface;
 /**
  * Class PhotoGallery.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class PhotoGallery extends BaseModel implements ModelInterface, SluggableInterface
 {

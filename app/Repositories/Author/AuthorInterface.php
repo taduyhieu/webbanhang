@@ -7,7 +7,7 @@ use Fully\Repositories\RepositoryInterface;
 /**
  * Interface NewsInterface.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 interface AuthorInterface extends RepositoryInterface
 {

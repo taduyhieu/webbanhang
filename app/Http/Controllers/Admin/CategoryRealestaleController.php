@@ -19,7 +19,7 @@ use Exception;
 /**
  * Class CategoryRealestaleController.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class CategoryRealestaleController extends Controller {
 

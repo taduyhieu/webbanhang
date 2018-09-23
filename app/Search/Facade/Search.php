@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Facade;
 /**
  * Class Search.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class Search extends Facade
 {

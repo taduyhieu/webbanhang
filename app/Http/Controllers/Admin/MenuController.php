@@ -17,7 +17,7 @@ use Flash;
 /**
  * Class MenuController.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class MenuController extends Controller {
 

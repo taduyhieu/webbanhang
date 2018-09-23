@@ -8,7 +8,7 @@ use Fully\Repositories\News\NewsInterface;
 /**
  * Class NewsController.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class NewsController extends Controller {
 

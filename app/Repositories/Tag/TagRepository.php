@@ -12,7 +12,7 @@ use Fully\Exceptions\Validation\ValidationException;
 /**
  * Class TagRepository.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class TagRepository extends RepositoryAbstract implements TagInterface, CrudableInterface {
 

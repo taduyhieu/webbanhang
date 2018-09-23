@@ -7,7 +7,7 @@ use Fully\Http\Controllers\Controller;
 /**
  * Class DashboardController.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class DashboardController extends Controller
 {

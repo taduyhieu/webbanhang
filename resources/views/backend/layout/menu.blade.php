@@ -79,13 +79,13 @@
             </li>-->
 
             <!--Categories-->
-            <!-- <li class="treeview {{ setActive('admin/category*') }}"><a href="#"> <i class="fa fa-list-alt"></i> <span>{{ trans('fully.menu_cat') }}</span>
+            <li class="treeview {{ setActive('admin/categories*') }}"><a href="#"> <i class="fa fa-list-alt"></i> <span>{{ trans('fully.menu_cat') }}</span>
                     <i class="fa fa-angle-left pull-right"></i> </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ url(getLang() . '/admin/category') }}"><i class="fa fa-list"></i> {{ trans('fully.menu_cat_list') }}</a>
+                    <li><a href="{{ url(getLang() . '/admin/categories') }}"><i class="fa fa-list"></i> {{ trans('fully.menu_cat_list') }}</a>
                     </li>
                 </ul>
-            </li> -->
+            </li>
 
             <!--Videos-->
             <!-- <li class="treeview {{ setActive('admin/video*') }}"><a href="#"> <i class="glyphicon glyphicon-facetime-video"></i> <span>{{ trans('fully.menu_video') }}</span>

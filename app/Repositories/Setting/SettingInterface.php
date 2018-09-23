@@ -5,7 +5,7 @@ namespace Fully\Repositories\Setting;
 /**
  * Interface SettingInterface.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 interface SettingInterface
 {

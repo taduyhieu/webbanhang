@@ -9,7 +9,7 @@ use Fully\Interfaces\ModelInterface as ModelInterface;
 /**
  * Class Product.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class Contact extends BaseModel implements ModelInterface, SluggableInterface
 {

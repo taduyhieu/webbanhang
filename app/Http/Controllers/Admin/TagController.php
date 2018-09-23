@@ -17,7 +17,7 @@ use Exception;
 /**
  * Class TagController.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class TagController extends Controller {
 

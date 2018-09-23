@@ -20,7 +20,7 @@ use Session;
 /**
  * Class HomeController.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class HomeController extends Controller {
 

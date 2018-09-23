@@ -7,7 +7,7 @@ use Fully\Repositories\RepositoryInterface;
 /**
  * Interface SurveyInterface.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 interface SurveyInterface extends RepositoryInterface {
     

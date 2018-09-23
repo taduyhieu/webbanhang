@@ -5,7 +5,7 @@ namespace Fully\Repositories\Author;
 /**
  * Class AbstractNewsDecorator.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 abstract class AbstractAuthorDecorator implements AuthorInterface
 {

@@ -14,7 +14,7 @@ use Fully\Models\Role;
 /**
  * Class RoleController.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class RoleController extends Controller {
 

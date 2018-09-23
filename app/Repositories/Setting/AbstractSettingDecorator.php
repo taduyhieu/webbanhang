@@ -5,7 +5,7 @@ namespace Fully\Repositories\Setting;
 /**
  * Class AbstractSettingDecorator.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 abstract class AbstractSettingDecorator implements SettingInterface
 {

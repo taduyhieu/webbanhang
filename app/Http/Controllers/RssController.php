@@ -9,7 +9,7 @@ use Fully\Feeder\Facade\Feeder;
 /**
  * Class RssController.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class RssController extends Controller
 {

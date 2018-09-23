@@ -19,7 +19,7 @@ use Fully\Interfaces\ModelInterface as ModelInterface;
 /**
  * Class News.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class News extends BaseModel implements ModelInterface, SluggableInterface {
 

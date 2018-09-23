@@ -17,7 +17,7 @@ use Fully\Repositories\PhotoGallery\PhotoGalleryRepository as PhotoGallery;
 /**
  * Class PhotoGalleryController.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class PhotoGalleryController extends Controller
 {

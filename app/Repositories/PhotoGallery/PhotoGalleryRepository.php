@@ -15,7 +15,7 @@ use Fully\Exceptions\Validation\ValidationException;
 /**
  * Class PhotoGalleryRepository.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class PhotoGalleryRepository extends RepositoryAbstract implements PhotoGalleryInterface, CrudableInterface
 {

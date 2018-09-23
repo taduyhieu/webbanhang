@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Facade;
 /**
  * Class Feeder.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class Feeder extends Facade
 {

@@ -9,7 +9,7 @@ use Fully\Services\Cache\CacheInterface;
 /**
  * Class FullyCache.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class FullyCache implements CacheInterface
 {

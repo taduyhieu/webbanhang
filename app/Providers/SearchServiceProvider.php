@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 /**
  * Class SearchServiceProvider.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class SearchServiceProvider extends ServiceProvider
 {

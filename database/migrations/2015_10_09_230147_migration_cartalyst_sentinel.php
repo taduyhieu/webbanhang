@@ -24,7 +24,7 @@ use Illuminate\Database\Schema\Blueprint;
 /**
  * Class MigrationCartalystSentinel.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class MigrationCartalystSentinel extends Migration
 {

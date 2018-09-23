@@ -5,7 +5,7 @@ namespace Fully\Repositories\Video;
 /**
  * Class AbstractVideoDecorator.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 abstract class AbstractVideoDecorator implements VideoInterface
 {

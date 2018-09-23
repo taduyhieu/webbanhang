@@ -5,7 +5,7 @@ namespace Fully\Repositories\Tag;
 /**
  * Class AbstractTagDecorator.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 abstract class AbstractTagDecorator implements TagInterface
 {

@@ -17,7 +17,7 @@ use Exception;
 /**
  * Class CategoryController.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class CategoryController extends Controller {
 

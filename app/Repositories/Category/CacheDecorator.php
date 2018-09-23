@@ -7,7 +7,7 @@ use Fully\Services\Cache\CacheInterface;
 /**
  * Class CacheDecorator.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class CacheDecorator extends AbstractCategoryDecorator
 {

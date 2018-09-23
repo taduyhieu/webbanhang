@@ -14,7 +14,7 @@ use Fully\Interfaces\ModelInterface as ModelInterface;
 /**
  * Class Category.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class Category extends Model implements ModelInterface, SluggableInterface {
 

@@ -7,7 +7,7 @@ use Cartalyst\Sentinel\Roles\EloquentRole;
 /**
  * Class Role.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class Role extends EloquentRole {
     

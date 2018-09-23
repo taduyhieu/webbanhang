@@ -8,7 +8,7 @@ use Fully\Repositories\AbstractValidator as Validator;
 /**
  * Class SettingRepository.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class SettingRepository extends Validator implements SettingInterface
 {

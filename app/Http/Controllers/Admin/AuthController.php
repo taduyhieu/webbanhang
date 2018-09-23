@@ -18,7 +18,7 @@ use Fully\Http\Controllers\Controller;
 /**
  * Class AuthController.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class AuthController extends Controller {
     

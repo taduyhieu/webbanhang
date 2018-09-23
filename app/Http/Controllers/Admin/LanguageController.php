@@ -9,7 +9,7 @@ use LaravelLocalization;
 /**
  * Class FaqController.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class LanguageController extends Controller
 {

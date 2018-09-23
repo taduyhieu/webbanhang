@@ -12,7 +12,7 @@ use Fully\Exceptions\Validation\ValidationException;
 /**
  * Class ContactRepository.
  *
- * @author THC <thanhhaconnection@gmail.com>
+ * @author TDH <taduyhieucntt98@gmail.com>
  */
 class ContactRepository extends RepositoryAbstract implements ContactInterface, CrudableInterface
 {
