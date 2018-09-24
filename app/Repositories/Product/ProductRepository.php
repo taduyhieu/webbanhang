@@ -1,6 +1,6 @@
 <?php
 
-namespace Fully\Repositories\Categories;
+namespace Fully\Repositories\Product;
 
 use Config;
 use Fully\Models\Product;
@@ -25,7 +25,7 @@ class ProductRepository extends RepositoryAbstract implements ProductInterface, 
     /**
      * @var \Category
      */
-    protected $product;
+    protected $category;
 
     /**
      * Rules.
@@ -38,8 +38,8 @@ class ProductRepository extends RepositoryAbstract implements ProductInterface, 
     /**
      * @param Category $category
      */
-    public function __construct(Product $product) {
-        $this->product = $product;
+    public function __construct(Product $category) {
+        $this->category = $category;
         $config = Config::get('fully');
         $this->perPage = $config['per_page'];
     }
@@ -48,69 +48,69 @@ class ProductRepository extends RepositoryAbstract implements ProductInterface, 
      * @return mixed
      */
     public function all() {
-        return $this->product->where('lang', $this->getLang())->get();
+        return $this->category->where('lang', $this->getLang())->get();
     }
 
     public function getCategory($id) {
-        return $this->product->where('lang', $this->getLang())->Where('id', $id)->first();
+        return $this->category->where('lang', $this->getLang())->Where('id', $id)->first();
     }
 
     public function getCategoryAll() {
-        return $this->product->where('lang', $this->getLang())->where('cat_parent_id', 0)->where('status', 1)->select('id', 'name')->get();
+        return $this->category->where('lang', $this->getLang())->where('cat_parent_id', 0)->where('status', 1)->select('id', 'name')->get();
     }
 
     public function getCatParent() {
-        return $this->product->where('cat_parent_id', 0)->select('id', 'title')->get();
+        return $this->category->where('cat_parent_id', 0)->select('id', 'title')->get();
     }
 
-    // public function getCatSub($cat_parent_id) {
-    //     return $this->category->where('cat_parent_id', $cat_parent_id)->select('id', 'name')->get();
-    // }
+    public function getCatSub($cat_parent_id) {
+        return $this->category->where('cat_parent_id', $cat_parent_id)->select('id', 'name')->get();
+    }
 
-    // public function searchCatByName($searchTitle) {
-    //     return $this->category->where('name', 'like', '%' . $searchTitle . '%')->orderBy('cat_parent_id')
-    //                     ->paginate(10);
-    // }
+    public function searchCatByName($searchTitle) {
+        return $this->category->where('name', 'like', '%' . $searchTitle . '%')->orderBy('cat_parent_id')
+                        ->paginate(10);
+    }
 
-    // public function getNewsByCategory($cat_id) {
-    //     $cate = Category::find($cat_id);
-    //     $cate->news = $cate->getNews;
-    //     return $cate;
-    // }
+    public function getNewsByCategory($cat_id) {
+        $cate = Category::find($cat_id);
+        $cate->news = $cate->getNews;
+        return $cate;
+    }
 
-    // public function getLastNewsByCategory($cat_id) {
-    //     $cate = Category::find($cat_id);
-    //     $lastNews = $cate->getNews()->orderBy('news_publish_date', 'desc')->take(3)->offset(0)->get();
-    //     return $lastNews;
-    // }
+    public function getLastNewsByCategory($cat_id) {
+        $cate = Category::find($cat_id);
+        $lastNews = $cate->getNews()->orderBy('news_publish_date', 'desc')->take(3)->offset(0)->get();
+        return $lastNews;
+    }
 
-    // public function getNewsByCate($slug) {
-    //     $catBySlug = Category::where('slug', $slug)->first();
+    public function getNewsByCate($slug) {
+        $catBySlug = Category::where('slug', $slug)->first();
 
-    //     // news cate show
-    //     $newsCate = null;
-    //     $listNewsCate = NewsCate::where('cat_id', $catBySlug->id)->orderBy('order', 'ASC')->where('show_type', 1)->take(2)->offset(0)->get();
-    //     foreach ($listNewsCate as $newsTop) {
-    //         $newsTop->news_title = $newsTop->getNews->news_title;
-    //         $newsTop->news_content = $newsTop->getNews->news_content;
-    //         $newsTop->news_sapo = $newsTop->getNews->news_sapo;
-    //         $newsTop->slug = $newsTop->getNews->slug;
-    //         $newsTop->news_image = $newsTop->getNews->news_image;
-    //     }
-    //     if ($listNewsCate->count() >= 1) {
-    //         $newsCate = $listNewsCate[0];
-    //         $newsCate->subNews = $listNewsCate[1];
-    //         unset($listNewsCate[0]);
-    //         unset($listNewsCate[1]);
-    //     }
+        // news cate show
+        $newsCate = null;
+        $listNewsCate = NewsCate::where('cat_id', $catBySlug->id)->orderBy('order', 'ASC')->where('show_type', 1)->take(2)->offset(0)->get();
+        foreach ($listNewsCate as $newsTop) {
+            $newsTop->news_title = $newsTop->getNews->news_title;
+            $newsTop->news_content = $newsTop->getNews->news_content;
+            $newsTop->news_sapo = $newsTop->getNews->news_sapo;
+            $newsTop->slug = $newsTop->getNews->slug;
+            $newsTop->news_image = $newsTop->getNews->news_image;
+        }
+        if ($listNewsCate->count() >= 1) {
+            $newsCate = $listNewsCate[0];
+            $newsCate->subNews = $listNewsCate[1];
+            unset($listNewsCate[0]);
+            unset($listNewsCate[1]);
+        }
 
-    //     $newsByCat = $catBySlug->getNews()->orderBy('news_publish_date', 'DESC')->paginate(9);
-    //     $newsByCatAll = [];
-    //     $newsByCatAll[0] = $newsCate;
-    //     $newsByCatAll[1] = $newsByCat;
-    //     $newsByCatAll[2] = $catBySlug;
-    //     return $newsByCatAll;
-    // }
+        $newsByCat = $catBySlug->getNews()->orderBy('news_publish_date', 'DESC')->paginate(9);
+        $newsByCatAll = [];
+        $newsByCatAll[0] = $newsCate;
+        $newsByCatAll[1] = $newsByCat;
+        $newsByCatAll[2] = $catBySlug;
+        return $newsByCatAll;
+    }
 
     /**
      * @param int  $page
@@ -126,12 +126,12 @@ class ProductRepository extends RepositoryAbstract implements ProductInterface, 
         $result->totalItems = 0;
         $result->items = array();
 
-        $query = $this->product;
+        $query = $this->category;
 
-        $products = $query->skip($limit * ($page - 1))->take($limit)->where('lang', $this->getLang())->get();
+        $categories = $query->skip($limit * ($page - 1))->take($limit)->where('lang', $this->getLang())->get();
 
         $result->totalItems = $this->totalCategories();
-        $result->items = $products->all();
+        $result->items = $categories->all();
 
         return $result;
     }
@@ -140,7 +140,7 @@ class ProductRepository extends RepositoryAbstract implements ProductInterface, 
      * @return mixed
      */
     public function lists() {
-        return $this->product->where('lang', $this->getLang())->lists('name', 'id');
+        return $this->category->where('lang', $this->getLang())->lists('name', 'id');
     }
 
     /**
@@ -149,7 +149,7 @@ class ProductRepository extends RepositoryAbstract implements ProductInterface, 
      * @return mixed
      */
     public function find($id) {
-        return $this->product->findOrFail($id);
+        return $this->category->findOrFail($id);
     }
 
     /**
@@ -158,7 +158,7 @@ class ProductRepository extends RepositoryAbstract implements ProductInterface, 
      * @return mixed
      */
     public function getNewsBySlug($slug) {
-        return $this->product->where('slug', $slug)->where('lang', $this->getLang())->first()->news()->paginate($this->perPage);
+        return $this->category->where('slug', $slug)->where('lang', $this->getLang())->first()->news()->paginate($this->perPage);
     }
 
     /**
@@ -167,7 +167,7 @@ class ProductRepository extends RepositoryAbstract implements ProductInterface, 
      * @return mixed
      */
     public function getBySlug($slug) {
-        return $this->product->where('slug', $slug)->first();
+        return $this->category->where('slug', $slug)->first();
     }
 
     /**
@@ -179,12 +179,12 @@ class ProductRepository extends RepositoryAbstract implements ProductInterface, 
      */
     public function create($attributes) {
         if ($this->isValid($attributes)) {
-            $this->product->lang = $this->getLang();
-            $this->product->fill($attributes)->save();
+            $this->category->lang = $this->getLang();
+            $this->category->fill($attributes)->save();
+            $this->category->resluggify();
 
             return true;
         }
-
         throw new ValidationException('Category validation failed', $this->getErrors());
     }
 
@@ -197,12 +197,12 @@ class ProductRepository extends RepositoryAbstract implements ProductInterface, 
      * @throws \Fully\Exceptions\Validation\ValidationException
      */
     public function update($id, $attributes) {
-        $this->product = $this->find($id);
+        $this->category = $this->find($id);
 
         if ($this->isValid($attributes)) {
-            $this->product->resluggify();
-            $this->product->fill($attributes)->save();
-
+            $this->category->fill($attributes);
+            $this->category->resluggify();
+            $this->category->save();
             return true;
         }
 
@@ -215,8 +215,9 @@ class ProductRepository extends RepositoryAbstract implements ProductInterface, 
      * @return mixed|void
      */
     public function delete($id) {
-        $this->product = $this->product->find($id);
-        $this->product->delete();
+        $this->category = $this->category->find($id);
+        // $this->category->articles()->delete($id);
+        $this->category->delete();
     }
 
     /**
@@ -225,7 +226,7 @@ class ProductRepository extends RepositoryAbstract implements ProductInterface, 
      * @return mixed
      */
     protected function totalCategories() {
-        return $this->product->where('lang', $this->getLang())->count();
+        return $this->category->where('lang', $this->getLang())->count();
     }
 
     /**
@@ -234,7 +235,7 @@ class ProductRepository extends RepositoryAbstract implements ProductInterface, 
      * @return bool
      */
     public function hasChildItems($id) {
-        $count = $this->product->where('cat_parent_id', $id)->where('lang', $this->getLang())->get()->count();
+        $count = $this->category->where('cat_parent_id', $id)->where('lang', $this->getLang())->get()->count();
         if ($count === 0) {
             return false;
         }
@@ -248,20 +249,20 @@ class ProductRepository extends RepositoryAbstract implements ProductInterface, 
      * @return mixed
      */
     public function togglePublish($id) {
-        $product = $this->product->find($id);
-        $product->status = ($product->status) ? false : true;
-        $product->save();
+        $category = $this->category->find($id);
+        $category->status = ($category->status) ? false : true;
+        $category->save();
 
-        return Response::json(array('result' => 'success', 'changed' => ($product->status) ? 1 : 0));
+        return Response::json(array('result' => 'success', 'changed' => ($category->status) ? 1 : 0));
     }
 
     public function getFirstCategory($limit) {
-        return $this->caproducttegory->orderBy('order', 'ASC')->where('lang', $this->getLang())->take($limit)->offset(0)->get();
+        return $this->category->orderBy('order', 'ASC')->where('lang', $this->getLang())->take($limit)->offset(0)->get();
     }
 
     public function getCategoryByParentId($parent_id) {
-        $products = $this->product->where('cat_parent_id', $parent_id)->get();
-        return $products;
+        $categories = $this->category->where('cat_parent_id', $parent_id)->get();
+        return $categories;
     }
 
 }

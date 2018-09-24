@@ -409,6 +409,9 @@ return array(
      /*mail end*/
 
     /*product start*/
+        'product_name' => 'Name of product',
+        'product_quatities' =>'Quantities of product',
+        'product_price'                 => 'Price',
      'product_text_1' => 'Band of producer: Has a long history in the petrochemical industry and oil production in the international market.',
      'product_code' => 'Product code',
      'product_see' => 'Overview',

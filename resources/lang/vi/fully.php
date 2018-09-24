@@ -316,6 +316,14 @@ return array(
     'not_found_data' => 'Không tìm thấy dữ liệu',
     /* smt end */
 
+    /* product */
+    'product_management'          => 'Quản lí sản phẩm',
+    'product_list'                  => 'Danh sách sản phẩm',
+    'product_name'                  => 'Tên sản phẩm',
+    'product_quatities'             => 'Số lượng',
+    'product_price'                 => 'Giá',
+    /* end product */
+
     /* input start */
     'input_title' => 'Nhập tiêu đề...',
     'input_search' => 'Tìm kiếm',

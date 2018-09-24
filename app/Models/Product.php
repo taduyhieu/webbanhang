@@ -17,13 +17,13 @@ class Product extends Model implements ModelInterface, SluggableInterface {
 
     use SluggableTrait;
 
-    public $table = 'categories';
-    public $fillable = ['title', 'cat_parent_id', 'url_link', 'lang', 'status'];
-    // protected $hidden = ['getNews', 'getNewsHighLights', 'getNewsCate'];
+    public $table = 'product';
+    public $fillable = ['id', 'product_name', 'code', 'content', 'slug', 'product_categories_id', 'quatities', 'price', 'color', 'agency_product_id', 'description', 'description_short', 'lang', 'status'];
+    protected $hidden = ['getNews', 'getNewsHighLights', 'getNewsCate'];
     protected $appends = ['url'];
     public $timestamps = false;
     protected $sluggable = array(
-        'build_from' => 'name',
+        'build_from' => 'product_name',
         'save_to' => 'slug',
     );
 
@@ -56,8 +56,8 @@ class Product extends Model implements ModelInterface, SluggableInterface {
     //     return $this->hasMany(NewsCate::class, 'cat_id', 'id');
     // }
 
-    public function getCatParent() {
-        return $this->belongsTo(Categories::class, 'cat_parent_id')->first();
-    }
+    // public function getCatParent() {
+    //     return $this->belongsTo(Categories::class, 'cat_parent_id')->first();
+    // }
 
 }

@@ -11,7 +11,7 @@ use Fully\Services\Pagination;
 use Fully\Http\Controllers\Controller;
 use Fully\Repositories\Product\ProductInterface;
 use Fully\Exceptions\Validation\ValidationException;
-use Fully\Repositories\Product\ProductRepository as Product;
+use Fully\Repositories\Product\ProductRepository;
 use Exception;
 
 /**
@@ -21,13 +21,13 @@ use Exception;
  */
 class ProductController extends Controller {
 
-    protected $category;
+    protected $product;
     protected $perPage;
 
     public function __construct(ProductInterface $product) {
         $this->product = $product;
         View::share('active', 'blog');
-        $this->perPage = config('fully.modules.product.per_page');
+        $this->perPage = config('fully.modules.category.per_page');
     }
 
     /**
@@ -37,7 +37,7 @@ class ProductController extends Controller {
      */
     public function index() {
         $searchTitle = "";
-        $pagiData = $this->category->paginate(Input::get('page', 1), $this->perPage, true);
+        $pagiData = $this->product->paginate(Input::get('page', 1), $this->perPage, true);
         $products = Pagination::makeLengthAware($pagiData->items, $pagiData->totalItems, $this->perPage);
 
         // foreach ($categories as $category) {
@@ -56,9 +56,9 @@ class ProductController extends Controller {
      * @return Response
      */
     public function create() {
-        // $categories = $this->product->all();
+        $products = $this->product->all();
 
-        return view('backend.product.create');
+        return view('backend.product.create', compact('products'));
     }
 
     /**
@@ -68,14 +68,11 @@ class ProductController extends Controller {
      */
     public function store(Request $request) {
         // $this->validate($request, [
-        //     'name' => 'required|min:3|unique:category',
-        //     'order' => 'numeric|unique:category,order',
+        //     'title' => 'required|min:3|unique:categories',
         //         ], [
-        //     'name.required' => trans('fully.val_cat_title_req'),
-        //     'name.min' => trans('fully.val_cat_min'),
-        //     'name.unique' => trans('fully.val_cat_unique'),
-        //     'order.numeric' => 'Thứ tự sắp xếp phải là số',
-        //     'order.unique' => 'Thứ tự sắp xếp đã tồn tại',
+        //     'title.required' => trans('fully.val_cat_title_req'),
+        //     'title.min' => trans('fully.val_cat_min'),
+        //     'title.unique' => trans('fully.val_cat_unique'),
         // ]);
         try {
             $this->product->create(Input::all());
@@ -84,7 +81,7 @@ class ProductController extends Controller {
             return langRedirectRoute('admin.product.index');
         } catch (Exception $e) {
             Flash::message(trans('fully.mes_log_general'));
-            return langRedirectRoute('admin.product.create')->withInput()->withErrors($e->getErrors());
+            return langRedirectRoute('admin.product.create');//->withInput()->withErrors($e->getErrors())
         }
     }
 
@@ -113,12 +110,12 @@ class ProductController extends Controller {
      */
     public function edit($id) {
         $product = $this->product->find($id);
-        // $categories = $this->category->all();
+        $products = $this->product->all();
         // if ($category->cat_parent_id != null) {
         //     $category->parent_title = $category->getCatParent()->value('title'); 
         // }
 
-        return view('backend.product.edit', compact('product'));
+        return view('backend.product.edit', compact('product', 'products'));
     }
 
     /**
@@ -130,13 +127,11 @@ class ProductController extends Controller {
      */
     public function update($id, Request $request) {
         // $this->validate($request, [
-        //     'name' => 'required|min:3',
-        //     'order' => 'numeric|unique:category,order,' . $id,
+        //     'title' => 'required|min:3|unique:categories,title,' . $id,
         //         ], [
-        //     'name.required' => trans('fully.val_cat_title_req'),
-        //     'name.min' => trans('fully.val_cat_min'),
-        //     'order.numeric' => 'Thứ tự sắp xếp phải là số',
-        //     'order.unique' => 'Thứ tự sắp xếp đã tồn tại',
+        //     'title.required' => trans('fully.val_cat_title_req'),
+        //     'title.min' => trans('fully.val_cat_min'),
+        //     'title.unique' => 'Tên đã tồn tại',
         // ]);
         try {
             $this->product->update($id, Input::all());
@@ -159,7 +154,7 @@ class ProductController extends Controller {
     public function destroy($id) {
         if ($this->product->hasChildItems($id)) {
             Flash::message(trans('fully.mes_category_log_1'));
-            return langRedirectRoute('admin.product.index');
+            return langRedirectRoute('admin.categories.index');
         }
         $checkNews = DB::table('news')->where('cat_id', $id)->get();
 

@@ -229,6 +229,12 @@ Route::group(array('prefix' => LaravelLocalization::getCurrentLocale()), functio
         Route::resource('realestale-tag', 'TagRealEstaleController', array('before' => 'hasAccess:realestale-category'));
         Route::get('realestale-tag/{id}/delete', array('as' => 'admin.realestale-tag.delete',
                                              'uses' => 'TagRealEstaleController@confirmDestroy', ))->where('id', '[0-9]+');
+
+        // product
+        Route::resource('product', 'ProductController', array('before' => 'hasAccess:product'));
+        Route::get('product/{id}/delete', array('as' => 'admin.product.delete',
+                                             'uses' => 'ProductController@confirmDestroy', ))->where('id', '[0-9]+');
+
         Route::get('realestale-tag/{search}/search', array('as' => 'admin.realestale-tag.search',
                                             'uses' => 'TagRealEstaleController@search', ));
         
@@ -274,6 +280,10 @@ Route::group(array('prefix' => LaravelLocalization::getCurrentLocale()), functio
         Route::post('news/{id}/toggle-publish', array('as' => 'admin.news.toggle-publish',
                                                       'uses' => 'NewsController@togglePublish', ))->where('id', '[0-9]+');
         
+        // ajax - product
+        Route::post('product/{id}/toggle-publish', array('as' => 'admin.product.toggle-publish',
+                                                      'uses' => 'ProductController@togglePublish', ))->where('id', '[0-9]+');
+
         // ajax - news highlight
         Route::post('news-highlight/{id}/toggle-publish', array('as' => 'admin.news-highlight.toggle-publish',
                                                       'uses' => 'NewsHighLightController@togglePublish', ))->where('id', '[0-9]+');

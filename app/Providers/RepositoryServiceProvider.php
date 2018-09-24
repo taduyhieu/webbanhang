@@ -8,6 +8,7 @@ use Fully\Models\Categories;
 use Fully\Models\News;
 use Fully\Models\NewsRealEstale;
 use Fully\Models\PhotoGallery;
+use Fully\Models\Product;
 use Fully\Models\Tag;
 use Fully\Models\Video;
 use Fully\Models\Menu;
@@ -31,8 +32,13 @@ use Fully\Repositories\CategoryRealestale\CategoryRealestaleRepository;
 use Fully\Repositories\CategoryRealestale\CacheDecorator as CategoryRealestaleCacheDecorator;
 use Fully\Repositories\Banner\BannerRepository;
 use Fully\Repositories\Banner\CacheDecorator as BannerCacheDecorator;
+
 use Fully\Repositories\Comment\CommentRepository;
 use Fully\Repositories\Comment\CacheDecorator as CommentCacheDecorator;
+
+use Fully\Repositories\Product\ProductRepository;
+use Fully\Repositories\Product\CacheDecorator as ProductCacheDecorator;
+
 use Fully\Repositories\TagRealEstale\TagRealEstaleRepository;
 use Fully\Repositories\TagRealEstale\CacheDecorator as TagRealEstaleCacheDecorator;
 use Fully\Repositories\News\NewsRepository;
@@ -173,6 +179,23 @@ class RepositoryServiceProvider extends ServiceProvider
             }
 
             return $news;
+        });
+
+        // product
+        $app->bind('Fully\Repositories\Product\ProductInterface', function ($app) {
+
+            $product = new ProductRepository(
+                new Product()
+            );
+
+            if ($app['config']->get('fully.cache') === true && $app['config']->get('is_admin', false) == false) {
+                $product = new ProductCacheDecorator(
+                    $product,
+                    new FullyCache($app['cache'], 'product')
+                );
+            }
+
+            return $product;
         });
         
         // news real estale

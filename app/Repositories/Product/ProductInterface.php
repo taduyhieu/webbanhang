@@ -9,7 +9,7 @@ use Fully\Repositories\RepositoryInterface;
  *
  * @author TDH <taduyhieucntt98@gmail.com>
  */
-interface ProductsInterface extends RepositoryInterface {
+interface ProductInterface extends RepositoryInterface {
 
     /**
      * @param $slug

@@ -21,15 +21,15 @@ class CacheDecorator extends AbstractProductDecorator
      *
      * @var string
      */
-    protected $cacheKey = 'product';
+    protected $cacheKey = 'category';
 
     /**
      * @param CategoryInterface $category
      * @param CacheInterface    $cache
      */
-    public function __construct(ProductInterface $product, CacheInterface $cache)
+    public function __construct(ProductInterface $category, CacheInterface $cache)
     {
-        parent::__construct($product);
+        parent::__construct($category);
         $this->cache = $cache;
     }
 
@@ -46,11 +46,11 @@ class CacheDecorator extends AbstractProductDecorator
             return $this->cache->get($key);
         }
 
-        $product = $this->product->find($id);
+        $category = $this->category->find($id);
 
-        $this->cache->put($key, $product);
+        $this->cache->put($key, $category);
 
-        return $product;
+        return $category;
     }
 
     /**
@@ -64,11 +64,11 @@ class CacheDecorator extends AbstractProductDecorator
             return $this->cache->get($key);
         }
 
-        $products = $this->product->all();
+        $categories = $this->category->all();
 
-        $this->cache->put($key, $products);
+        $this->cache->put($key, $categories);
 
-        return $products;
+        return $categories;
     }
 
     /**
@@ -100,7 +100,7 @@ class CacheDecorator extends AbstractProductDecorator
      */
     public function getArticlesBySlug($slug)
     {
-        return $this->product->getArticlesBySlug($slug);
+        return $this->category->getArticlesBySlug($slug);
     }
 
     /**
@@ -116,7 +116,7 @@ class CacheDecorator extends AbstractProductDecorator
             return $this->cache->get($key);
         }
 
-        $result = $this->product->hasChildItems($id);
+        $result = $this->category->hasChildItems($id);
         $this->cache->put($key, $result);
 
         return $result;
