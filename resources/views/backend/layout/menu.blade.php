@@ -87,11 +87,15 @@
                 </ul>
             </li>
 
-            <!--Categories-->
+            <!--Product-->
             <li class="treeview {{ setActive('admin/product*') }}"><a href="#"> <i class="fa fa-list-alt"></i> <span>{{ trans('fully.product_management') }}</span>
                     <i class="fa fa-angle-left pull-right"></i> </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url(getLang() . '/admin/product') }}"><i class="fa fa-list"></i> {{ trans('fully.product_list') }}</a>
+                    </li>
+                </ul>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url(getLang() . '/admin/product/sale-off') }}"><i class="fa fa-list"></i> {{ trans('fully.product_management_sale_off') }}</a>
                     </li>
                 </ul>
             </li>

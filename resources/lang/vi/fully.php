@@ -330,6 +330,7 @@ return array(
     'product_name'                  => 'Tên sản phẩm',
     'product_quatities'             => 'Số lượng',
     'product_price'                 => 'Giá',
+    'product_management_sale_off' => 'Quản lí khuyến mãi',
     /* end product */
 
     /* input start */

@@ -1,13 +1,6 @@
 @extends('backend/layout/layout')
 @section('content')
 {!! HTML::script('ckeditor/ckeditor.js') !!}
-{!! HTML::style('backend/css/selectize.default.css') !!}
-{!! HTML::style('assets/bootstrap/css/bootstrap-tagsinput.css') !!}
-{!! HTML::style('jasny-bootstrap/css/jasny-bootstrap.min.css') !!}
-{!! HTML::script('assets/bootstrap/js/bootstrap-tagsinput.js') !!}
-{!! HTML::script('assets/js/jquery.slug.js') !!}
-{!! HTML::script('jasny-bootstrap/js/jasny-bootstrap.min.js') !!}
-{!! HTML::script('backend/js/selectize.js') !!}
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1> {!!trans('fully.category')!!}
@@ -124,6 +117,28 @@
         </div>
     </div>
 
+    <!-- Description -->
+    <div class="col-sm-11 control-group {!! $errors->has('description') ? 'has-error' : '' !!}">
+        <label class="control-label" for="description">Mô tả (*)</label>
+
+        <div class="controls"> {!! Form::textarea('description', null, array('class'=>'form-control', 'id' => 'description', 'placeholder'=>trans('fully.product_description'), 'value'=>Input::old('description'))) !!}
+            @if ($errors->first('description'))
+            <span class="help-block">{!! $errors->first('description') !!}</span>
+            @endif
+        </div>
+    </div>
+
+    <!-- Description short -->
+    <div class="col-sm-11 control-group {!! $errors->has('description_short') ? 'has-error' : '' !!}">
+        <label class="control-label" for="description_short">Mô tả ngắn (*)</label>
+
+        <div class="controls"> {!! Form::textarea('content', null, array('class'=>'form-control', 'id' => 'description_short', 'placeholder'=>trans('fully.product_description_short'), 'value'=>Input::old('description_short'))) !!}
+            @if ($errors->first('description_short'))
+            <span class="help-block">{!! $errors->first('description_short') !!}</span>
+            @endif
+        </div>
+    </div>
+
     <div class="col-sm-11">
         <br>
         <!-- Form actions -->
@@ -137,6 +152,14 @@
         CKEDITOR.replace('content', {
             "filebrowserBrowseUrl": "{!! url('filemanager/show') !!}",
             height: '250px',
+        });
+        CKEDITOR.replace('description', {
+            "filebrowserBrowseUrl": "{!! url('filemanager/show') !!}",
+            height: '700px',
+        });
+        CKEDITOR.replace('description_short', {
+            "filebrowserBrowseUrl": "{!! url('filemanager/show') !!}",
+            height: '400px',
         });
     };
 </script>

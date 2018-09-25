@@ -415,6 +415,7 @@ return array(
     'product_content' => 'Content',
     'product'               => 'Product',
     'product_name' => 'Name of product',
+    'product_management_sale_off' => 'Manage sale off',
     'product_quatities' =>'Quantities of product',
     'product_price'                 => 'Price',
     'product_color' => 'Color',

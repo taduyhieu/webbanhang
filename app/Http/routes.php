@@ -234,6 +234,10 @@ Route::group(array('prefix' => LaravelLocalization::getCurrentLocale()), functio
         Route::resource('product', 'ProductController', array('before' => 'hasAccess:product'));
         Route::get('product/{id}/delete', array('as' => 'admin.product.delete',
                                              'uses' => 'ProductController@confirmDestroy', ))->where('id', '[0-9]+');
+        // sale-off
+        Route::resource('product/sale-off', 'SafeOffController', array('before' => 'hasAccess:product-sale-off'));
+        Route::get('product/sale-off/{id}/delete', array('as' => 'admin.product-sale-off.delete',
+                                             'uses' => 'SafeOffController@confirmDestroy', ))->where('id', '[0-9]+');
 
         Route::get('realestale-tag/{search}/search', array('as' => 'admin.realestale-tag.search',
                                             'uses' => 'TagRealEstaleController@search', ));
