@@ -21,15 +21,15 @@ class CacheDecorator extends AbstractProductDecorator
      *
      * @var string
      */
-    protected $cacheKey = 'category';
+    protected $cacheKey = 'product';
 
     /**
      * @param CategoryInterface $category
      * @param CacheInterface    $cache
      */
-    public function __construct(ProductInterface $category, CacheInterface $cache)
+    public function __construct(ProductInterface $product, CacheInterface $cache)
     {
-        parent::__construct($category);
+        parent::__construct($product);
         $this->cache = $cache;
     }
 
@@ -46,11 +46,11 @@ class CacheDecorator extends AbstractProductDecorator
             return $this->cache->get($key);
         }
 
-        $category = $this->category->find($id);
+        $product = $this->product->find($id);
 
-        $this->cache->put($key, $category);
+        $this->cache->put($key, $product);
 
-        return $category;
+        return $product;
     }
 
     /**
@@ -64,11 +64,11 @@ class CacheDecorator extends AbstractProductDecorator
             return $this->cache->get($key);
         }
 
-        $categories = $this->category->all();
+        $products = $this->product->all();
 
-        $this->cache->put($key, $categories);
+        $this->cache->put($key, $products);
 
-        return $categories;
+        return $products;
     }
 
     /**
@@ -87,7 +87,7 @@ class CacheDecorator extends AbstractProductDecorator
             return $this->cache->get($key);
         }
 
-        $paginated = $this->category->paginate($page, $limit, $all);
+        $paginated = $this->product->paginate($page, $limit, $all);
         $this->cache->put($key, $paginated);
 
         return $paginated;
@@ -100,7 +100,7 @@ class CacheDecorator extends AbstractProductDecorator
      */
     public function getArticlesBySlug($slug)
     {
-        return $this->category->getArticlesBySlug($slug);
+        return $this->product->getArticlesBySlug($slug);
     }
 
     /**
@@ -116,7 +116,7 @@ class CacheDecorator extends AbstractProductDecorator
             return $this->cache->get($key);
         }
 
-        $result = $this->category->hasChildItems($id);
+        $result = $this->product->hasChildItems($id);
         $this->cache->put($key, $result);
 
         return $result;

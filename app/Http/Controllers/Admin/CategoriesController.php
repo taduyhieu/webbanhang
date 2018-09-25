@@ -75,15 +75,15 @@ class CategoriesController extends Controller {
             'title.min' => trans('fully.val_cat_min'),
             'title.unique' => trans('fully.val_cat_unique'),
         ]);
-        try {
+        // try {
             $this->category->create(Input::all());
             Flash::message(trans('fully.mes_add_succes'));
 
             return langRedirectRoute('admin.categories.index');
-        } catch (Exception $e) {
-            Flash::message(trans('fully.mes_log_general'));
-            return langRedirectRoute('admin.categories.create');//->withInput()->withErrors($e->getErrors())
-        }
+        // } catch (Exception $e) {
+        //     Flash::message(trans('fully.mes_log_general'));
+        //     return langRedirectRoute('admin.categories.create');//->withInput()->withErrors($e->getErrors())
+        // }
     }
 
     /**

@@ -122,9 +122,17 @@ return array(
 
     /* vehicle_categorys start */
     'product_categories' => 'Sản phẩm',
+    'product_category' => 'Danh mục sản phẩm',
+    'product_content' => 'Content',
     'product_categories_name' => 'Tên sản phẩm',
     'product_categories_type' => 'Loại phương tiện',
     'product_categories_control' => 'Quản lí phương tiện',
+    'menu_product'               => 'Danh sách sản phẩm',
+    'product'               => 'Sản phẩm',
+    'product_color' => 'Màu',
+    'product_agency' => 'Nhà phân phối',
+    'product_description' => 'Mô tả chi tiết',
+    'product_description_short' => 'Mô tả ngắn',
     /* vehicle_categorys end */
 
     /* customer contact start */

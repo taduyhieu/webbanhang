@@ -5,6 +5,7 @@ namespace Fully\Repositories\Categories;
 use Config;
 use Fully\Models\Categories;
 use Fully\Models\NewsCate;
+use Fully\Database\Schema\Blueprint;
 use Fully\Repositories\RepositoryAbstract;
 use Fully\Repositories\CrudableInterface;
 use Fully\Exceptions\Validation\ValidationException;

@@ -18,10 +18,10 @@ class Categories extends Model implements ModelInterface, SluggableInterface {
     use SluggableTrait;
 
     public $table = 'categories';
-    public $fillable = ['title','cat_parent_id', 'url_link', 'lang', 'status'];
+    public $fillable = ['title','cat_parent_id', 'url_link', 'lang', 'status', 'created_at', 'updated_at'];
     protected $hidden = ['getNews', 'getNewsHighLights', 'getNewsCate'];
     protected $appends = ['url'];
-    public $timestamps = false;
+    public $timestamps = true;
     protected $sluggable = array(
         'build_from' => 'title',
         'save_to' => 'slug',

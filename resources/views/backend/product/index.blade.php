@@ -42,7 +42,7 @@
         @include('flash::message')
         <br>
         <div class="col-sm-6">
-            <div class="btn-toolbar"><a href="{!! langRoute('admin.categories.create') !!}" class="btn btn-primary">
+            <div class="btn-toolbar"><a href="{!! langRoute('admin.product.create') !!}" class="btn btn-primary">
                     <span class="glyphicon glyphicon-plus"></span>&nbsp;{!!trans('fully.create')!!}</a></div>
         </div>
         <div class="col-sm-6">

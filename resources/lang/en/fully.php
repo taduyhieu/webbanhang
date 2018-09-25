@@ -409,9 +409,18 @@ return array(
      /*mail end*/
 
     /*product start*/
-        'product_name' => 'Name of product',
-        'product_quatities' =>'Quantities of product',
-        'product_price'                 => 'Price',
+    'menu_product'               => 'List of product',
+    'product_category' => 'Category of product',
+    'product_content' => 'Content',
+    'product_content' => 'Content',
+    'product'               => 'Product',
+    'product_name' => 'Name of product',
+    'product_quatities' =>'Quantities of product',
+    'product_price'                 => 'Price',
+    'product_color' => 'Color',
+    'product_agency' => 'Agency of product',
+    'product_description' => 'Description of product',
+    'product_description_short' => 'Short description of product',
      'product_text_1' => 'Band of producer: Has a long history in the petrochemical industry and oil production in the international market.',
      'product_code' => 'Product code',
      'product_see' => 'Overview',

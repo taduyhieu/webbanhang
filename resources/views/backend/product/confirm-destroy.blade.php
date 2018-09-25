@@ -11,10 +11,10 @@
 <br>
 <br>
 <div class="container">
-    {!! Form::open( array( 'route' => array( getLang() . '.admin.categories.destroy', $category->id ) ) ) !!}
+    {!! Form::open( array( 'route' => array( getLang() . '.admin.product.destroy', $product->id ) ) ) !!}
     {!! Form::hidden( '_method', 'DELETE' ) !!}
     <div class="alert alert-warning">
-        <div class="pull-left"><b>{!!trans('fully.confirm')!!}</b> <b>{!! $category->name !!} </b> ?
+        <div class="pull-left"><b>{!!trans('fully.confirm')!!}</b> <b>{!! $product->name !!} </b> ?
         </div>
         <div class="pull-right">
             {!! Form::submit( trans('fully.isYes'), array( 'class' => 'btn btn-danger' ) ) !!}

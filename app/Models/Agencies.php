@@ -3,29 +3,27 @@
 namespace Fully\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Fully\Models\Product;
-use Fully\Models\Categories;
 use Fully\Models\Agencies;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Fully\Interfaces\ModelInterface as ModelInterface;
 
 /**
- * Class Categories.
+ * Class Agency.
  *
  * @author TDH <taduyhieucntt98@gmail.com>
  */
-class Product extends Model implements ModelInterface, SluggableInterface {
+class Agencies extends Model implements ModelInterface, SluggableInterface {
 
     use SluggableTrait;
 
-    public $table = 'product';
-    public $fillable = ['id', 'product_name', 'code', 'content', 'slug', 'product_categories_id', 'quatities', 'price', 'color', 'agency_product_id', 'description', 'description_short', 'lang', 'status'];
+    public $table = 'agencies';
+    public $fillable = ['name','url_logo', 'url_link', 'lang', 'status'];
     protected $hidden = ['getNews', 'getNewsHighLights', 'getNewsCate'];
     protected $appends = ['url'];
     public $timestamps = true;
     protected $sluggable = array(
-        'build_from' => 'product_name',
+        'build_from' => 'name',
         'save_to' => 'slug',
     );
 
@@ -58,11 +56,8 @@ class Product extends Model implements ModelInterface, SluggableInterface {
     //     return $this->hasMany(NewsCate::class, 'cat_id', 'id');
     // }
 
-    public function getCatProduct() {
-        return $this->belongsTo(Categories::class, 'product_categories_id')->first();
+    public function getCatParent() {
+        return $this->belongsTo(Categories::class, 'cat_parent_id')->first();
     }
 
-    public function getAgencyProduct() {
-        return $this->belongsTo(Agencies::class, 'agency_product_id')->first();
-    }
 }

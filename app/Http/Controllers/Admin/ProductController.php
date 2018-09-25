@@ -6,12 +6,15 @@ use View;
 use Input;
 use Flash;
 use DB;
+use Fully\Models\Product;
 use Illuminate\Http\Request;
 use Fully\Services\Pagination;
 use Fully\Http\Controllers\Controller;
-use Fully\Repositories\Product\ProductInterface;
 use Fully\Exceptions\Validation\ValidationException;
+use Fully\Repositories\Product\ProductInterface;
 use Fully\Repositories\Product\ProductRepository;
+use Fully\Repositories\Categories\CategoriesInterface;
+use Fully\Repositories\Categories\CategoriesRepository;
 use Exception;
 
 /**
@@ -22,10 +25,12 @@ use Exception;
 class ProductController extends Controller {
 
     protected $product;
+    protected $category;
     protected $perPage;
 
-    public function __construct(ProductInterface $product) {
+    public function __construct(ProductInterface $product, CategoriesInterface $category) {
         $this->product = $product;
+        $this->category = $category;
         View::share('active', 'blog');
         $this->perPage = config('fully.modules.category.per_page');
     }
@@ -40,13 +45,6 @@ class ProductController extends Controller {
         $pagiData = $this->product->paginate(Input::get('page', 1), $this->perPage, true);
         $products = Pagination::makeLengthAware($pagiData->items, $pagiData->totalItems, $this->perPage);
 
-        // foreach ($categories as $category) {
-        //     if ($category->cat_parent_id != null) {
-        //         $category->parent_title = $category->getCatParent()->value('title'); 
-        //     }
-            
-        // }
-
         return view('backend.product.index', compact('products', 'searchTitle'));
     }
 
@@ -56,9 +54,8 @@ class ProductController extends Controller {
      * @return Response
      */
     public function create() {
-        $products = $this->product->all();
-
-        return view('backend.product.create', compact('products'));
+        $categories = $this->category->all();
+        return view('backend.product.create', compact('categories'));
     }
 
     /**
@@ -94,10 +91,8 @@ class ProductController extends Controller {
      */
     public function show($id) {
         $product = $this->product->find($id);
-
-        // if ($category->cat_parent_id != null) {
-        //     $category->parent_title = $category->getCatParent()->value('title'); 
-        // }
+        $product->category_name = $product->getCatProduct()->value('title');
+        $product->agency_name = $product->getAgencyProduct()->value('name');
         return view('backend.product.show', compact('product'));
     }
 
@@ -111,9 +106,6 @@ class ProductController extends Controller {
     public function edit($id) {
         $product = $this->product->find($id);
         $products = $this->product->all();
-        // if ($category->cat_parent_id != null) {
-        //     $category->parent_title = $category->getCatParent()->value('title'); 
-        // }
 
         return view('backend.product.edit', compact('product', 'products'));
     }
@@ -126,13 +118,6 @@ class ProductController extends Controller {
      * @return Response
      */
     public function update($id, Request $request) {
-        // $this->validate($request, [
-        //     'title' => 'required|min:3|unique:categories,title,' . $id,
-        //         ], [
-        //     'title.required' => trans('fully.val_cat_title_req'),
-        //     'title.min' => trans('fully.val_cat_min'),
-        //     'title.unique' => 'Tên đã tồn tại',
-        // ]);
         try {
             $this->product->update($id, Input::all());
             Flash::message(trans('fully.mes_update_succes'));
@@ -152,16 +137,6 @@ class ProductController extends Controller {
      * @return Response
      */
     public function destroy($id) {
-        if ($this->product->hasChildItems($id)) {
-            Flash::message(trans('fully.mes_category_log_1'));
-            return langRedirectRoute('admin.categories.index');
-        }
-        $checkNews = DB::table('news')->where('cat_id', $id)->get();
-
-        if ($checkNews != null) {
-            Flash::message(trans('fully.mes_category_log_2'));
-            return langRedirectRoute('admin.product.index');
-        }
 
         $this->product = $this->product->find($id);
         $this->product->delete();
