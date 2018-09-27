@@ -515,5 +515,10 @@ return array(
     'comment_post_time' => 'Time post',
     'comment_publish_time' => 'Time publish',
     'comment_publish' => 'Status',
+    /* Sale Off*/
+    'start_date' => 'Start Date',
+    'end_date' => 'End Date',
+    'sale_of_percent' => 'Sale of product',
+    'root_price' => 'Root Price ',
     // ================= End Controller ========================//
 );

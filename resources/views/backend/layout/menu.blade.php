@@ -95,7 +95,7 @@
                     </li>
                 </ul>
                 <ul class="treeview-menu">
-                    <li><a href="{{ url(getLang() . '/admin/product/sale-off') }}"><i class="fa fa-list"></i> {{ trans('fully.product_management_sale_off') }}</a>
+                    <li><a href="{{ url(getLang() . '/admin/product-sale-off') }}"><i class="fa fa-list"></i> {{ trans('fully.product_management_sale_off') }}</a>
                     </li>
                 </ul>
             </li>

@@ -235,9 +235,11 @@ Route::group(array('prefix' => LaravelLocalization::getCurrentLocale()), functio
         Route::get('product/{id}/delete', array('as' => 'admin.product.delete',
                                              'uses' => 'ProductController@confirmDestroy', ))->where('id', '[0-9]+');
         // sale-off
-        Route::resource('product/sale-off', 'SafeOffController', array('before' => 'hasAccess:product-sale-off'));
-        Route::get('product/sale-off/{id}/delete', array('as' => 'admin.product-sale-off.delete',
-                                             'uses' => 'SafeOffController@confirmDestroy', ))->where('id', '[0-9]+');
+        Route::resource('product-sale-off', 'SaleOffController', array('before' => 'hasAccess:product-sale-off'));
+        Route::get('product-sale-off/{id}/delete', array('as' => 'admin.product-sale-off.delete',
+                                             'uses' => 'SaleOffController@confirmDestroy', ))->where('id', '[0-9]+');
+        // ajax - saleoff
+        Route::post('product-sale-off/{id}/toggle-publish', array('as' => 'admin.product-sale-off.toggle-publish','uses' => 'SaleOffController@togglePublish', ))->where('id', '[0-9]+');
 
         Route::get('realestale-tag/{search}/search', array('as' => 'admin.realestale-tag.search',
                                             'uses' => 'TagRealEstaleController@search', ));
@@ -324,6 +326,8 @@ Route::group(array('prefix' => LaravelLocalization::getCurrentLocale()), functio
         Route::post('categories/{id}/toggle-publish', array('as' => 'admin.categories.toggle-publish',
                                                       'uses' => 'CategoriesController@togglePublish', ))->where('id', '[0-9]+');
         
+        
+
         // ajax - survey-active
         Route::post('survey/{id}/active', array('as' => 'admin.survey.active',
                                                       'uses' => 'SurveyController@toggleActive', ))->where('id', '[0-9]+');

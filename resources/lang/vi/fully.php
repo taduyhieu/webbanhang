@@ -516,6 +516,11 @@ return array(
     'comment_post_time' => 'Thời gian tạo',
     'comment_publish_time' => 'Thời gian bắt đầu hiển thị',
     'comment_publish' => 'Trạng thái bình luận',
+    /* Sale Off*/
+    'start_date' => 'Ngày bắt đầu',
+    'end_date' => 'Ngày kết thúc',
+    'sale_of_percent' => 'Khuyến mãi',
+    'root_price' => 'Giá gốc',
         // ================= End Controller ========================//
 );
 
