@@ -2,11 +2,11 @@
 @section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1> {!!trans('fully.category')!!}
+    <h1> {!!trans('fully.agency')!!}
         <small> | {!!trans('fully.show')!!}</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="{!! langRoute('admin.agency.index') !!}"><i class="fa fa-list"></i> {!!trans('fully.category')!!}</a></li>
+        <li><a href="{!! langRoute('admin.agency.index') !!}"><i class="fa fa-list"></i> {!!trans('fully.agency')!!}</a></li>
         <li class="active">{!!trans('fully.show')!!}</li>
     </ol>
 </section>

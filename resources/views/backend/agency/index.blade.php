@@ -29,12 +29,12 @@
     });
 </script>
 <section class="content-header">
-    <h1> {!!trans('fully.category')!!}
-        <small> | {!!trans('fully.menu_product')!!}</small>
+    <h1> {!!trans('fully.agency')!!}
+        <small> | {!!trans('fully.menu_agency_list')!!}</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="{!! url(getLang(). '/admin') !!}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li class="active">{!!trans('fully.product')!!}</li>
+        <li class="active">{!!trans('fully.agency')!!}</li>
     </ol>
 </section>
 <br>
@@ -43,7 +43,7 @@
         @include('flash::message')
         <br>
         <div class="col-sm-6">
-            <div class="btn-toolbar"><a href="{!! langRoute('admin.product.create') !!}" class="btn btn-primary">
+            <div class="btn-toolbar"><a href="{!! langRoute('admin.agency.create') !!}" class="btn btn-primary">
                     <span class="glyphicon glyphicon-plus"></span>&nbsp;{!!trans('fully.create')!!}</a></div>
         </div>
         <div class="col-sm-6">

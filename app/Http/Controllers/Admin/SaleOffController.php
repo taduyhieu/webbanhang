@@ -57,9 +57,12 @@ class SaleOffController extends Controller {
         // $products = SaleOff::orderBy('created_at', 'DESC')->paginate(5);
         $saleoffs = Pagination::makeLengthAware($pagiData->items, $pagiData->totalItems, $this->perPage);
         foreach ($saleoffs as $value) {
-            $value->product_name = $value->getProduct()->value('product_name');
-            $value->product_code = $value->getProduct()->value('code');
-            $value->price = $value->getProduct()->value('price');
+            if ($value->getProduct()) {
+                $value->product_name = $value->getProduct()->value('product_name');
+                $value->product_code = $value->getProduct()->value('code');
+                $value->price = $value->getProduct()->value('price');
+            }
+            
         }
         
         return view('backend.sale_off.index', compact('saleoffs', 'searchTitle'));

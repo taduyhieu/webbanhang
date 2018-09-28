@@ -29,11 +29,11 @@
     });
 </script>
 <section class="content-header">
-    <h1> {!!trans('fully.category')!!}
+    <h1> {!!trans('fully.agency')!!}
         <small> | {!!trans('fully.edit')!!}</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="{!! url(getLang(). '/admin/categories') !!}"><i class="fa fa-list"></i> {!!trans('fully.category')!!}</a></li>
+        <li><a href="{!! url(getLang(). '/admin/agency') !!}"><i class="fa fa-list"></i> {!!trans('fully.agency')!!}</a></li>
         <li class="active">{!!trans('fully.edit')!!}</li>
     </ol>
 </section>
@@ -41,44 +41,15 @@
 <br>
 <div class="container">
 
-    {!! Form::open( array( 'route' => array( getLang() . '.admin.categories.update', $category->id), 'method' => 'PATCH')) !!}
+    {!! Form::open( array( 'route' => array( getLang() . '.admin.agency.update', $agency->id), 'method' => 'PATCH')) !!}
     <!-- Title -->
     <div class="col-sm-11 text-row{!! $errors->has('name') ? 'has-error' : '' !!}">
-        <label class="control-label" for="name">{!!trans('fully.cate_name')!!}</label>
+        <label class="control-label" for="name">{!!trans('fully.agency_name')!!}</label>
 
         <div class="controls">
-            {!! Form::text('title', $category->title, array('class'=>'form-control', 'id' => 'title', 'placeholder'=>trans('fully.cate_info_name'), 'value'=>Input::old('title'))) !!}
-            @if ($errors->first('title'))
-            <span class="help-block">{!! $errors->first('title') !!}</span>
-            @endif
-        </div>
-    </div>
-    <br>
-
-    <!-- Parent_id -->
-    <div class="col-sm-11 text-row {!! $errors->has('cat_parent_id') ? 'has-error' : '' !!}">
-        <label class="control-label" for="cat_parent_id">{!!trans('fully.category')!!}</label>
-
-        <div class="controls">
-            <select class="form-control" name="cat_parent_id">
-                <option value="" selected>{!!trans('fully.category_choose')!!}</option>
-                @foreach($categories as $value)
-                @if($category->id != $value->id)
-                <option value="{!! $value->id !!}">{!! $value->title !!}</option>
-                @endif               
-                @endforeach
-            </select>
-        </div>
-    </div>
-
-    <!-- Url_link -->
-    <div class="col-sm-11 text-row{!! $errors->has('url_link') ? 'has-error' : '' !!}">
-        <label class="control-label" for="url">{!!trans('fully.cate_info_url')!!}</label>
-
-        <div class="controls">
-            {!! Form::text('url_link', $category->url_link, array('class'=>'form-control', 'id' => 'url_link', 'placeholder'=>trans('fully.cate_info_url'), 'value'=>Input::old('url_link'))) !!}
-            @if ($errors->first('url_link'))
-            <span class="help-block">{!! $errors->first('url_link') !!}</span>
+            {!! Form::text('name', $agency->name, array('class'=>'form-control', 'id' => 'name', 'placeholder'=>trans('fully.agency_name'), 'value'=>Input::old('name'))) !!}
+            @if ($errors->first('name'))
+            <span class="help-block">{!! $errors->first('name') !!}</span>
             @endif
         </div>
     </div>
@@ -89,8 +60,8 @@
         <label class="control-label" for="url">{!!trans('fully.status')!!}</label>
 
         <div class="controls">
-            <a href="#" id="{!! $category->id !!}" class="publish">
-            <img id="publish-image-{!! $category->id !!}" src="{!!url('/')!!}/assets/images/{!! ($category->status) ? 'publish.png' : 'not_publish.png'  !!}"/></a>
+            <a href="#" id="{!! $agency->id !!}" class="publish">
+            <img id="publish-image-{!! $agency->id !!}" src="{!!url('/')!!}/assets/images/{!! ($agency->status) ? 'publish.png' : 'not_publish.png'  !!}"/></a>
         </div>
     </div>
     <br>
@@ -98,7 +69,7 @@
     <div class="col-sm-11">
     <!-- Form actions -->
     {!! Form::submit(trans('fully.save'), array('class' => 'btn btn-success')) !!}
-    <a href="{!! url('/'.getLang().'/admin/categories') !!}" class="btn btn-default">&nbsp;{!!trans('fully.cancel')!!}</a>
+    <a href="{!! url('/'.getLang().'/admin/agency') !!}" class="btn btn-default">&nbsp;{!!trans('fully.cancel')!!}</a>
     {!! Form::close() !!}
     </div>
 

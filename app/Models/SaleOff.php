@@ -21,13 +21,13 @@ class SaleOff extends Model implements ModelInterface {
     use SluggableTrait;
 
     public $table = 'saleoff';
-    public $fillable = ['id', 'name', 'id_product', 'percent_sale_off', 'slug', 'start_date', 'end_date', 'lang', 'status'];
+    public $fillable = ['id', 'name', 'product_id', 'percent_sale_off', 'slug', 'start_date', 'end_date', 'lang', 'status'];
     protected $hidden = ['getNews', 'getNewsHighLights', 'getNewsCate', 'getProduct'];
     protected $appends = ['url'];
     public $timestamps = true;
     protected $sluggable = array(
-        'build_from' => '',
-        'save_to' => '',
+        'build_from' => 'name',
+        'save_to' => 'slug',
     );
 
     public function setUrlAttribute($value) {

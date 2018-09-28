@@ -59,7 +59,7 @@ class AgencyController extends Controller {
      */
     public function create() {
         $categories = $this->category->all();
-        return view('backend.product.create', compact('categories'));
+        return view('backend.agency.create', compact('categories'));
     }
 
     /**
@@ -76,13 +76,13 @@ class AgencyController extends Controller {
         //     'title.unique' => trans('fully.val_cat_unique'),
         // ]);
         try {
-            $this->product->create(Input::all());
+            $this->agency->create(Input::all());
             Flash::message(trans('fully.mes_add_succes'));
 
-            return langRedirectRoute('admin.product.index');
+            return langRedirectRoute('admin.agency.index');
         } catch (Exception $e) {
             Flash::message(trans('fully.mes_log_general'));
-            return langRedirectRoute('admin.product.create');//->withInput()->withErrors($e->getErrors())
+            return langRedirectRoute('admin.agency.create');//->withInput()->withErrors($e->getErrors())
         }
     }
 
@@ -106,10 +106,9 @@ class AgencyController extends Controller {
      * @return Response
      */
     public function edit($id) {
-        $product = $this->product->find($id);
-        $products = $this->product->all();
+        $agency = $this->agency->find($id);
 
-        return view('backend.product.edit', compact('product', 'products'));
+        return view('backend.agency.edit', compact('agency'));
     }
 
     /**
@@ -121,13 +120,13 @@ class AgencyController extends Controller {
      */
     public function update($id, Request $request) {
         try {
-            $this->product->update($id, Input::all());
+            $this->agency->update($id, Input::all());
             Flash::message(trans('fully.mes_update_succes'));
 
-            return langRedirectRoute('admin.product.index');
+            return langRedirectRoute('admin.agency.index');
         } catch (Exception $e) {
             Flash::message(trans('fully.mes_add_succes'));
-            return langRedirectRoute('admin.product.edit')->withInput()->withErrors($e->getErrors());
+            return langRedirectRoute('admin.agency.edit')->withInput()->withErrors($e->getErrors());
         }
     }
 
@@ -140,11 +139,11 @@ class AgencyController extends Controller {
      */
     public function destroy($id) {
 
-        $this->product = $this->product->find($id);
-        $this->product->delete();
+        $this->agency = $this->agency->find($id);
+        $this->agency->delete();
         Flash::message(trans('fully.mes_del_succes'));
 
-        return langRedirectRoute('admin.product.index');
+        return langRedirectRoute('admin.agency.index');
     }
 
     /**
@@ -153,9 +152,9 @@ class AgencyController extends Controller {
      * @return mixed
      */
     public function confirmDestroy($id) {
-        $product = $this->product->find($id);
+        $agency = $this->agency->find($id);
 
-        return view('backend.product.confirm-destroy', compact('product'));
+        return view('backend.agency.confirm-destroy', compact('agency'));
     }
 
     public function search(Request $request) {

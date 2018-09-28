@@ -523,5 +523,7 @@ return array(
     /* Agency */
     'menu_agency' => 'Manage agencies',
     'menu_agency_list' => 'List agencies',
+    'agency_name'   => 'Name of agency',
+    'agency'        => 'Agency',
     // ================= End Controller ========================//
 );

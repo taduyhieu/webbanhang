@@ -524,7 +524,8 @@ return array(
     /* Agency */
     'menu_agency' => 'Quản lí đại lí',
     'menu_agency_list' => 'Danh sách đại lí',
-
+    'agency_name'   => 'Tên đại lí',
+    'agency'        => 'Đại lí',
         // ================= End Controller ========================//
 );
 
