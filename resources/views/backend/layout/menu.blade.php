@@ -86,6 +86,15 @@
                     </li>
                 </ul>
             </li>
+            
+            <!--Agency-->
+            <li class="treeview {{ setActive('admin/agency*') }}"><a href="#"> <i class="fa fa-list-alt"></i> <span>{{ trans('fully.menu_agency') }}</span>
+                    <i class="fa fa-angle-left pull-right"></i> </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url(getLang() . '/admin/agency') }}"><i class="fa fa-list"></i> {{ trans('fully.menu_agency_list') }}</a>
+                    </li>
+                </ul>
+            </li>
 
             <!--Product-->
             <li class="treeview {{ setActive('admin/product*') }}"><a href="#"> <i class="fa fa-list-alt"></i> <span>{{ trans('fully.product_management') }}</span>

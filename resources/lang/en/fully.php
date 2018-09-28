@@ -520,5 +520,8 @@ return array(
     'end_date' => 'End Date',
     'sale_of_percent' => 'Sale of product',
     'root_price' => 'Root Price ',
+    /* Agency */
+    'menu_agency' => 'Manage agencies',
+    'menu_agency_list' => 'List agencies',
     // ================= End Controller ========================//
 );

@@ -5,6 +5,7 @@ namespace Fully\Providers;
 use Illuminate\Support\ServiceProvider;
 use Fully\Models\Category;
 use Fully\Models\Categories;
+use Fully\Models\Agencies;
 use Fully\Models\News;
 use Fully\Models\NewsRealEstale;
 use Fully\Models\PhotoGallery;
@@ -42,6 +43,9 @@ use Fully\Repositories\Product\CacheDecorator as ProductCacheDecorator;
 
 use Fully\Repositories\SaleOff\SaleOffRepository;
 use Fully\Repositories\SaleOff\CacheDecorator as SaleOffCacheDecorator;
+
+use Fully\Repositories\Agencies\AgenciesRepository;
+use Fully\Repositories\Agencies\CacheDecorator as AgenciesCacheDecorator;
 
 use Fully\Repositories\TagRealEstale\TagRealEstaleRepository;
 use Fully\Repositories\TagRealEstale\CacheDecorator as TagRealEstaleCacheDecorator;
@@ -200,6 +204,23 @@ class RepositoryServiceProvider extends ServiceProvider
             }
 
             return $product;
+        });
+
+        // agency
+        $app->bind('Fully\Repositories\Agencies\AgenciesInterface', function ($app) {
+
+            $agency = new AgenciesRepository(
+                new Agencies()
+            );
+
+            if ($app['config']->get('fully.cache') === true && $app['config']->get('is_admin', false) == false) {
+                $agency = new AgenciesCacheDecorator(
+                    $agency,
+                    new FullyCache($app['cache'], 'agency')
+                );
+            }
+
+            return $agency;
         });
 
         // sale-off

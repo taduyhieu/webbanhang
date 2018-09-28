@@ -6,16 +6,11 @@ use View;
 use Input;
 use Flash;
 use DB;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Http\Response;
 use Fully\Models\Product;
-use Fully\Models\SaleOff;
 use Illuminate\Http\Request;
 use Fully\Services\Pagination;
 use Fully\Http\Controllers\Controller;
 use Fully\Exceptions\Validation\ValidationException;
-use Fully\Repositories\SaleOff\SaleOffInterface;
-use Fully\Repositories\SaleOff\SaleOffRepository;
 use Fully\Repositories\Product\ProductInterface;
 use Fully\Repositories\Product\ProductRepository;
 use Fully\Repositories\Categories\CategoriesInterface;
@@ -29,18 +24,16 @@ use Exception;
  *
  * @author TDH <taduyhieucntt98@gmail.com>
  */
-class SaleOffController extends Controller {
+class AgenciesController extends Controller {
 
-    protected $saleoff;
-    protected $category;
     protected $product;
+    protected $category;
     protected $agency;
     protected $perPage;
 
-    public function __construct(SaleOffInterface $saleoff, CategoriesInterface $category, AgenciesInterface $agency, ProductInterface $product) {
-        $this->saleoff = $saleoff;
-        $this->category = $category;
+    public function __construct(ProductInterface $product, CategoriesInterface $category, AgenciesInterface $agency) {
         $this->product = $product;
+        $this->category = $category;
         $this->agency = $agency;
         View::share('active', 'blog');
         $this->perPage = config('fully.modules.category.per_page');
@@ -53,16 +46,10 @@ class SaleOffController extends Controller {
      */
     public function index() {
         $searchTitle = "";
-        $pagiData = $this->saleoff->paginate(Input::get('page', 1), $this->perPage, true);
-        // $products = SaleOff::orderBy('created_at', 'DESC')->paginate(5);
-        $saleoffs = Pagination::makeLengthAware($pagiData->items, $pagiData->totalItems, $this->perPage);
-        foreach ($saleoffs as $value) {
-            $value->product_name = $value->getProduct()->value('product_name');
-            $value->product_code = $value->getProduct()->value('code');
-            $value->price = $value->getProduct()->value('price');
-        }
-        
-        return view('backend.sale_off.index', compact('saleoffs', 'searchTitle'));
+        $pagiData = $this->agency->paginate(Input::get('page', 1), $this->perPage, true);
+        $agencies = Pagination::makeLengthAware($pagiData->items, $pagiData->totalItems, $this->perPage);
+
+        return view('backend.agency.index', compact('agencies', 'searchTitle'));
     }
 
     /**
@@ -72,9 +59,7 @@ class SaleOffController extends Controller {
      */
     public function create() {
         $categories = $this->category->all();
-        $products = $this->product->all();
-        $agencies = $this->agency->all();
-        return view('backend.sale_off.create', compact('categories', 'products', 'agencies'));
+        return view('backend.product.create', compact('categories'));
     }
 
     /**
@@ -91,13 +76,13 @@ class SaleOffController extends Controller {
         //     'title.unique' => trans('fully.val_cat_unique'),
         // ]);
         try {
-            $this->saleoff->create(Input::all());
+            $this->product->create(Input::all());
             Flash::message(trans('fully.mes_add_succes'));
 
-            return langRedirectRoute('admin.product-sale-off.index');
+            return langRedirectRoute('admin.product.index');
         } catch (Exception $e) {
             Flash::message(trans('fully.mes_log_general'));
-            return langRedirectRoute('admin.product-sale-off.create');//->withInput()->withErrors($e->getErrors())
+            return langRedirectRoute('admin.product.create');//->withInput()->withErrors($e->getErrors())
         }
     }
 
@@ -109,11 +94,10 @@ class SaleOffController extends Controller {
      * @return Response
      */
     public function show($id) {
-        $saleoff = $this->saleoff->find($id);
-        $saleoff->product_name = $saleoff->getProduct()->value('product_name');
-        $saleoff->product_code = $saleoff->getProduct()->value('code');
-        $saleoff->price = $saleoff->getProduct()->value('price');
-        return view('backend.sale_off.show', compact('saleoff'));
+        $product = $this->product->find($id);
+        $product->category_name = $product->getCatProduct()->value('title');
+        $product->agency_name = $product->getAgencyProduct()->value('name');
+        return view('backend.product.show', compact('product'));
     }
 
     /**
@@ -142,10 +126,10 @@ class SaleOffController extends Controller {
             $this->product->update($id, Input::all());
             Flash::message(trans('fully.mes_update_succes'));
 
-            return langRedirectRoute('admin.product-sale-off.index');
+            return langRedirectRoute('admin.product.index');
         } catch (Exception $e) {
             Flash::message(trans('fully.mes_add_succes'));
-            return langRedirectRoute('admin.product-sale-off.edit')->withInput()->withErrors($e->getErrors());
+            return langRedirectRoute('admin.product.edit')->withInput()->withErrors($e->getErrors());
         }
     }
 
@@ -162,7 +146,7 @@ class SaleOffController extends Controller {
         $this->product->delete();
         Flash::message(trans('fully.mes_del_succes'));
 
-        return langRedirectRoute('admin.product-sale-off.index');
+        return langRedirectRoute('admin.product.index');
     }
 
     /**
@@ -176,28 +160,26 @@ class SaleOffController extends Controller {
         return view('backend.product.confirm-destroy', compact('product'));
     }
 
-    // public function search(Request $request) {
-    //     $searchTitle = $request->title_category;
-    //     if (isset($searchTitle)) {
-    //         $categories = $this->category->searchCatByName($searchTitle);
-    //         foreach ($categories as $category) {
-    //             if ($category->cat_parent_id !== 0) {
-    //                 $subCategory = DB::table('category')
-    //                         ->where('id', '=', $category->cat_parent_id)
-    //                         ->select('name')
-    //                         ->first();
-    //                 $category->categoryParent = $subCategory->name;
-    //             }
-    //         }
-    //     }
-    //     $categories->appends(['title_category' => $searchTitle]);
-    //     return view('backend.sale_off.index', compact('categories', 'searchTitle'));
-    // }
+    public function search(Request $request) {
+        $searchTitle = $request->title_category;
+        if (isset($searchTitle)) {
+            $categories = $this->category->searchCatByName($searchTitle);
+            foreach ($categories as $category) {
+                if ($category->cat_parent_id !== 0) {
+                    $subCategory = DB::table('category')
+                            ->where('id', '=', $category->cat_parent_id)
+                            ->select('name')
+                            ->first();
+                    $category->categoryParent = $subCategory->name;
+                }
+            }
+        }
+        $categories->appends(['title_category' => $searchTitle]);
+        return view('backend.category.index', compact('categories', 'searchTitle'));
+    }
 
     public function togglePublish($id) {
-
-        
-        return $this->saleoff->togglePublish($id);
+        return $this->product->togglePublish($id);
     }
 
 }

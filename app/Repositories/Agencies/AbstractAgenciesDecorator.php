@@ -1,13 +1,13 @@
 <?php
 
-namespace Fully\Repositories\SaleOff;
+namespace Fully\Repositories\Agencies;
 
 /**
  * Class AbstractCategoriesDecorator.
  *
  * @author TDH <taduyhieucntt98@gmail.com>
  */
-abstract class AbstractSaleOffDecorator implements SaleOffInterface
+abstract class AbstractAgenciesDecorator implements AgenciesInterface
 {
     /**
      * @var CategoryInterface
@@ -17,7 +17,7 @@ abstract class AbstractSaleOffDecorator implements SaleOffInterface
     /**
      * @param CategoryInterface $category
      */
-    public function __construct(SaleOfftInterface $product)
+    public function __construct(AgenciesInterface $product)
     {
         $this->product = $product;
     }

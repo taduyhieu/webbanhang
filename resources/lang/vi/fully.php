@@ -521,6 +521,10 @@ return array(
     'end_date' => 'Ngày kết thúc',
     'sale_of_percent' => 'Khuyến mãi',
     'root_price' => 'Giá gốc',
+    /* Agency */
+    'menu_agency' => 'Quản lí đại lí',
+    'menu_agency_list' => 'Danh sách đại lí',
+
         // ================= End Controller ========================//
 );
 

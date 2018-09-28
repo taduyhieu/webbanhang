@@ -16,12 +16,12 @@ use Fully\Interfaces\ModelInterface as ModelInterface;
  *
  * @author TDH <taduyhieucntt98@gmail.com>
  */
-class SaleOff extends Model implements ModelInterface, SluggableInterface {
+class SaleOff extends Model implements ModelInterface {
 
     use SluggableTrait;
 
-    public $table = 'sale_off';
-    public $fillable = ['id', 'id_product', 'percent_sale_off', 'start_date', 'end_date', 'lang', 'status'];
+    public $table = 'saleoff';
+    public $fillable = ['id', 'name', 'id_product', 'percent_sale_off', 'slug', 'start_date', 'end_date', 'lang', 'status'];
     protected $hidden = ['getNews', 'getNewsHighLights', 'getNewsCate', 'getProduct'];
     protected $appends = ['url'];
     public $timestamps = true;
@@ -60,7 +60,7 @@ class SaleOff extends Model implements ModelInterface, SluggableInterface {
     // }
 
     public function getProduct() {
-        return $this->belongsTo(Product::class, 'id_product')->first();
+        return $this->belongsTo(Product::class, 'product_id')->first();
     }
 
     // public function getAgencyProduct() {

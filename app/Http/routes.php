@@ -234,12 +234,23 @@ Route::group(array('prefix' => LaravelLocalization::getCurrentLocale()), functio
         Route::resource('product', 'ProductController', array('before' => 'hasAccess:product'));
         Route::get('product/{id}/delete', array('as' => 'admin.product.delete',
                                              'uses' => 'ProductController@confirmDestroy', ))->where('id', '[0-9]+');
+        // agency
+        Route::resource('agency', 'AgencyController', array('before' => 'hasAccess:agency'));
+        Route::get('agency/{id}/delete', array('as' => 'admin.agency.delete',
+                                             'uses' => 'AgencyController@confirmDestroy', ))->where('id', '[0-9]+');
+        // ajax - agency
+        Route::post('agency/{id}/toggle-publish', array('as' => 'admin.agency.toggle-publish','uses' => 'AgencyController@togglePublish', ))->where('id', '[0-9]+');
+
+        
+
         // sale-off
         Route::resource('product-sale-off', 'SaleOffController', array('before' => 'hasAccess:product-sale-off'));
         Route::get('product-sale-off/{id}/delete', array('as' => 'admin.product-sale-off.delete',
                                              'uses' => 'SaleOffController@confirmDestroy', ))->where('id', '[0-9]+');
+        
         // ajax - saleoff
-        Route::post('product-sale-off/{id}/toggle-publish', array('as' => 'admin.product-sale-off.toggle-publish','uses' => 'SaleOffController@togglePublish', ))->where('id', '[0-9]+');
+        Route::post('product-sale-off/{id}/toggle-publish', array('as' => 'admin.product-sale-off.toggle-publish',
+                                                      'uses' => 'SaleOffController@togglePublish', ))->where('id', '[0-9]+');
 
         Route::get('realestale-tag/{search}/search', array('as' => 'admin.realestale-tag.search',
                                             'uses' => 'TagRealEstaleController@search', ));
@@ -289,7 +300,9 @@ Route::group(array('prefix' => LaravelLocalization::getCurrentLocale()), functio
         // ajax - product
         Route::post('product/{id}/toggle-publish', array('as' => 'admin.product.toggle-publish',
                                                       'uses' => 'ProductController@togglePublish', ))->where('id', '[0-9]+');
-
+        // ajax - saleoff
+        Route::post('product-sale-off/{id}/toggle-publish', array('as' => 'admin.a.toggle-publish','uses' => 'SaleOffController@togglePublish', ))->where('id', '[0-9]+');
+        
         // ajax - news highlight
         Route::post('news-highlight/{id}/toggle-publish', array('as' => 'admin.news-highlight.toggle-publish',
                                                       'uses' => 'NewsHighLightController@togglePublish', ))->where('id', '[0-9]+');

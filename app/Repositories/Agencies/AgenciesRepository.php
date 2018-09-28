@@ -1,23 +1,21 @@
 <?php
 
-namespace Fully\Repositories\SaleOff;
+namespace Fully\Repositories\Agencies;
 
 use Config;
-use Response;
-use Fully\Models\SaleOff;
-use Fully\Models\Product;
+use Fully\Models\Agencies;
 use Fully\Models\NewsCate;
 use Fully\Repositories\RepositoryAbstract;
 use Fully\Repositories\CrudableInterface;
 use Fully\Exceptions\Validation\ValidationException;
-
+use Response;
 
 /**
  * Class CategoryRepository.
  *
  * @author TDH <taduyhieucntt98@gmail.com>
  */
-class SaleOffRepository extends RepositoryAbstract implements SaleOffInterface, CrudableInterface {
+class AgenciesRepository extends RepositoryAbstract implements AgenciesInterface, CrudableInterface {
 
     /**
      * @var
@@ -40,7 +38,7 @@ class SaleOffRepository extends RepositoryAbstract implements SaleOffInterface, 
     /**
      * @param Category $category
      */
-    public function __construct(SaleOff $category) {
+    public function __construct(Agencies $category) {
         $this->category = $category;
         $config = Config::get('fully');
         $this->perPage = $config['per_page'];
@@ -151,7 +149,7 @@ class SaleOffRepository extends RepositoryAbstract implements SaleOffInterface, 
      * @return mixed
      */
     public function find($id) {
-        return $this->category->find($id);
+        return $this->category->findOrFail($id);
     }
 
     /**

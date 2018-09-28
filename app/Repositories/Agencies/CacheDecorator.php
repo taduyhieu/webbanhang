@@ -1,6 +1,6 @@
 <?php
 
-namespace Fully\Repositories\SaleOff;
+namespace Fully\Repositories\Agencies;
 
 use Fully\Services\Cache\CacheInterface;
 
@@ -9,7 +9,7 @@ use Fully\Services\Cache\CacheInterface;
  *
  * @author TDH <taduyhieucntt98@gmail.com>
  */
-class CacheDecorator extends AbstractSaleOffDecorator
+class CacheDecorator extends AbstractAgenciesDecorator
 {
     /**
      * @var \Fully\Services\Cache\CacheInterface
@@ -27,7 +27,7 @@ class CacheDecorator extends AbstractSaleOffDecorator
      * @param CategoryInterface $category
      * @param CacheInterface    $cache
      */
-    public function __construct(SaleOffInterface $product, CacheInterface $cache)
+    public function __construct(AgenciesInterface $product, CacheInterface $cache)
     {
         parent::__construct($product);
         $this->cache = $cache;

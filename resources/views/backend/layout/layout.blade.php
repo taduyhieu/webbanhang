@@ -61,7 +61,7 @@
 <div class="wrapper">
     <header class="main-header">
         <!-- Logo -->
-        <a href="{!! url(getLang() . '/admin') !!}" class="logo"><b>VCCI</b> CMS</a>
+        <a href="{!! url(getLang() . '/admin') !!}" class="logo"><b>SHOP</b> CMS</a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
             <!-- Sidebar toggle button-->
