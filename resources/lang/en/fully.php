@@ -525,5 +525,6 @@ return array(
     'menu_agency_list' => 'List agencies',
     'agency_name'   => 'Name of agency',
     'agency'        => 'Agency',
+    'agency_choose' => 'Choose agency',
     // ================= End Controller ========================//
 );

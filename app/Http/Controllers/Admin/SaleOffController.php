@@ -198,9 +198,10 @@ class SaleOffController extends Controller {
     // }
 
     public function togglePublish($id) {
-
-        
         return $this->saleoff->togglePublish($id);
+    }
+    public function getCategoryByParentId($id1, $id2){
+        return $this->saleoff->getCategoryByParentId($id1, $id2);
     }
 
 }

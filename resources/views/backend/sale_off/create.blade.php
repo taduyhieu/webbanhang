@@ -22,11 +22,11 @@
 
                 <!-- Agency -->
                 <div class="col-sm-12 text-row {!! $errors->has('cat_parent_id') ? 'has-error' : '' !!}">
-                    <label class="control-label" for="cat_parent_id">{!!trans('fully.category')!!}</label>
+                    <label class="control-label" for="cat_parent_id">{!!trans('fully.agency')!!}</label>
 
-                    <div class="controls">
+                    <div class="controls" id="listAgency">
                         <select class="form-control" name="cat_parent_id">
-                            <option value="" selected>{!!trans('fully.category_choose')!!}</option>
+                            <option value="" selected>{!!trans('fully.agency_choose')!!}</option>
                             @foreach($agencies as $value)
                             <option value="{!! $value->id !!}">{!! $value->name !!}</option>
                             @endforeach
@@ -38,7 +38,7 @@
                 <div class="col-sm-12 text-row {!! $errors->has('cat_parent_id') ? 'has-error' : '' !!}">
                     <label class="control-label" for="cat_parent_id">{!!trans('fully.category')!!}</label>
 
-                    <div class="controls">
+                    <div class="controls" id="listCate">
                         <select class="form-control" name="cat_parent_id">
                             <option value="" selected>{!!trans('fully.category_choose')!!}</option>
                             @foreach($categories as $value)
@@ -49,7 +49,7 @@
                 </div>
 
                 <!-- Product -->
-                <div class="col-sm-12 text-row {!! $errors->has('cat_parent_id') ? 'has-error' : '' !!}">
+                <!-- <div class="col-sm-12 text-row {!! $errors->has('cat_parent_id') ? 'has-error' : '' !!}">
                     <label class="control-label" for="cat_parent_id">{!!trans('fully.product_name')!!}</label>
 
                     <div class="controls">
@@ -60,11 +60,11 @@
                             @endforeach
                         </select>
                     </div>
-                </div>
+                </div> -->
 
 
                 <!-- Code -->
-                <div class="col-sm-12 text-row {!! $errors->has('code') ? 'has-error' : '' !!}">
+                <!-- <div class="col-sm-12 text-row {!! $errors->has('code') ? 'has-error' : '' !!}">
                     <label class="control-label" for="name">{!!trans('fully.product_code')!!}</label>
 
                     <div class="controls">
@@ -74,7 +74,7 @@
                         @endif
                     </div>
                 </div>
-
+ -->
                 
 
                 <div class="col-sm-12">
@@ -83,6 +83,27 @@
                     {!! Form::submit(trans('fully.save'), array('class' => 'btn btn-success')) !!}
                     <a href="{!! url('/'.getLang().'/admin/product') !!}" class="btn btn-default">&nbsp;{!!trans('fully.cancel')!!}</a>
                     {!! Form::close() !!}
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+           
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Stt</th>
+                                <th>{!!trans('fully.product_name')!!}</th>
+                                <th>{!!trans('fully.product_code')!!}</th>
+                                <th>{!!trans('fully.start_date')!!}</th>
+                                <th>{!!trans('fully.end_date')!!}</th>
+                                <th>{!!trans('fully.sale_of_percent')!!}</th>
+                                <th>{!!trans('fully.root_price')!!}</th>
+                                <th>Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody id="displayProduct">
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -104,5 +125,63 @@
             height: '400px',
         });
     };
+    $(document).ready(function(){
+        $('#listAgency').on('change',function(){
+            $('#listCate').on('change',function(){
+                var idAgency = $("#listAgency option:selected").val();
+                var idCate = $("#listCate option:selected").val();
+                $.ajax({
+                    type: "POST",
+                    url: "{!! url(getLang() . '/admin/product-sale-off/" + idAgency + "/" + idCate + "/product/') !!}",
+                    headers: {
+                        'X-CSRF-Token': $('meta[name="_token"]').attr('content')
+                    },
+                    success: function (response) {
+                        for (i = 0; i < response.length; i++) {
+                            var obj=  response[i];
+                            parsed = "<tr>";
+                            for (var property in obj) {
+                                parsed += "<td>" + obj[property] + "</td>";                                  
+                            }
+                            parsed += "</tr>";
+                            $("#displayProduct").append(parsed); 
+                        }                           
+                    },
+                    error: function () {
+                        alert("error");
+                    }
+                })
+            });
+        });
+        $('#listCate').on('change',function(){
+            $('#listAgency').on('change',function(){
+                var idAgency = $("#listAgency option:selected").val();
+                var idCate = $("#listCate option:selected").val();
+                $.ajax({
+                    type: "POST",
+                    url: "{!! url(getLang() . '/admin/product-sale-off/" + idAgency + "/" + idCate + "/product/') !!}",
+                    headers: {
+                        'X-CSRF-Token': $('meta[name="_token"]').attr('content')
+                    },
+                    success: function (response) {
+                        for (i = 0; i < response.length; i++) {
+                            var obj=  response[i];
+                            parsed = "<tr>";
+                            for (var property in obj) {
+                                parsed += "<td>" + obj[property] + "</td>";                                  
+                            }
+                            parsed += "</tr>";
+                            $("#displayProduct").append(parsed); 
+                        }                           
+                    },
+                    error: function () {
+                        alert("error");
+                    }
+                })
+            });
+        });
+        
+
+    });
 </script>
 @stop

@@ -262,9 +262,9 @@ class SaleOffRepository extends RepositoryAbstract implements SaleOffInterface, 
         return $this->category->orderBy('order', 'ASC')->where('lang', $this->getLang())->take($limit)->offset(0)->get();
     }
 
-    public function getCategoryByParentId($parent_id) {
-        $categories = $this->category->where('cat_parent_id', $parent_id)->get();
-        return $categories;
+    public function getCategoryByParentId($id1, $id2) {
+        $products = Product::where('agency_product_id', $id1)->where('product_categories_id', $id2)->get();
+        return Response::json($products);
     }
 
 }
