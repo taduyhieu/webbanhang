@@ -1,6 +1,5 @@
 @extends('backend/layout/layout')
 @section('content')
-{!! HTML::script('ckeditor/ckeditor.js') !!}
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1> {!!trans('fully.category')!!}
@@ -111,20 +110,6 @@
     
 </div>
 <script type="text/javascript">
-    window.onload = function () {
-        CKEDITOR.replace('content', {
-            "filebrowserBrowseUrl": "{!! url('filemanager/show') !!}",
-            height: '250px',
-        });
-        CKEDITOR.replace('description', {
-            "filebrowserBrowseUrl": "{!! url('filemanager/show') !!}",
-            height: '700px',
-        });
-        CKEDITOR.replace('description_short', {
-            "filebrowserBrowseUrl": "{!! url('filemanager/show') !!}",
-            height: '400px',
-        });
-    };
     $(document).ready(function(){
         $('#listAgency').on('change',function(){
             $('#listCate').on('change',function(){
@@ -137,12 +122,21 @@
                         'X-CSRF-Token': $('meta[name="_token"]').attr('content')
                     },
                     success: function (response) {
+                        // console.log(response);
                         for (i = 0; i < response.length; i++) {
                             var obj=  response[i];
                             parsed = "<tr>";
-                            for (var property in obj) {
-                                parsed += "<td>" + obj[property] + "</td>";                                  
-                            }
+                            $.each( obj, function( key, value ) {
+                                if (key == "id") {
+                                    parsed += "<td>" + (i + 1) + "</td>";
+                                }
+                                if (key == "product_name") {
+                                    parsed += "<td>" + value + "</td>";
+                                }
+                                if (key == "code") {
+                                    parsed += "<td>" + value + "</td>";
+                                }
+                            });
                             parsed += "</tr>";
                             $("#displayProduct").append(parsed); 
                         }                           
@@ -167,9 +161,17 @@
                         for (i = 0; i < response.length; i++) {
                             var obj=  response[i];
                             parsed = "<tr>";
-                            for (var property in obj) {
-                                parsed += "<td>" + obj[property] + "</td>";                                  
-                            }
+                            $.each( obj, function( key, value ) {
+                                if (key == "id") {
+                                    parsed += "<td>" + (i + 1) + "</td>";
+                                }
+                                if (key == "product_name") {
+                                    parsed += "<td>" + value + "</td>";
+                                }
+                                if (key == "code") {
+                                    parsed += "<td>" + value + "</td>";
+                                }
+                            });
                             parsed += "</tr>";
                             $("#displayProduct").append(parsed); 
                         }                           
