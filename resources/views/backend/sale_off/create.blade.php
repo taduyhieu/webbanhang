@@ -111,10 +111,11 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#listAgency').on('change',function(){
-            $('#listCate').on('change',function(){
-                var idAgency = $("#listAgency option:selected").val();
-                var idCate = $("#listCate option:selected").val();
+        $("#listAgency, #listCate").on('change',function(){
+            var idAgency = $("#listAgency option:selected").val();
+            var idCate = $("#listCate option:selected").val();
+            $( "#displayProduct>tr" ).remove();
+            if (idAgency != "" && idCate != "") {
                 $.ajax({
                     type: "POST",
                     url: "{!! url(getLang() . '/admin/product-sale-off/" + idAgency + "/" + idCate + "/product/') !!}",
@@ -122,68 +123,59 @@
                         'X-CSRF-Token': $('meta[name="_token"]').attr('content')
                     },
                     success: function (response) {
-                        // console.log(response);
+                        console.log(response);
                         for (i = 0; i < response.length; i++) {
                             var obj=  response[i];
                             parsed = "<tr>";
-                            $.each( obj, function( key, value ) {
-                                if (key == "id") {
-                                    parsed += "<td>" + (i + 1) + "</td>";
+                            for (var property in obj) {
+                                if (property == "product_name") {
+                                    product_name = obj[property];
                                 }
-                                if (key == "product_name") {
-                                    parsed += "<td>" + value + "</td>";
-                                }
-                                if (key == "code") {
-                                    parsed += "<td>" + value + "</td>";
-                                }
-                            });
-                            parsed += "</tr>";
-                            $("#displayProduct").append(parsed); 
-                        }                           
-                    },
-                    error: function () {
-                        alert("error");
-                    }
-                })
-            });
-        });
-        $('#listCate').on('change',function(){
-            $('#listAgency').on('change',function(){
-                var idAgency = $("#listAgency option:selected").val();
-                var idCate = $("#listCate option:selected").val();
-                $.ajax({
-                    type: "POST",
-                    url: "{!! url(getLang() . '/admin/product-sale-off/" + idAgency + "/" + idCate + "/product/') !!}",
-                    headers: {
-                        'X-CSRF-Token': $('meta[name="_token"]').attr('content')
-                    },
-                    success: function (response) {
-                        for (i = 0; i < response.length; i++) {
-                            var obj=  response[i];
-                            parsed = "<tr>";
-                            $.each( obj, function( key, value ) {
-                                if (key == "id") {
-                                    parsed += "<td>" + (i + 1) + "</td>";
-                                }
-                                if (key == "product_name") {
-                                    parsed += "<td>" + value + "</td>";
-                                }
-                                if (key == "code") {
-                                    parsed += "<td>" + value + "</td>";
-                                }
-                            });
-                            parsed += "</tr>";
-                            $("#displayProduct").append(parsed); 
-                        }                           
-                    },
-                    error: function () {
-                        alert("error");
-                    }
-                })
-            });
-        });
-        
 
+                                if (property == "code") {
+                                    code = obj[property];
+                                }
+
+                                if (property == "percent_sale_off") {
+                                    percent_sale_off = obj[property];
+                                }
+                                
+                                if (property == "start_date") {
+                                    start_date = obj[property];
+                                }
+
+                                if (property == "end_date") {
+                                    end_date = obj[property];
+                                }
+
+                                if (property == "price") {
+                                    price = obj[property];
+                                }
+
+                                if (property == "status") {
+                                    status = obj[property];
+                                }
+                            };
+                            parsed += "<td>" + (i + 1) + "</td>";
+                            parsed += "<td>" + product_name + "</td>";
+                            parsed += "<td>" + code + "</td>";
+                            parsed += "<td>" + start_date + "</td>";
+                            parsed += "<td>" + end_date + "</td>";
+                            parsed += "<td>" + percent_sale_off + "</td>";
+                            
+                            parsed += "<td>" + price + "</td>";
+                            parsed += "<td>" + status + "</td>";
+
+                            parsed += "</tr>";
+                            $("#displayProduct").append(parsed); 
+                        }                           
+                    },
+                    error: function () {
+                        alert("error");
+                    }
+                })
+            }
+        });
     });
 </script>
 @stop

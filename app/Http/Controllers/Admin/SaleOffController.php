@@ -130,7 +130,7 @@ class SaleOffController extends Controller {
         $product = $this->product->find($id);
         $products = $this->product->all();
 
-        return view('backend.product.edit', compact('product', 'products'));
+        return view('backend.sale_off.edit', compact('product', 'products'));
     }
 
     /**
@@ -161,8 +161,8 @@ class SaleOffController extends Controller {
      */
     public function destroy($id) {
 
-        $this->product = $this->product->find($id);
-        $this->product->delete();
+        $this->saleoff = $this->saleoff->find($id);
+        $this->saleoff->delete();
         Flash::message(trans('fully.mes_del_succes'));
 
         return langRedirectRoute('admin.product-sale-off.index');
@@ -174,9 +174,9 @@ class SaleOffController extends Controller {
      * @return mixed
      */
     public function confirmDestroy($id) {
-        $product = $this->product->find($id);
+        $saleoff = $this->saleoff->find($id);
 
-        return view('backend.product.confirm-destroy', compact('product'));
+        return view('backend.sale_off.confirm-destroy', compact('saleoff'));
     }
 
     // public function search(Request $request) {

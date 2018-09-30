@@ -264,6 +264,23 @@ class SaleOffRepository extends RepositoryAbstract implements SaleOffInterface, 
 
     public function getCategoryByParentId($id1, $id2) {
         $products = Product::where('agency_product_id', $id1)->where('product_categories_id', $id2)->get();
+        $saleoffs = $this->category->all();
+        foreach ($products as $product) {
+            $check = false;
+            foreach ($saleoffs as $saleoff) {
+                if ($product->id == $saleoff->product_id) {
+                    $check = true;
+                    $product->start_date = $saleoff->start_date;
+                    $product->end_date = $saleoff->end_date;
+                    $product->percent_sale_off = $saleoff->percent_sale_off;
+                }
+            }
+            if ($check == false) {
+                $product->start_date = null;
+                $product->end_date = null;
+                $product->percent_sale_off = null;
+            }
+        }
         return Response::json($products);
     }
 
