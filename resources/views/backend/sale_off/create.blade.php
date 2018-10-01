@@ -1,6 +1,12 @@
 @extends('backend/layout/layout')
 @section('content')
+{!! HTML::script('moment/js/moment.js') !!}
 <!-- Content Header (Page header) -->
+<style>
+#pink{
+    background : pink;
+}
+</style>
 <section class="content-header">
     <h1> {!!trans('fully.category')!!}
         <small> | {!!trans('fully.create')!!}</small>
@@ -16,8 +22,6 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-5">
-                {!! Form::open(array('action' => '\Fully\Http\Controllers\Admin\SaleOffController@store' )) !!}
-                {!! csrf_field() !!}
 
                 <!-- Agency -->
                 <div class="col-sm-12 text-row {!! $errors->has('cat_parent_id') ? 'has-error' : '' !!}">
@@ -80,7 +84,7 @@
                     <br>
                     <!-- Form actions -->
                     {!! Form::submit(trans('fully.save'), array('class' => 'btn btn-success')) !!}
-                    <a href="{!! url('/'.getLang().'/admin/product') !!}" class="btn btn-default">&nbsp;{!!trans('fully.cancel')!!}</a>
+                    <a href="{!! url('/'.getLang().'/admin/product-sale-off') !!}" class="btn btn-default">&nbsp;{!!trans('fully.cancel')!!}</a>
                     {!! Form::close() !!}
                 </div>
             </div>
@@ -93,10 +97,10 @@
                                 <th>Stt</th>
                                 <th>{!!trans('fully.product_name')!!}</th>
                                 <th>{!!trans('fully.product_code')!!}</th>
+                                <th>{!!trans('fully.root_price')!!}</th>
                                 <th>{!!trans('fully.start_date')!!}</th>
                                 <th>{!!trans('fully.end_date')!!}</th>
                                 <th>{!!trans('fully.sale_of_percent')!!}</th>
-                                <th>{!!trans('fully.root_price')!!}</th>
                                 <th>Trạng thái</th>
                             </tr>
                         </thead>
@@ -126,7 +130,7 @@
                         console.log(response);
                         for (i = 0; i < response.length; i++) {
                             var obj=  response[i];
-                            parsed = "<tr>";
+                            
                             for (var property in obj) {
                                 if (property == "product_name") {
                                     product_name = obj[property];
@@ -156,15 +160,31 @@
                                     status = obj[property];
                                 }
                             };
+                            if (start_date === null) {
+                                parsed = "<tr id='pink'>";
+                            }
+                            else{
+                                parsed = "<tr>"
+                            }
+                            
                             parsed += "<td>" + (i + 1) + "</td>";
                             parsed += "<td>" + product_name + "</td>";
                             parsed += "<td>" + code + "</td>";
-                            parsed += "<td>" + start_date + "</td>";
-                            parsed += "<td>" + end_date + "</td>";
-                            parsed += "<td>" + percent_sale_off + "</td>";
-                            
                             parsed += "<td>" + price + "</td>";
-                            parsed += "<td>" + status + "</td>";
+                            if (start_date === null) {
+                                parsed += "<td id='checkkeyup'>" + "Chưa đặt" + "</td>";
+                                parsed += "<td id='checkkeyup'>" + "Chưa đặt" + "</td>";
+                                parsed += "<td id='checkkeyup'>" + "Chưa đặt" + "</td>";
+                                parsed += "<td>" + "Chưa đặt" + "</td>";
+                            }
+                            else{
+                                parsed += "<td id='checkkeyup'>" + moment(start_date).format('DD/MM/YYYY') + "</td>";
+                                parsed += "<td id='checkkeyup'>" + moment(end_date).format('DD/MM/YYYY') + "</td>";
+                                parsed += "<td id='checkkeyup'>" + percent_sale_off + "</td>";
+                                parsed += "<td>" + status + "</td>";
+                            }
+                            
+                            
 
                             parsed += "</tr>";
                             $("#displayProduct").append(parsed); 
@@ -176,6 +196,12 @@
                 })
             }
         });
+        setInterval(function(){
+            if($("#checkkeyup").is(":hover")) {
+               alert("Hello! I am an alert box!!");
+            }
+        });
+        
     });
 </script>
 @stop

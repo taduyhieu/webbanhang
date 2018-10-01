@@ -273,12 +273,14 @@ class SaleOffRepository extends RepositoryAbstract implements SaleOffInterface, 
                     $product->start_date = $saleoff->start_date;
                     $product->end_date = $saleoff->end_date;
                     $product->percent_sale_off = $saleoff->percent_sale_off;
+                    $product->status = $saleoff->status;
                 }
             }
             if ($check == false) {
                 $product->start_date = null;
                 $product->end_date = null;
                 $product->percent_sale_off = null;
+                $product->status = null;
             }
         }
         return Response::json($products);
