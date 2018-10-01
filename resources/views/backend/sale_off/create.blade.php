@@ -5,7 +5,7 @@
 <script type="text/javascript">
     $(document).on("change", function () {
         $('#notification').show().delay(4000).fadeOut(700);
-        
+
         $("input.checkbox").on("click", function() {
             console.log("hieu");
             if ($("input.checkbox:checked").length == $("input.checkbox").length) {
@@ -144,6 +144,7 @@
     $(document).ready(function(){
         
         $("#listAgency, #listCate").on('change',function(){
+            $("#select_all").prop("checked", false);
             var idAgency = $("#listAgency option:selected").val();
             var idCate = $("#listCate option:selected").val();
             $( "#displayProduct>tr" ).remove();
@@ -155,7 +156,6 @@
                         'X-CSRF-Token': $('meta[name="_token"]').attr('content')
                     },
                     success: function (response) {
-                        console.log(response);
                         for (i = 0; i < response.length; i++) {
                             var obj=  response[i];
                             
@@ -200,16 +200,16 @@
                             parsed += "<td>" + code + "</td>";
                             parsed += "<td>" + price + "</td>";
                             if (start_date === null) {
-                                parsed += "<td >" + "<p id='checkkeyup'>Chưa đặt</p>" + "</td>";
-                                parsed += "<td>" + "<p id='checkkeyup'>Chưa đặt</p>" + "</td>";
-                                parsed += "<td>" + "<p id='checkkeyup'>Chưa đặt</p>" + "</td>";
-                                parsed += "<td>" + "<p id='checkkeyup'>Chưa đặt</p>" + "</td>";
+                                parsed += "<td >" + "<input type=\"text\" name=\"firstname\" maxlength=\"18\" size=\"8\">" + "</td>";
+                                parsed += "<td >" + "<input type=\"text\" name=\"firstname\" maxlength=\"18\" size=\"8\">" + "</td>";
+                                parsed += "<td >" + "<input type=\"text\" name=\"firstname\" maxlength=\"18\" size=\"8\">" + "</td>";
+                                parsed += "<td >" + "" + "</td>";
                             }
                             else{
-                                parsed += "<td>" + moment(start_date).format('DD/MM/YYYY') + "</td>";
-                                parsed += "<td>" + moment(end_date).format('DD/MM/YYYY') + "</td>";
-                                parsed += "<td>" + percent_sale_off + "</td>";
-                                parsed += "<td>" + status + "</td>";
+                                parsed += "<td >" + "<input type=\"text\" name=\"firstname\" maxlength=\"18\" size=\"8\">" + "</td>";
+                                parsed += "<td >" + "<input type=\"text\" name=\"firstname\" maxlength=\"18\" size=\"8\">" + "</td>";
+                                parsed += "<td >" + "<input type=\"text\" name=\"firstname\" maxlength=\"18\" size=\"8\">" + "</td>";
+                                parsed += "<td >" + "1" + "</td>";
                             }
                             
                             
