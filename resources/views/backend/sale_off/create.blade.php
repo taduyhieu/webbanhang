@@ -2,6 +2,32 @@
 @section('content')
 {!! HTML::script('moment/js/moment.js') !!}
 <!-- Content Header (Page header) -->
+<script type="text/javascript">
+    $(document).on("change", function () {
+        $('#notification').show().delay(4000).fadeOut(700);
+        
+        $("input.checkbox").on("click", function() {
+            console.log("hieu");
+            if ($("input.checkbox:checked").length == $("input.checkbox").length) {
+                $("#select_all").prop("checked", true);
+            } else {
+                $("#select_all").prop("checked", false);
+            }
+        });
+        $('#select_all').on('click', function () {
+            if (this.checked) {
+                $('.checkbox').each(function () {
+                    this.checked = true;
+                });
+            } else {
+                $('.checkbox').each(function () {
+                    this.checked = false;
+                });
+            }
+        });
+    });
+    
+</script>
 <style>
 #pink{
     background : pink;
@@ -94,7 +120,7 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th></th>
+                                <th><input type="checkbox" id="select_all"></th>
                                 <th>Stt</th>
                                 <th>{!!trans('fully.product_name')!!}</th>
                                 <th>{!!trans('fully.product_code')!!}</th>
@@ -163,10 +189,10 @@
                                 }
                             };
                             if (start_date === null) {
-                                parsed = "<tr><td><input type='checkbox'></td>";
+                                parsed = "<tr><td><input type=\"checkbox\" class=\"checkbox\" name=\"checkbox\"></td>";
                             }
                             else{
-                                parsed = "<tr id='pink'><td><input type='checkbox'></td>"
+                                parsed = "<tr id='pink'><td><input type=\"checkbox\" class=\"checkbox\" name=\"checkbox\"></td>"
                             }
                             
                             parsed += "<td>" + (i + 1) + "</td>";
@@ -198,23 +224,7 @@
                     }
                 })
             }
-        });
-        
-        $("#displayProduct").ready(function(){
-            $("#checkkeyup").on("click",function(e){
-                alert("hieu");
-            });
-        
-        });
-        
-
-        
-    });
-</script>
-
-<script>
-    $(document).ready(function(){
-        
+        }); 
     });
 </script>
 @stop
