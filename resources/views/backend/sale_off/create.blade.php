@@ -94,6 +94,7 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
+                                <th></th>
                                 <th>Stt</th>
                                 <th>{!!trans('fully.product_name')!!}</th>
                                 <th>{!!trans('fully.product_code')!!}</th>
@@ -115,6 +116,7 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function(){
+        
         $("#listAgency, #listCate").on('change',function(){
             var idAgency = $("#listAgency option:selected").val();
             var idCate = $("#listCate option:selected").val();
@@ -161,10 +163,10 @@
                                 }
                             };
                             if (start_date === null) {
-                                parsed = "<tr id='pink'>";
+                                parsed = "<tr><td><input type='checkbox'></td>";
                             }
                             else{
-                                parsed = "<tr>"
+                                parsed = "<tr id='pink'><td><input type='checkbox'></td>"
                             }
                             
                             parsed += "<td>" + (i + 1) + "</td>";
@@ -172,15 +174,15 @@
                             parsed += "<td>" + code + "</td>";
                             parsed += "<td>" + price + "</td>";
                             if (start_date === null) {
-                                parsed += "<td id='checkkeyup'>" + "Chưa đặt" + "</td>";
-                                parsed += "<td id='checkkeyup'>" + "Chưa đặt" + "</td>";
-                                parsed += "<td id='checkkeyup'>" + "Chưa đặt" + "</td>";
-                                parsed += "<td>" + "Chưa đặt" + "</td>";
+                                parsed += "<td >" + "<p id='checkkeyup'>Chưa đặt</p>" + "</td>";
+                                parsed += "<td>" + "<p id='checkkeyup'>Chưa đặt</p>" + "</td>";
+                                parsed += "<td>" + "<p id='checkkeyup'>Chưa đặt</p>" + "</td>";
+                                parsed += "<td>" + "<p id='checkkeyup'>Chưa đặt</p>" + "</td>";
                             }
                             else{
-                                parsed += "<td id='checkkeyup'>" + moment(start_date).format('DD/MM/YYYY') + "</td>";
-                                parsed += "<td id='checkkeyup'>" + moment(end_date).format('DD/MM/YYYY') + "</td>";
-                                parsed += "<td id='checkkeyup'>" + percent_sale_off + "</td>";
+                                parsed += "<td>" + moment(start_date).format('DD/MM/YYYY') + "</td>";
+                                parsed += "<td>" + moment(end_date).format('DD/MM/YYYY') + "</td>";
+                                parsed += "<td>" + percent_sale_off + "</td>";
                                 parsed += "<td>" + status + "</td>";
                             }
                             
@@ -188,7 +190,8 @@
 
                             parsed += "</tr>";
                             $("#displayProduct").append(parsed); 
-                        }                           
+                        }
+
                     },
                     error: function () {
                         alert("error");
@@ -196,11 +199,21 @@
                 })
             }
         });
-        setInterval(function(){
-            if($("#checkkeyup").is(":hover")) {
-               alert("Hello! I am an alert box!!");
-            }
+        
+        $("#displayProduct").ready(function(){
+            $("#checkkeyup").on("click",function(e){
+                alert("hieu");
+            });
+        
         });
+        
+
+        
+    });
+</script>
+
+<script>
+    $(document).ready(function(){
         
     });
 </script>
