@@ -526,5 +526,11 @@ return array(
     'agency_name'   => 'Name of agency',
     'agency'        => 'Agency',
     'agency_choose' => 'Choose agency',
+    /* Sale off*/
+    'saleoff_management' =>'Manage sale off',
+    'saleoff_list' =>'List sale off',
+    'sale_name'     => 'Name of sale off',
+    'sale_percent'   => 'Percent of sale off', 
+    'with_product'   => 'With product', 
     // ================= End Controller ========================//
 );

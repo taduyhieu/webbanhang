@@ -109,6 +109,15 @@
                 </ul>
             </li>
 
+            <!--Sale off-->
+            <li class="treeview {{ setActive('admin/sale-off*') }}"><a href="#"> <i class="fa fa-list-alt"></i> <span>{{ trans('fully.saleoff_management') }}</span>
+                    <i class="fa fa-angle-left pull-right"></i> </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url(getLang() . '/admin/sale-off') }}"><i class="fa fa-list"></i> {{ trans('fully.saleoff_list') }}</a>
+                    </li>
+                </ul>
+            </li>
+
             <!--Videos-->
             <!-- <li class="treeview {{ setActive('admin/video*') }}"><a href="#"> <i class="glyphicon glyphicon-facetime-video"></i> <span>{{ trans('fully.menu_video') }}</span>
                     <i class="fa fa-angle-left pull-right"></i> </a>

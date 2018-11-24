@@ -247,8 +247,19 @@ Route::group(array('prefix' => LaravelLocalization::getCurrentLocale()), functio
         Route::resource('product-sale-off', 'SaleOffController', array('before' => 'hasAccess:product-sale-off'));
         Route::get('product-sale-off/{id}/delete', array('as' => 'admin.product-sale-off.delete',
                                              'uses' => 'SaleOffController@confirmDestroy', ))->where('id', '[0-9]+');
-        Route::post('product-sale-off/{id1}/{id2}/product', array('as' => 'admin.product-sale-off.get-product',
-                                             'uses' => 'SaleOffController@getCategoryByParentId', ))->where('id', '[0-9]+');        
+        Route::post('sale-off/{id1}/{id2}/product', array('as' => 'admin.product-sale-off.get-product',
+                                             'uses' => 'SaleOfffController@getCategoryByParentId', ))->where('id', '[0-9]+');        
+        // ajax - saleoff
+        Route::post('product-sale-off/{id}/toggle-publish', array('as' => 'admin.product-sale-off.toggle-publish',
+                                                      'uses' => 'SaleOffController@togglePublish', ))->where('id', '[0-9]+');
+
+
+        // sale-off-main
+        Route::resource('sale-off', 'SaleOfffController', array('before' => 'hasAccess:sale-off'));
+        Route::get('sale-off/{id}/delete', array('as' => 'admin.sale-off.delete',
+                                             'uses' => 'SaleOfffController@confirmDestroy', ))->where('id', '[0-9]+');
+        /* Route::post('sale-off/{id1}/{id2}/product', array('as' => 'admin.product-sale-off.get-product',
+                                             'uses' => 'SaleOffController@getCategoryByParentId', ))->where('id', '[0-9]+');  */      
         // ajax - saleoff
         Route::post('product-sale-off/{id}/toggle-publish', array('as' => 'admin.product-sale-off.toggle-publish',
                                                       'uses' => 'SaleOffController@togglePublish', ))->where('id', '[0-9]+');

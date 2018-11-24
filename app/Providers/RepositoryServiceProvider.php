@@ -11,6 +11,7 @@ use Fully\Models\NewsRealEstale;
 use Fully\Models\PhotoGallery;
 use Fully\Models\Product;
 use Fully\Models\SaleOff;
+use Fully\Models\SaleOfff;
 use Fully\Models\Tag;
 use Fully\Models\Video;
 use Fully\Models\Menu;
@@ -43,6 +44,9 @@ use Fully\Repositories\Product\CacheDecorator as ProductCacheDecorator;
 
 use Fully\Repositories\SaleOff\SaleOffRepository;
 use Fully\Repositories\SaleOff\CacheDecorator as SaleOffCacheDecorator;
+
+use Fully\Repositories\SaleOfff\SaleOfffRepository;
+use Fully\Repositories\SaleOfff\CacheDecorator as SaleOfffCacheDecorator;
 
 use Fully\Repositories\Agencies\AgenciesRepository;
 use Fully\Repositories\Agencies\CacheDecorator as AgenciesCacheDecorator;
@@ -239,6 +243,25 @@ class RepositoryServiceProvider extends ServiceProvider
 
             return $saleoff;
         });
+
+        // sale-offf
+        $app->bind('Fully\Repositories\SaleOfff\SaleOfffInterface', function ($app) {
+
+            $saleofff = new SaleOfffRepository(
+                new SaleOfff()
+            );
+
+            if ($app['config']->get('fully.cache') === true && $app['config']->get('is_admin', false) == false) {
+                $saleofff = new SaleOfffCacheDecorator(
+                    $saleofff,
+                    new FullyCache($app['cache'], 'saleofff')
+                );
+            }
+
+            return $saleofff;
+        });
+
+
         
         // news real estale
         $app->bind('Fully\Repositories\NewsRealEstale\NewsRealEstaleInterface', function ($app) {

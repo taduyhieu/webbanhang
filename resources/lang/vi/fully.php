@@ -527,6 +527,12 @@ return array(
     'agency_name'   => 'Tên đại lí',
     'agency'        => 'Đại lí',
     'agency_choose' => 'Chọn đại lí',
+    /* Sale off*/
+    'saleoff_management' =>'Quản lý khuyến mãi',
+    'saleoff_list' =>'Danh sách khuyến mãi',
+    'sale_name'     => 'Tên khuyến mãi',
+    'sale_percent'   => 'Phần trăm khuyến mãi', 
+    'with_product'   => 'Sản phẩm tặng kèm', 
         // ================= End Controller ========================//
 );
 
