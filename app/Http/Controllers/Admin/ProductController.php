@@ -7,6 +7,9 @@ use Input;
 use Flash;
 use DB;
 use Fully\Models\Product;
+use Fully\Models\SaleOfff;
+use Fully\Models\SaleOff_Product;
+
 use Illuminate\Http\Request;
 use Fully\Services\Pagination;
 use Fully\Http\Controllers\Controller;
@@ -176,6 +179,28 @@ class ProductController extends Controller {
 
     public function togglePublish($id) {
         return $this->product->togglePublish($id);
+    }
+
+    public function getSaleOff(){
+        $products = $this->product->all();
+        foreach ($products as $product) {
+            $product->id_saleoff = $product->getSaleOff;
+        }
+        foreach ($products as $product) {
+            foreach ($product->id_saleoff as $value) {
+                $value->name_saleoff = SaleOfff::where('id', $value->id_saleoff)->get()->pluck('name');
+            }
+        }
+        dd($products);
+        // foreach ($products as $product) {
+        //     echo '<pre>';
+
+        //     foreach ($product->id_saleoff as $value) {
+        //          dd($product->id_saleoff->name_saleoff);
+        //          echo 'string';
+        //     }
+        // }
+        
     }
 
 }

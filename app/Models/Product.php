@@ -20,7 +20,7 @@ class Product extends Model implements ModelInterface, SluggableInterface {
     use SluggableTrait;
 
     public $table = 'product';
-    public $fillable = ['id', 'product_name', 'code', 'content', 'slug', 'product_categories_id', 'quatities', 'price', 'color', 'agency_product_id', 'description', 'description_short', 'lang', 'status'];
+    public $fillable = ['id', 'product_name', 'code', 'content', 'slug', 'product_categories_id', 'quatities', 'price', 'color', 'agency_product_id', 'description', 'description_short', 'lang', 'status', 'getSaleOff'];
     protected $hidden = ['getNews', 'getNewsHighLights', 'getNewsCate'];
     protected $appends = ['url'];
     public $timestamps = true;
@@ -64,5 +64,9 @@ class Product extends Model implements ModelInterface, SluggableInterface {
 
     public function getAgencyProduct() {
         return $this->belongsTo(Agencies::class, 'agency_product_id')->first();
+    }
+
+    public function getSaleOff(){
+        return $this->hasMany(SaleOff_Product::class, 'id_product', 'id');
     }
 }

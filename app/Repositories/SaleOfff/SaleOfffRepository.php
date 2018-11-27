@@ -264,26 +264,35 @@ class SaleOfffRepository extends RepositoryAbstract implements SaleOfffInterface
 
     public function getCategoryByParentId($id1, $id2) {
         $products = Product::where('agency_product_id', $id1)->where('product_categories_id', $id2)->get();
-        $saleoffs = DB::table('saleoff_product')->get();
-        $saleoffList = DB::table('saleofff')->get();
+        $saleoffs = $this->category->all();
+
         foreach ($products as $product) {
-            // $check = false;
-            foreach ($saleoffs as $saleoff) {
-                if ($product->id == $saleoff->id_product) {
-                    // $check = true;
-                    $product->start_date = $saleoff->start_date;
-                    $product->end_date = $saleoff->end_date;
-                    $product->percent_sale_off = $saleoff->percent_sale_off;
-                    $product->status = $saleoff->status;
-                }
-            }
-            // if ($check == false) {
-            //     $product->start_date = null;
-            //     $product->end_date = null;
-            //     $product->percent_sale_off = null;
-            //     $product->status = null;
-            // }
+            $product->id_saleoff = $product->getSaleOff;
         }
+        foreach ($products as $product) {
+            foreach ($product->id_saleoff as $value) {
+                $value->name_saleoff = SaleOfff::where('id', $value->id_saleoff)->get()->pluck('name');
+            }
+        }
+        
+        // foreach ($products as $product) {
+        //     $check = false;
+        //     foreach ($saleoffs as $saleoff) {
+        //         if ($product->id == $saleoff->product_id) {
+        //             $check = true;
+        //             $product->start_date = $saleoff->start_date;
+        //             $product->end_date = $saleoff->end_date;
+        //             $product->percent_sale_off = $saleoff->percent_sale_off;
+        //             $product->status = $saleoff->status;
+        //         }
+        //     }
+        //     if ($check == false) {
+        //         $product->start_date = null;
+        //         $product->end_date = null;
+        //         $product->percent_sale_off = null;
+        //         $product->status = null;
+        //     }
+        // }
         return Response::json($products);
     }
 

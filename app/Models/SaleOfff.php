@@ -44,7 +44,7 @@ class SaleOfff extends Model implements ModelInterface {
     }
 
     public function getSaleOff() {
-        return $this->hasMany(Product::class, 'product_id')->first();
+        return $this->belongsTo(Product::class, 'product_id')->get();
     }
 
 }

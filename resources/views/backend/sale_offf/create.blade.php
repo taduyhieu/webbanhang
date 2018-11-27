@@ -2,6 +2,8 @@
 @section('content')
 {!! HTML::script('moment/js/moment.js') !!}
 {!! HTML::style('/bootstrap_datetimepicker/bootstrap-datetimepicker.min.css') !!}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
 <!-- Content Header (Page header) -->
 <script type="text/javascript">
     $(document).on("change", function () {
@@ -232,6 +234,15 @@
                                     start_date = obj[property];
                                 }
 
+                                if (property == "get_sale_off") {
+                                    saleoff_name = "";
+                                    for (j = 0; j < obj[property].length; j++) {
+                                        // saleoff_name = obj[property][j];
+                                        // console.log(obj[property][j]['name_saleoff']);
+                                        saleoff_name += (obj[property][j]['name_saleoff'] + " | ");
+                                    }
+                                }
+
                                 if (property == "end_date") {
                                     end_date = obj[property];
                                 }
@@ -250,10 +261,11 @@
                             else{
                                 parsed = "<tr id='pink'><td><input type=\"checkbox\" class=\"checkbox\" name=\"checkbox\"></td>"
                             }
-                            
+                            // alert(saleoff_name);
                             parsed += "<td>" + (i + 1) + "</td>";
                             parsed += "<td>" + product_name + "</td>";
                             parsed += "<td>" + code + "</td>";
+                            parsed += "<td >" + "<a data-toggle='popover-" + i + "' title='Khuyến mãi đang chạy' data-content='" + saleoff_name + "'>Xem</a>" + "</td>";
                             parsed += "<td>" + price + "</td>";
                             // if (start_date === null) {
                             //     parsed += "<td >" + "<input type=\"text\" name=\"firstname\" maxlength=\"18\" size=\"8\">" + "</td>";
@@ -265,13 +277,15 @@
                             //     parsed += "<td >" + "<input type=\"text\" name=\"firstname\" maxlength=\"18\" size=\"8\">" + "</td>";
                             //     parsed += "<td >" + "<input type=\"text\" name=\"firstname\" maxlength=\"18\" size=\"8\">" + "</td>";
                             //     parsed += "<td >" + "<input type=\"text\" name=\"firstname\" maxlength=\"18\" size=\"8\">" + "</td>";
-                                parsed += "<td >" + "1" + "</td>";
+                                // parsed += "<td >" + "<a href='#' data-toggle='popover-" + i + "' title='Popover Header' data-content='Some content inside the popover'>Toggle popover</a>" + "</td>";
                             // }
                             
                             
 
                             parsed += "</tr>";
                             $("#displayProduct").append(parsed); 
+                            string  = "[data-toggle='popover-" + i + "']";
+                            $(string).popover();  
                         }
 
                     },
@@ -316,6 +330,9 @@
         minView: 0,
         maxView: 1,
         forceParse: 0
+    });
+    $(document).ready(function(){
+         
     });
 </script>
 @stop
